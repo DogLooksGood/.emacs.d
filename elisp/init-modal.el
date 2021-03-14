@@ -115,6 +115,7 @@
    '("x" . meow-save)
    '("X" . meow-save-append)
    '("y" . meow-yank)
+   '("Y" . meow-yank-pop)
    '("z" . meow-pop)
    '("Z" . meow-pop-all-selection)
    '("<" . meow-beginning-of-thing)

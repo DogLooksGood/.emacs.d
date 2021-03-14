@@ -4,7 +4,7 @@
 
 (setq sp-autowrap-region nil)
 
-(require 'smartparens)
+(autoload #'smartparens-mode "smartparens" nil t)
 
 (with-eval-after-load "smartparens"
   (define-key smartparens-mode-map (kbd "M-r") #'sp-raise-sexp)

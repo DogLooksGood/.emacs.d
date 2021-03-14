@@ -5,6 +5,7 @@
                :host github
                :repo "DogLooksGood/joker-theme"))
 
+(straight-use-package 'zenburn-theme)
 (require 'joker-theme)
 (require 'storybook-theme)
 (require 'printed-theme)

@@ -9,7 +9,7 @@
 	       :host github
 	       :repo "DogLooksgood/inf-iex"))
 
-(straight-use-package 'polymode)
+;; (straight-use-package 'polymode)
 
 ;;; Custom functions
 
@@ -93,23 +93,23 @@
 
 ;;; polymode
 
-(autoload #'poly-elixir-mode "polymode" nil t)
+;; (autoload #'poly-elixir-mode "polymode" nil t)
 
-(with-eval-after-load "polymode"
-  (setq poly-lock-allow-background-adjustment nil)
-
-  (define-hostmode poly-elixir-hostmode
-    :mode 'elixir-mode)
-
-  (define-innermode poly-elixir-template-innermode
-    :mode 'html-mode
-    :head-matcher "^ *~H\"\"\"\n"
-    :tail-matcher "^ *\"\"\"\n"
-    :head-mode 'host
-    :tail-mode 'host)
-
-  (define-polymode poly-elixir-mode
-    :hostmode 'poly-elixir-hostmode
-    :innermodes '(poly-elixir-template-innermode)))
+;; (with-eval-after-load "polymode"
+;;   (setq poly-lock-allow-background-adjustment nil)
+;;
+;;   (define-hostmode poly-elixir-hostmode
+;;     :mode 'elixir-mode)
+;;
+;;   (define-innermode poly-elixir-template-innermode
+;;     :mode 'html-mode
+;;     :head-matcher "^ *~H\"\"\"\n"
+;;     :tail-matcher "^ *\"\"\"\n"
+;;     :head-mode 'host
+;;     :tail-mode 'host)
+;;
+;;   (define-polymode poly-elixir-mode
+;;     :hostmode 'poly-elixir-hostmode
+;;     :innermodes '(poly-elixir-template-innermode)))
 
 (provide 'init-elixir)
