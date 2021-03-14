@@ -153,6 +153,7 @@
 
 (with-eval-after-load "meow"
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
+  (add-to-list 'meow-normal-state-mode-list 'authinfo-mode)
   (add-to-list 'meow-grab-fill-commands 'eval-expression)
   (meow-setup))
 
