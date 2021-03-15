@@ -13,6 +13,7 @@
  web-mode-markup-indent-offset 2
  web-mode-code-indent-offset 2
  web-mode-css-indent-offset 2
+ web-mode-script-padding 2
  web-mode-auto-pairs nil)
 
 (autoload #'web-mode "web-mode" nil t)
