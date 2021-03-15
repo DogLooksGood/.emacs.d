@@ -109,6 +109,7 @@
    '("t" . meow-right)
    '("T" . meow-right-expand)
    '("u" . meow-undo)
+   '("U" . meow-undo-in-selection)
    '("v" . meow-visit)
    '("w" . meow-next-word)
    '("W" . meow-next-symbol)
