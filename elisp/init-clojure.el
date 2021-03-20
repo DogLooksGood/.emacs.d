@@ -3,7 +3,6 @@
 (straight-use-package 'clojure-mode)
 (straight-use-package 'clj-refactor)
 (straight-use-package 'cider)
-(straight-use-package 'inf-clojure)
 (straight-use-package 'flycheck)
 (straight-use-package 'flycheck-clj-kondo)
 
@@ -72,9 +71,5 @@
   (define-key cider-mode-map (kbd "C-c M-s") #'+clojure-describe-spec)
   (define-key cider-mode-map (kbd "C-c C-f") #'cider-format-buffer)
   (define-key cider-mode-map (kbd "C-c f") #'cider-pprint-eval-defun-at-point))
-
-;;; inf-clojure
-
-(autoload #'inf-clojure-connect "inf-clojure" nil t)
 
 (provide 'init-clojure)
