@@ -44,6 +44,16 @@
 
 ;;; cider
 
+(defun +clojure-describe-spec ()
+  (interactive)
+  (when-let* ((code (thing-at-point 'symbol))
+              (dict (cider-nrepl-sync-request:eval
+                     code
+                     (car (cider-connections))
+                     (cider-ns-from-form (cider-ns-form))))
+              (spec (-last-item dict)))
+    (cider-browse-spec spec)))
+
 (setq
  cider-font-lock-dynamically nil
  cider-font-lock-reader-conditionals nil
@@ -59,7 +69,7 @@
 (autoload #'cider "cider" nil t)
 
 (with-eval-after-load "cider"
-  (define-key cider-mode-map (kbd "C-c M-s") #'cider-browse-spec)
+  (define-key cider-mode-map (kbd "C-c M-s") #'+clojure-describe-spec)
   (define-key cider-mode-map (kbd "C-c C-f") #'cider-format-buffer)
   (define-key cider-mode-map (kbd "C-c f") #'cider-pprint-eval-defun-at-point))
 
