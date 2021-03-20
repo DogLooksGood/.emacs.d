@@ -78,7 +78,12 @@
      (font-spec :family +ufont-family))))
 
 (defun +load-font ()
-  (+load-base-font)
+  (let* ((font-spec (format "%s-%d" +font-family +font-size))
+         (variable-pitch-font-spec (format "%s-%d" +variable-pitch-family +font-size))
+         (fixed-pitch-font-spec (format "%s-%d" +fixed-pitch-family +font-size)))
+    (set-frame-font font-spec)
+    (set-face-attribute 'variable-pitch nil :font variable-pitch-font-spec)
+    (set-face-attribute 'fixed-pitch nil :font fixed-pitch-font-spec))
   (+load-ext-font))
 
 (+load-base-font)

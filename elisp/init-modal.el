@@ -156,6 +156,8 @@
   (add-to-list 'meow-normal-state-mode-list 'inf-iex-mode)
   (add-to-list 'meow-normal-state-mode-list 'authinfo-mode)
   (add-to-list 'meow-grab-fill-commands 'eval-expression)
+  (add-to-list 'meow-char-thing-table '(?> . line))
+  (add-to-list 'meow-char-thing-table '(?< . line))
   (meow-setup))
 
 (provide 'init-modal)
