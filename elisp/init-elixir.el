@@ -9,7 +9,7 @@
 	       :host github
 	       :repo "DogLooksgood/inf-iex"))
 
-;; (straight-use-package 'polymode)
+(straight-use-package 'polymode)
 
 ;;; Custom functions
 
