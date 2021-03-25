@@ -14,19 +14,19 @@ Containing LEFT, and RIGHT aligned respectively."
             (list (format (format "%%%ds" available-width) ""))
             right)))
 
-(setq-default mode-line-format
-              '((:eval
-                 (+simple-mode-line-render
-                  ;; left
-                  '((:eval (meow-indicator))
-                    " %l:%C "
-                    (:propertize (-3 "%p") face +modeline-dim-face))
-                  ;; right
-                  '((:eval (rime-lighter))
-                    " "
-                    (:propertize mode-name face font-lock-keyword-face)
-                    " "
-                    (:eval (+smart-file-name-with-propertize))
-                    " ")))))
+;; (setq-default mode-line-format
+;;               '((:eval
+;;                  (+simple-mode-line-render
+;;                   ;; left
+;;                   '((:eval (meow-indicator))
+;;                     " %l:%C "
+;;                     (:propertize (-3 "%p") face +modeline-dim-face))
+;;                   ;; right
+;;                   '((:eval (rime-lighter))
+;;                     " "
+;;                     (:propertize mode-name face font-lock-keyword-face)
+;;                     " "
+;;                     (:eval (+smart-file-name-with-propertize))
+;;                     " ")))))
 
 (provide 'init-modeline)

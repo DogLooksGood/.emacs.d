@@ -48,9 +48,9 @@ This function is slow, so we have to use cache."
 
 (defface +modeline-dim-face
   '((((class color) (background dark))
-     (:foreground "grey40"))
+     (:foreground "grey50"))
     (((class color) (background light))
-     (:foreground "grey60")))
+     (:foreground "grey50")))
   "Dim face in mode-line")
 
 (defvar-local +smart-file-name-with-propertize-cache nil
