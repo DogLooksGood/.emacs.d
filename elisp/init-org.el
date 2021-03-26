@@ -82,7 +82,8 @@
   (custom-set-faces
    '(org-table ((t :inherit 'fixed-pitch)))
    '(org-code ((t :inherit 'fixed-pitch)))
-   '(org-block ((t :inherit 'fixed-pitch))))
+   '(org-block ((t :inherit 'fixed-pitch)))
+   '(org-checkbox ((t :inherit 'fixed-pitch))))
 
   (add-hook 'org-mode-hook 'variable-pitch-mode)
   (require 'ob)
