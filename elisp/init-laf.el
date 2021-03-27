@@ -71,11 +71,12 @@
     (set-face-attribute 'fixed-pitch nil :font fixed-pitch-font-spec)))
 
 (defun +load-ext-font ()
-  (dolist (charset '(kana han cjk-misc bopomofo))
-    (set-fontset-font
-     (frame-parameter nil 'font)
-     charset
-     (font-spec :family +ufont-family))))
+  (when window-system
+    (dolist (charset '(kana han cjk-misc bopomofo))
+      (set-fontset-font
+       (frame-parameter nil 'font)
+       charset
+       (font-spec :family +ufont-family)))))
 
 (defun +load-font ()
   (let* ((font-spec (format "%s-%d" +font-family +font-size))
