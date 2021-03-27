@@ -4,8 +4,8 @@
  '(joker-theme :type git
                :host github
                :repo "DogLooksGood/joker-theme"))
-
 (straight-use-package 'zenburn-theme)
+(straight-use-package 'color-theme-sanityinc-tomorrow)
 (require 'joker-theme)
 (require 'storybook-theme)
 (require 'printed-theme)
