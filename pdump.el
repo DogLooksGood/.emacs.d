@@ -17,9 +17,5 @@
 (setq +pdumped-load-path load-path
       +use-pdump t)
 
-;;; Disable GC
-(setq gc-cons-threshold most-positive-fixnum
-      gc-cons-percentage 0.6)
-
 ;; dump image
 (dump-emacs-portable "~/.emacs.d/emacs.pdmp")
