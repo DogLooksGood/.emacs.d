@@ -74,9 +74,7 @@
  ;; Goto top or bottom when scroll failed
  scroll-error-top-bottom t
  ;; Don't use Fcitx5 in Emacs in PGTK build
- pgtk-use-im-context-on-new-connection nil
- scroll-step 1
- scroll-margin 3)
+ pgtk-use-im-context-on-new-connection nil)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 

@@ -57,13 +57,15 @@ This function is slow, so we have to use cache."
   "Cache for performance, is a cons of (buffer-name . cached-value).")
 
 (defun +smart-file-name-cached ()
-  (-when-let ((buf-name p f) +smart-file-name-with-propertize-cache)
-    (when (string-equal buf-name (buffer-file-name))
-      (let ((face (cond
-                   ((buffer-modified-p) 'font-lock-string-face)
-                   (buffer-read-only 'font-lock-comment-face)
-                   (t nil))))
-        (concat (propertize p 'face '+modeline-dim-face) (propertize f 'face face))))))
+  (when +smart-file-name-with-propertize-cache
+    (-let (((buf-name p f) +smart-file-name-with-propertize-cache))
+      (when (string-equal buf-name (buffer-file-name))
+        (let ((face (cond
+                     ((buffer-modified-p) 'font-lock-string-face)
+                     (buffer-read-only 'font-lock-comment-face)
+                     (t nil))))
+          (concat (if p (propertize p 'face '+modeline-dim-face) "")
+                  (propertize f 'face face)))))))
 
 (defun +smart-file-name-with-propertize ()
   (if-let ((bfn (buffer-file-name)))
