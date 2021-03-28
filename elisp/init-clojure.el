@@ -1,10 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'clojure-mode)
-(straight-use-package 'clj-refactor)
-(straight-use-package 'cider)
-(straight-use-package 'flycheck)
-(straight-use-package 'flycheck-clj-kondo)
+
+
+
+
+
 
 ;;; clojure-mode
 

@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'pass)
+
 
 (autoload #'pass "pass" nil t)
 

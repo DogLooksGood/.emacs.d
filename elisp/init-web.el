@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'web-mode)
-(straight-use-package 'emmet-mode)
+
+
 
 ;;; web-mode
 

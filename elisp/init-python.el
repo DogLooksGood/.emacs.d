@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(straight-use-package 'conda)
+
 
 (defun +python-semicolon ()
   (interactive)

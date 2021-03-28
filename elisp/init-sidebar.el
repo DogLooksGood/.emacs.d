@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'treemacs)
+
 
 (defun +treemacs-scale-font-size ()
   (face-remap-add-relative 'default :height 0.8))

@@ -8,5 +8,6 @@
 
 (require 'init-defaults)
 (require 'init-straight)
+(require 'init-packages)
 (require 'init-gc)
 (require 'init-laf)

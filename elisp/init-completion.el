@@ -1,11 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'yasnippet)
-(straight-use-package 'company)
-(straight-use-package 'selectrum)
-(straight-use-package 'prescient)
-(straight-use-package 'selectrum-prescient)
-(straight-use-package 'deadgrep)
+
+
+
+
+
+
 
 (defun +complete ()
   (interactive)

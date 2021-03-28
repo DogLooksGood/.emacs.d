@@ -3,7 +3,7 @@
 (setq
  markdown-fontify-code-blocks-natively t)
 
-(straight-use-package 'markdown-mode)
+
 
 (with-eval-after-load "markdown-mode"
   (custom-set-faces

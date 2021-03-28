@@ -1,6 +1,6 @@
 
 
-(straight-use-package 'smartparens)
+
 
 (setq sp-autowrap-region nil)
 

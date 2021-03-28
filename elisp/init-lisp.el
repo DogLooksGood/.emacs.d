@@ -1,9 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package
- '(paredit :type git
-           :host github
-           :repo "emacsmirror/paredit"))
+
 
 (defun +lisp-semicolon ()
   "Will insert a semicolon if we are at the beginning of the line,

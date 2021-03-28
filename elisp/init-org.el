@@ -1,16 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'org-roam)
-(straight-use-package 'org-roam-server)
-(straight-use-package 'htmlize)
-(straight-use-package 'org-superstar)
-(straight-use-package
- '(org-html-themify
-   :type git
-   :host github
-   :repo "DogLooksGood/org-html-themify"
-   :files ("*.el" "*.js" "*.css")))
-(straight-use-package 'ob-restclient)
+
+
+
+
+
+
 
 ;;; Latex support
 ;;; install latex with

@@ -113,7 +113,7 @@
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
    '("v" . meow-visit)
-   '("V" . meow-kmacro-visit)
+   '("V" . meow-kmacro-matches)
    '("w" . meow-next-word)
    '("W" . meow-next-symbol)
    '("x" . meow-save)
@@ -134,8 +134,7 @@
    '("<f3>" . meow-start-kmacro)
    '("<f4>" . meow-end-or-call-kmacro)))
 
-(straight-use-package
- '(meow :type git :host github :repo "DogLooksGood/meow"))
+
 
 (setq
  meow-esc-delay 0.001

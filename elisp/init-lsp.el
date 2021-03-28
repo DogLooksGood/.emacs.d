@@ -1,8 +1,5 @@
 ;; -*- lexical-binding: t -*-
 
-(straight-use-package 'flymake)
-(straight-use-package 'eglot)
-
 ;;; flymake
 
 (autoload #'flymake-mode "flymake" nil t)

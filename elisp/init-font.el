@@ -1,12 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
 (when window-system
-
-  (straight-use-package
-   '(ligature :type git
-	          :host github
-	          :repo "mickeynp/ligature.el"))
-
   ;; ligature
 
   (require 'ligature)

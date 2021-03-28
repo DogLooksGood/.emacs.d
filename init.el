@@ -1,3 +1,4 @@
+(message "Load init.el")
 (require 'init-font)
 (require 'init-util)
 (require 'init-modal)
