@@ -11,5 +11,4 @@
 
 ;; These two modes are disabled in pdump
 (global-font-lock-mode t)
-(meow-esc-mode 1)
 (transient-mark-mode t)
