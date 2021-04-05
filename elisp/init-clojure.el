@@ -1,11 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-
-
-
-
-
-
 ;;; clojure-mode
 
 (setq
@@ -19,10 +13,15 @@
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'clojure-mode-hook 'clj-refactor-mode)
   (add-hook 'clojure-mode-hook 'flycheck-mode)
+  ;; (add-hook 'clojure-mode-hook 'lsp)
 
   (define-key clojure-mode-map (kbd "C-c C-i") 'cider-inspect-last-result)
 
-  (require 'flycheck-clj-kondo))
+  (require 'flycheck-clj-kondo)
+
+  ;; (setq lsp-clojure-custom-server-command '("bash" "-c" "/usr/bin/clojure-lsp"))
+  ;; (setq lsp-lens-enable t)
+  )
 
 (with-eval-after-load "flycheck"
   (define-key flycheck-mode-map (kbd "M-n") 'flycheck-next-error)

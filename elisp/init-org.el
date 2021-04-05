@@ -129,11 +129,23 @@
 
 (add-hook 'org-mode-hook 'org-superstar-mode)
 
+(with-eval-after-load "org-superstar"
+  (setq org-superstar-headline-bullets-list
+        '("☰"
+          "☱"
+          "☲"
+          "☳"
+          "☴"
+          "☵"
+          "☶"
+          "☷")))
+
+
 ;;; org-html-themify
 
 (setq
- org-html-themify-themes '((dark . joker)
-                           (light . storybook)))
+ org-html-themify-themes '((dark . tao-yin)
+                           (light . tao-yang)))
 
 (autoload #'org-html-themify-mode "org-html-themify")
 

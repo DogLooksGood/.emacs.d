@@ -1,8 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-
-
-
 ;;; web-mode
 
 (setq-default

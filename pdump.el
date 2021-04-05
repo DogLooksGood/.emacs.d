@@ -6,9 +6,10 @@
 (setq +pdump-exclude-packages '(rime telega))
 
 ;;; Ensure every installed package is loaded.
-(dolist (pkg +packages)
-  (unless (member pkg +pdump-exclude-packages)
-    (require pkg)))
+(+measure-time-1
+ (dolist (pkg +packages)
+   (unless (member pkg +pdump-exclude-packages)
+     (require pkg))))
 
 ;;; We have to unload tramp in pdump, otherwise tramp will not work.
 (tramp-unload-tramp)

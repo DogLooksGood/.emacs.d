@@ -3,7 +3,6 @@
 
 (require 'joker-theme)
 (require 'storybook-theme)
-(require 'printed-theme)
 
 ;;; No scroll bar
 (scroll-bar-mode -1)

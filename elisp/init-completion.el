@@ -1,12 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-
-
-
-
-
-
-
 (defun +complete ()
   (interactive)
   (or (yas/expand)

@@ -7,7 +7,6 @@
     (push recipe +packages)))
 
 (+use-package '(inf-iex :type git :host github :repo "DogLooksgood/inf-iex"))
-(+use-package '(joker-theme :type git :host github :repo "DogLooksGood/joker-theme"))
 (+use-package '(ligature :type git :host github :repo "mickeynp/ligature.el"))
 (+use-package '(meow :type git :host github :repo "DogLooksGood/meow"))
 (+use-package '(org-html-themify :type git :host github :repo "DogLooksGood/org-html-themify" :files ("*.el" "*.js" "*.css")))
@@ -59,8 +58,6 @@
 (+use-package 'treemacs)
 (+use-package 'web-mode)
 (+use-package 'yaml-mode)
-(+use-package 'yascroll)
 (+use-package 'yasnippet)
-(+use-package 'zenburn-theme)
 
 (provide 'init-packages)

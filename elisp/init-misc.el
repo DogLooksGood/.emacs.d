@@ -1,7 +1,5 @@
-(when window-system
+(setq-default fill-column 80)
 
-  (require 'yascroll)
-  (add-hook 'prog-mode-hook 'yascroll-bar-mode)
-  (add-hook 'conf-mode-hook 'yascroll-bar-mode))
+(add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
 
 (provide 'init-misc)

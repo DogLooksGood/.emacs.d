@@ -20,7 +20,6 @@
    '("," . meow-pop-marker)
    '("." . meow-find-ref)
    '(";" . meow-comment)
-   '("q" . meow-quit)
    '("@ u" . smerge-keep-upper)
    '("@ l" . smerge-keep-lower)
    '("@ a" . smerge-keep-all)
@@ -78,19 +77,19 @@
    '("c" . meow-change)
    '("C" . meow-change-save)
    '("d" . meow-C-d)
-   '("D" . meow-backward-delete)
+   '("D" . meow-backspace)
    '("e" . meow-line)
    '("E" . meow-kmacro-lines)
    '("f" . meow-find)
    '("F" . meow-find-expand)
-   '("g" . meow-grab)
-   '("G" . meow-goto-line)
+   '("g" . meow-cancel)
+   '("G" . meow-grab)
    '("h" . meow-left)
    '("H" . meow-left-expand)
    '("i" . meow-insert)
    '("I" . meow-open-above)
    '("j" . meow-join)
-   '("J" . delete-indentation)
+   '("J" . meow-extend)
    '("k" . meow-kill)
    '("K" . meow-kill-append)
    '("l" . meow-till)
@@ -104,6 +103,7 @@
    '("p" . meow-prev)
    '("P" . meow-prev-expand)
    '("q" . meow-quit)
+   '("Q" . meow-goto-line)
    '("r" . meow-replace)
    '("R" . meow-swap-grab)
    '("s" . meow-search)
@@ -133,8 +133,6 @@
    '("\\" . quoted-insert)
    '("<f3>" . meow-start-kmacro)
    '("<f4>" . meow-end-or-call-kmacro)))
-
-
 
 (setq
  meow-esc-delay 0.001

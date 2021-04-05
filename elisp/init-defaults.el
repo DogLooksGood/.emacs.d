@@ -64,7 +64,7 @@
  ;; Don't truncate lines in a window narrower than 65 chars.
  truncate-partial-width-windows 65
  ;; Default line number width.
- display-line-numbers-width 4
+ display-line-numbers-width 3
  ;; Don't display comp warnings
  warning-suppress-log-types '((comp))
  ;; Firefox as default browser
