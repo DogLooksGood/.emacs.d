@@ -1,5 +1,9 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package '(meow :type git :host github :repo "DogLooksGood/meow"))
+
+(+pdump-packages 'meow)
+
 (defun meow-setup ()
   (setq meow-cheatsheet-physical-layout meow-cheatsheet-physical-layout-ansi)
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-dvp)

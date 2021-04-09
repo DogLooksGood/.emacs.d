@@ -1,7 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
+(straight-use-package 'dante)
+(straight-use-package 'haskell-mode)
 
-
+(+pdump-packages 'haskell-mode
+                 'dante)
 
 ;;; haskell-mode
 

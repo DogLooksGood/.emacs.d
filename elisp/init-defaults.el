@@ -100,4 +100,6 @@
 ;; (global-set-key (kbd "<f7>") #'profiler-start)
 ;; (global-set-key (kbd "<f8>") #'profiler-report)
 
+
+
 (provide 'init-defaults)

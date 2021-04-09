@@ -7,7 +7,7 @@
 
 ;;; Ensure every installed package is loaded.
 (+measure-time-1
- (dolist (pkg +packages)
+ (dolist (pkg +pdump-packages)
    (unless (member pkg +pdump-exclude-packages)
      (require pkg))))
 

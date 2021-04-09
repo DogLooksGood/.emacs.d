@@ -1,5 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
+(straight-use-package 'markdown-mode)
+
+(+pdump-packages 'markdown-mode)
+
 (setq
  markdown-fontify-code-blocks-natively t)
 

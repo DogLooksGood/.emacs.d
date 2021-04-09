@@ -1,8 +1,12 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package 'dired-git-info)
+(straight-use-package 'diff-hl)
+(straight-use-package 'magit)
 
-
-
+(+pdump-packages 'dired-git-info
+                 'diff-hl
+                 'magit)
 
 ;;; magit
 

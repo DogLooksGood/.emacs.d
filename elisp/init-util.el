@@ -1,6 +1,8 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package 'dash)
 
+(require 'dash)
 (require 'subr-x)
 
 (defvar-local +project-name-cache nil

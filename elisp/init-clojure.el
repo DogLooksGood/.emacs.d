@@ -1,5 +1,15 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package 'clojure-mode)
+(straight-use-package 'cider)
+(straight-use-package 'flycheck)
+(straight-use-package 'flycheck-clj-kondo)
+
+(+pdump-packages 'clojure-mode
+                 'cider
+                 'flycheck
+                 'flycheck-clj-kondo)
+
 ;;; clojure-mode
 
 (setq
@@ -17,7 +27,7 @@
 
   (define-key clojure-mode-map (kbd "C-c C-i") 'cider-inspect-last-result)
 
-  (require 'flycheck-clj-kondo)
+  ;; (require 'flycheck-clj-kondo)
 
   ;; (setq lsp-clojure-custom-server-command '("bash" "-c" "/usr/bin/clojure-lsp"))
   ;; (setq lsp-lens-enable t)
@@ -30,15 +40,15 @@
 
 ;;; clj-refactor
 
-(setq
- cljr-warn-on-eval t
- cljr-suppress-middleware-warnings t)
-
-(autoload #'clj-refactor-mode "clj-refactor")
-
-(with-eval-after-load "clj-refactor"
-  (define-key clj-refactor-map (kbd "/") nil)
-  (cljr-add-keybindings-with-prefix "C-c C-r"))
+;; (setq
+;;  cljr-warn-on-eval t
+;;  cljr-suppress-middleware-warnings t)
+;;
+;; (autoload #'clj-refactor-mode "clj-refactor")
+;;
+;; (with-eval-after-load "clj-refactor"
+;;   (define-key clj-refactor-map (kbd "/") nil)
+;;   (cljr-add-keybindings-with-prefix "C-c C-r"))
 
 ;;; cider
 

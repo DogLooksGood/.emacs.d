@@ -1,5 +1,19 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package 'selectrum)
+(straight-use-package 'selectrum-prescient)
+(straight-use-package 'company)
+(straight-use-package 'deadgrep)
+(straight-use-package 'prescient)
+(straight-use-package 'yasnippet)
+
+(+pdump-packages 'selectrum
+                 'selectrum-prescient
+                 'company
+                 'deadgrep
+                 'prescient
+                 'yasnippet)
+
 (defun +complete ()
   (interactive)
   (or (yas/expand)

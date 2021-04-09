@@ -1,12 +1,14 @@
 ;;; -*- lexical-binding: t; -*-
 
+(straight-use-package 'elixir-mode)
+(straight-use-package '(inf-iex :type git :host github :repo "DogLooksgood/inf-iex"))
+(straight-use-package 'mix)
+(straight-use-package 'polymode)
 
-
-
-
-
-
-
+(+pdump-packages 'elixir-mode
+                 'inf-iex
+                 'mix
+                 'polymode)
 
 ;;; Custom functions
 
