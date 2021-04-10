@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'atom-one-dark-theme)
-
 (require 'joker-theme)
 (require 'storybook-theme)
 
