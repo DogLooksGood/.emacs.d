@@ -4,11 +4,6 @@
 ;; Disable error message
 (setq warning-minimum-level :emergency)
 
-;; Some shim code for tramp
-(defun tramp-file-name-method--cmacro (&rest args))
-(require 'tramp)
-(setq tramp-mode 1)
-
 ;; These two modes are disabled in pdump
 (global-font-lock-mode t)
 (transient-mark-mode t)
