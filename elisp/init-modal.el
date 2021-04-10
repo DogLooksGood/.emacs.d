@@ -1,5 +1,9 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package '(meow :type git :host github :repo "DogLooksGood/meow"))
+
+(+pdump-packages 'meow)
+
 (defun meow-setup ()
   (setq meow-cheatsheet-physical-layout meow-cheatsheet-physical-layout-ansi)
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-dvp)
@@ -20,7 +24,6 @@
    '("," . meow-pop-marker)
    '("." . meow-find-ref)
    '(";" . meow-comment)
-   '("q" . meow-quit)
    '("@ u" . smerge-keep-upper)
    '("@ l" . smerge-keep-lower)
    '("@ a" . smerge-keep-all)
@@ -78,19 +81,19 @@
    '("c" . meow-change)
    '("C" . meow-change-save)
    '("d" . meow-C-d)
-   '("D" . meow-backward-delete)
+   '("D" . meow-backspace)
    '("e" . meow-line)
    '("E" . meow-kmacro-lines)
    '("f" . meow-find)
    '("F" . meow-find-expand)
-   '("g" . meow-grab)
-   '("G" . meow-goto-line)
+   '("g" . meow-cancel)
+   '("G" . meow-grab)
    '("h" . meow-left)
    '("H" . meow-left-expand)
    '("i" . meow-insert)
    '("I" . meow-open-above)
    '("j" . meow-join)
-   '("J" . delete-indentation)
+   '("J" . meow-extend)
    '("k" . meow-kill)
    '("K" . meow-kill-append)
    '("l" . meow-till)
@@ -104,6 +107,7 @@
    '("p" . meow-prev)
    '("P" . meow-prev-expand)
    '("q" . meow-quit)
+   '("Q" . meow-goto-line)
    '("r" . meow-replace)
    '("R" . meow-swap-grab)
    '("s" . meow-search)
@@ -113,7 +117,7 @@
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
    '("v" . meow-visit)
-   '("V" . meow-kmacro-visit)
+   '("V" . meow-kmacro-matches)
    '("w" . meow-next-word)
    '("W" . meow-next-symbol)
    '("x" . meow-save)
@@ -133,9 +137,6 @@
    '("\\" . quoted-insert)
    '("<f3>" . meow-start-kmacro)
    '("<f4>" . meow-end-or-call-kmacro)))
-
-(straight-use-package
- '(meow :type git :host github :repo "DogLooksGood/meow"))
 
 (setq
  meow-esc-delay 0.001

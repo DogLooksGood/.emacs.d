@@ -1,10 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-(straight-use-package
- '(telega
-   :type git
-   :host github
-   :branch "releases"))
+(straight-use-package '(telega :type git :host github :branch "releases"))
 
 (setq
  telega-use-images t

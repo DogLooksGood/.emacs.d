@@ -1,11 +1,22 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'yasnippet)
-(straight-use-package 'company)
 (straight-use-package 'selectrum)
-(straight-use-package 'prescient)
 (straight-use-package 'selectrum-prescient)
+(straight-use-package '(company
+                        :type git
+                        :host github
+                        :repo "company-mode/company-mode"
+                        :files ("*.el" "icons")))
 (straight-use-package 'deadgrep)
+(straight-use-package 'prescient)
+(straight-use-package 'yasnippet)
+
+(+pdump-packages 'selectrum
+                 'selectrum-prescient
+                 'company
+                 'deadgrep
+                 'prescient
+                 'yasnippet)
 
 (defun +complete ()
   (interactive)
@@ -48,7 +59,8 @@
  company-abort-manual-when-too-short t
  company-require-match nil
  company-global-modes '(not dired-mode dired-sidebar-mode)
- company-tooltip-margin 0)
+ company-tooltip-margin 0
+ company-format-margin-function #'company-vscode-dark-icons-margin)
 
 (autoload #'company-mode "company")
 

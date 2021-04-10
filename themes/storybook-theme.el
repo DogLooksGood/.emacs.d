@@ -24,11 +24,12 @@
    `storybook
    `(default                        ((((type tty)) :background ,bg)
                                      (((type graphic)) :background ,bg :foreground ,fg)))
-   `(hl-line                        ((((type graphic)) :box (:line-width (-1 . -2) :color ,hl :style nil))
+   `(hl-line                        ((((type graphic)) :overline ,hl :underline ,hl)
                                      (((type tty)) :background "#ffffff")))
    `(cursor                         ((t (:background "black"))))
    `(region                         ((t (:background ,hl))))
    `(fringe                         ((t ())))
+   `(fill-column-indicator          ((t (:foreground ,bg-1))))
    `(font-lock-comment-delimiter-face ((t (:background ,green-bg :foreground ,fg+1 :italic t))))
    `(font-lock-comment-face         ((t (:background ,green-bg :extend t :italic t))))
    `(font-lock-doc-face             ((t (:background ,green-bg :extend t :italic t))))
@@ -79,8 +80,10 @@
    `(cider-fringe-good-face         ((t (:foreground "#006666"))))
    `(web-mode-html-attr-name-face   ((t ())))
    `(web-mode-html-tag-face         ((t ())))
+   `(line-number                    ((t :foreground ,fg+1)))
    `(line-number-current-line       ((((type graphic))
-                                      :box (:line-width (-1 . -2) :color "#edccb7" :style nil)
+                                      :overline ,hl
+                                      :underline ,hl
                                       :bold t
                                       :foreground "#404040"
                                       :inherit default)

@@ -1,9 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package
- '(rime :type git
-        :host github
-        :repo "DogLooksGood/emacs-rime"))
+(straight-use-package '(rime :type git :host github :repo "DogLooksGood/emacs-rime"))
 
 (setq
  rime-disable-predicates '(meow-normal-mode-p

@@ -1,6 +1,6 @@
-
-
 (straight-use-package 'smartparens)
+
+(+pdump-packages 'smartparens)
 
 (setq sp-autowrap-region nil)
 

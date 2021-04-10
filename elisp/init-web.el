@@ -3,6 +3,9 @@
 (straight-use-package 'web-mode)
 (straight-use-package 'emmet-mode)
 
+(+pdump-packages 'web-mode
+                 'emmet-mode)
+
 ;;; web-mode
 
 (setq-default

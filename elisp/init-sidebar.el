@@ -2,6 +2,8 @@
 
 (straight-use-package 'treemacs)
 
+(+pdump-packages 'treemacs)
+
 (defun +treemacs-scale-font-size ()
   (face-remap-add-relative 'default :height 0.8))
 

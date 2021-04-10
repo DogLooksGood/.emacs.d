@@ -14,7 +14,6 @@
 (require 'init-markdown)
 (require 'init-git)
 (require 'init-org)
-(require 'init-dot)
 (require 'init-completion)
 (require 'init-pass)
 (require 'init-rime)

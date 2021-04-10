@@ -1,16 +1,22 @@
 ;;; -*- lexical-binding: t -*-
 
+(straight-use-package 'htmlize)
 (straight-use-package 'org-roam)
 (straight-use-package 'org-roam-server)
-(straight-use-package 'htmlize)
 (straight-use-package 'org-superstar)
-(straight-use-package
- '(org-html-themify
-   :type git
-   :host github
-   :repo "DogLooksGood/org-html-themify"
-   :files ("*.el" "*.js" "*.css")))
 (straight-use-package 'ob-restclient)
+(straight-use-package '(org-html-themify
+                        :type git
+                        :host github
+                        :repo "DogLooksGood/org-html-themify"
+                        :files ("*.el" "*.js" "*.css")))
+
+(+pdump-packages 'htmlize
+                 'org-roam
+                 'org-roam-server
+                 'org-superstar
+                 'ob-restclient
+                 'org-html-themify)
 
 ;;; Latex support
 ;;; install latex with
@@ -134,11 +140,23 @@
 
 (add-hook 'org-mode-hook 'org-superstar-mode)
 
+(with-eval-after-load "org-superstar"
+  (setq org-superstar-headline-bullets-list
+        '("☰"
+          "☱"
+          "☲"
+          "☳"
+          "☴"
+          "☵"
+          "☶"
+          "☷")))
+
+
 ;;; org-html-themify
 
 (setq
- org-html-themify-themes '((dark . joker)
-                           (light . storybook)))
+ org-html-themify-themes '((dark . tao-yin)
+                           (light . tao-yang)))
 
 (autoload #'org-html-themify-mode "org-html-themify")
 
