@@ -12,6 +12,7 @@
                         :files ("*.el" "*.js" "*.css")))
 
 (+pdump-packages 'htmlize
+                 'org
                  'org-roam
                  'org-roam-server
                  'org-superstar

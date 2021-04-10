@@ -10,4 +10,5 @@
     (load-file private-conf)))
 
 (require 'init-gc)
+(require 'init-defaults)
 (require 'init-laf)

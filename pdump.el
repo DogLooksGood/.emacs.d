@@ -10,4 +10,4 @@
 (setq +pdumped-load-path load-path)
 
 ;; dump image
-(dump-emacs-portable "~/.emacs.d/emacs.pdmp")
+(dump-emacs-portable (expand-file-name "emacs.pdmp" user-emacs-directory))
