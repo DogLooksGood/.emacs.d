@@ -1,12 +1,12 @@
-;;; load the whole configuration
+;; load the whole configuration
 (load (expand-file-name "early-init.el" user-emacs-directory))
 (load (expand-file-name "init.el" user-emacs-directory))
 
-;;; pdump every packages we marked
+;; pdump every packages we marked
 (dolist (pkg +pdump-packages)
   (require pkg))
 
-;;; we use this variable to test if we are starting with dump.
+;; backup load-path, restore when startup with dump
 (setq +pdumped-load-path load-path)
 
 ;; dump image
