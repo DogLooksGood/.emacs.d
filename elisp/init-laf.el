@@ -93,14 +93,15 @@
 
 (defun +change-theme (&optional init)
   (interactive)
-  (mapc #'disable-theme custom-enabled-themes)
-  (let ((theme (car +theme-list)))
+  (let ((enabled-themes custom-enabled-themes)
+	(theme (car +theme-list)))
     (load-theme theme t)
     (setq +theme-list (append (cdr +theme-list) (list (car +theme-list))))
     (unless init
       (+load-font)
       (message "Load theme: %s" theme)
-      (run-hook-with-args '+after-change-theme-hook theme))))
+      (run-hook-with-args '+after-change-theme-hook theme))
+    (mapc #'disable-theme enabled-themes)))
 
 (+change-theme t)
 
