@@ -3,8 +3,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
-(set-frame-font "BigBlueTermPlus Nerd Font Mono:pixelsize=16" nil t)
-
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
 (require 'carbon-theme)
@@ -46,7 +44,7 @@
 
 (straight-use-package 'clojure-mode)
 
-(straight-use-package 'nix-mode)
+(straight-use-package 'nix-ts-mode)
 (straight-use-package 'geiser)
 (straight-use-package 'geiser-guile)
 (straight-use-package 'cider)
@@ -98,3 +96,7 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (add-hook 'buffer-list-update-hook #'recentf-track-opened-file)
+
+(let ((local-conf (expand-file-name "local.el" user-emacs-directory)))
+  (when (file-exists-p local-conf)
+    (load local-conf)))
