@@ -1,0 +1,6 @@
+straight/repos
+straight/build*
+eln-cache
+.local
+local.el
+tree-sitter
