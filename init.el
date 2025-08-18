@@ -74,15 +74,12 @@
   :models '(deepseek-r1:32b gemma3:27b-it-q8_0 devstral:24b magistral:24b gpt-oss:20b))
 
 (require 'paredit)
+(keymap-unset paredit-mode-map "M-s")
+(keymap-set paredit-mode-map "M-i" #'paredit-splice-sexp)
 
-(defun +use-paredit ()
-  (paredit-mode 1)
-  (keymap-unset paredit-mode-map "M-s")
-  (keymap-set paredit-mode-map "M-i" #'paredit-splice-sexp))
-
-(add-hook 'emacs-lisp-mode-hook #'+use-paredit)
-(add-hook 'clojure-mode-hook #'+use-paredit)
-(add-hook 'scheme-mode-hook #'+use-paredit)
+(add-hook 'emacs-lisp-mode-hook #'paredit-mode)
+(add-hook 'clojure-mode-hook #'paredit-mode)
+(add-hook 'scheme-mode-hook #'paredit-mode)
 
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
