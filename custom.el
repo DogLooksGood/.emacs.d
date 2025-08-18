@@ -23,7 +23,9 @@
       (window-height . 0.25) (slot . 0))
      ("\\\\*eldoc\\\\*" display-buffer-in-side-window
       (window-height . 0.25) (slot . 1))
-     ("\\\\*xref\\\\*" display-buffer-in-side-window
+     ("\\\\*\\(xref\\|grep\\)\\\\*" display-buffer-in-side-window
+      (window-width . 0.4) (slot . 0) (side . right))
+     ("\\\\*vc-change-log\\\\*" display-buffer-in-side-window
       (window-width . 0.4) (slot . 0) (side . right))))
  '(eglot-ignored-server-capabilities
    '(:referencesProvider :documentHighlightProvider
