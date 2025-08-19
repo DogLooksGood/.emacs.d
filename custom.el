@@ -7,7 +7,19 @@
  '(auto-save-list-file-prefix "~/.emacs.d/.local/auto-save-list/.saves-")
  '(blink-cursor-mode nil)
  '(c-basic-offset 4)
+ '(company-backends
+   '(company-capf company-files
+                  (company-dabbrev-code company-etags company-keywords)
+                  company-dabbrev))
+ '(company-clang-insert-arguments nil)
+ '(company-format-margin-function 'company-text-icons-margin)
+ '(company-require-match nil)
+ '(company-semantic-insert-arguments nil)
+ '(company-tng-mode t)
  '(completion-styles '(basic partial-completion flex))
+ '(corfu-cycle t)
+ '(corfu-preselect 'directory)
+ '(corfu-preview-current 'insert)
  '(custom-safe-themes
    '("d453a6c05d97483ff577476a53188fa190e2a06e14ecb98d2d44034f5d825205"
      default))
@@ -40,6 +52,8 @@
  '(envrc-show-summary-in-minibuffer nil)
  '(font-use-system-font t)
  '(gdb-many-windows t)
+ '(global-company-mode t)
+ '(global-corfu-mode t)
  '(icomplete-hide-common-prefix nil)
  '(icomplete-mode t)
  '(imenu-flatten 'annotation)

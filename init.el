@@ -12,13 +12,6 @@
 
 (require 'project)
 
-(global-completion-preview-mode 1)
-(keymap-set global-map "M-g M-c" #'switch-to-completions)
-(keymap-set global-map "M-n" #'completion-preview-complete)
-(keymap-set completion-preview-active-mode-map "M-n" #'completion-preview-next-candidate)
-(keymap-set completion-preview-active-mode-map "M-p" #'completion-preview-prev-candidate)
-(require 'completion-preview-patch)
-
 (icomplete-mode 1)
 
 (keymap-set icomplete-minibuffer-map "TAB" #'icomplete-force-complete)
@@ -52,6 +45,17 @@
 (straight-use-package 'paredit)
 (straight-use-package 'yasnippet)
 (straight-use-package 'envrc)
+(straight-use-package 'company)
+
+(require 'company)
+(require 'company-tng)
+(global-company-mode 1)
+(company-tng-configure-default)
+(keymap-unset company-active-map "C-n")
+(keymap-unset company-active-map "C-p")
+(keymap-set company-active-map "M-p" #'company-select-previous)
+(keymap-set company-active-map "M-n" #'company-select-next)
+
 
 (require 'envrc)
 (envrc-global-mode 1)
@@ -80,6 +84,7 @@
 (add-hook 'scheme-mode-hook #'paredit-mode)
 
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
