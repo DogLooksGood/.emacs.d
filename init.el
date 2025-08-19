@@ -33,10 +33,9 @@
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
 (require 'bedit)
-(keymap-set global-map "C-M-g" bedit-prefix-map)
+(keymap-set global-map "M-*" bedit-prefix-map)
 
 (straight-use-package 'clojure-mode)
-
 (straight-use-package 'nix-ts-mode)
 (straight-use-package 'geiser)
 (straight-use-package 'geiser-guile)
@@ -56,7 +55,6 @@
 (keymap-set company-active-map "M-p" #'company-select-previous)
 (keymap-set company-active-map "M-n" #'company-select-next)
 
-
 (require 'envrc)
 (envrc-global-mode 1)
 
@@ -65,10 +63,6 @@
 (yas-load-directory (expand-file-name "snippets" user-emacs-directory))
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (add-hook 'conf-mode-hook 'yas-minor-mode)
-
-(setq gptel-prompt-prefix-alist '((org-mode . "* "))
-      gptel-use-curl t
-      gptel-default-mode 'org-mode)
 
 (gptel-make-ollama "Ollama"
   :host "localhost:11434"
