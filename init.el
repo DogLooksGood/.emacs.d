@@ -44,6 +44,7 @@
 (straight-use-package 'paredit)
 (straight-use-package 'yasnippet)
 (straight-use-package 'envrc)
+(straight-use-package 'magit)
 (straight-use-package 'company)
 
 (require 'company)
