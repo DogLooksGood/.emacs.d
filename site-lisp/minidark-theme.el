@@ -1,4 +1,4 @@
-;;; carbon-theme.el --- A minimal dark theme  -*- lexical-binding: t; -*-
+;;; minidark-theme.el --- A minimal dark theme  -*- lexical-binding: t; -*-
 
 ;; Author: Shi Tianshu
 ;; Keywords: theme
@@ -24,21 +24,10 @@
 
 ;;; Commentary:
 
-;; This theme prioritizes simplicity in design.
-;;
-;; It highlights only static information, which, in my opinion,
-;; makes code easier to read. Too many colors can be distracting
-;; and are not ideal for everyday programming.
-;;
-;; All colors have similar contrast, ensuring no part of the text
-;; is overly stressed or ignored. Comments should be considered
-;; as important as the code itself.
-;;
-;; Unlike many modern themes, this theme avoids a bluish tint,
-;; as that can be stressful on the eyes.
+;;; A minimal theme.
 
 ;;; Code:
-(deftheme carbon "A middle contrast theme for simplicity.")
+(deftheme minidark "A middle contrast theme for simplicity.")
 
 (let ((black     "#1c1a10")
       (gray      "#d1cfc9")
@@ -58,13 +47,12 @@
       (yellow-2  "#b3ad81")
       (purple-1  "#a99ad1")
       (purple-2  "#c19ad1")
-      (cursor    "#FFFF00")
       (green-bg  "#002103")
       (red-bg    "#210700")
       (yellow-bg "#211f00"))
   (custom-theme-set-faces
-   `carbon
-   `(cursor ((t (:background ,cursor :foreground ,black))))
+   `minidark
+   `(cursor ((t (:background ,cyan-1 :foreground ,black))))
    `(default ((t (:foreground ,silver :background ,black))))
    `(region ((t (:inverse-video t))))
    `(abbrev-table-name ((t ())))
@@ -111,8 +99,8 @@
    `(change-log-list ((t ())))
    `(change-log-name ((t ())))
    `(child-frame-border ((t ())))
-   `(clojure-character-face ((t (:foreground ,blue-2))))
-   `(clojure-keyword-face ((t (:foreground ,purple-1))))
+   `(clojure-character-face ((t ())))
+   `(clojure-keyword-face ((t ())))
    `(comint-highlight-input ((t ())))
    `(comint-highlight-prompt ((t ())))
    `(company-echo ((t ())))
@@ -235,19 +223,19 @@
    `(flymake-error ((t (:foreground ,red-3))))
    `(font-lock-bracket-face ((t ())))
    `(font-lock-builtin-face ((t ())))
-   `(font-lock-comment-delimiter-face ((t (:foreground ,red-1))))
-   `(font-lock-comment-face ((t (:foreground ,red-2))))
-   `(font-lock-constant-face ((t (:foreground ,purple-1))))
+   `(font-lock-comment-delimiter-face ((t (:foreground ,green-2 :extend t))))
+   `(font-lock-comment-face ((t (:foreground ,green-2 :extend t))))
+   `(font-lock-constant-face ((t ())))
    `(font-lock-delimiter-face ((t ())))
-   `(font-lock-doc-face ((t (:foreground ,red-2))))
+   `(font-lock-doc-face ((t (:foreground ,green-2 :extend t))))
    `(font-lock-doc-markup-face ((t ())))
    `(font-lock-escape-face ((t ())))
    `(font-lock-function-call-face ((t ())))
-   `(font-lock-function-name-face ((t (:foreground ,green-1))))
-   `(font-lock-keyword-face ((t (:foreground ,yellow-1))))
+   `(font-lock-function-name-face ((t ())))
+   `(font-lock-keyword-face ((t ())))
    `(font-lock-misc-punctuation-face ((t ())))
    `(font-lock-negation-char-face ((t ())))
-   `(font-lock-number-face ((t (:foreground ,purple-2))))
+   `(font-lock-number-face ((t ())))
    `(font-lock-operator-face ((t ())))
    `(font-lock-preprocessor-face ((t (:foreground ,yellow-2))))
    `(font-lock-property-name-face ((t ())))
@@ -256,7 +244,7 @@
    `(font-lock-regexp-face ((t ())))
    `(font-lock-regexp-grouping-backslash ((t ())))
    `(font-lock-regexp-grouping-construct ((t ())))
-   `(font-lock-string-face ((t (:foreground ,blue-1))))
+   `(font-lock-string-face ((t (:foreground ,yellow-1))))
    `(font-lock-type-face ((t ())))
    `(font-lock-variable-name-face ((t ())))
    `(font-lock-variable-use-face ((t ())))
@@ -805,5 +793,5 @@
                   (file-name-as-directory
                    (file-name-directory load-file-name))))
 
-(provide-theme 'carbon)
-;;; carbon-theme.el ends here
+(provide-theme 'minidark)
+;;; minidark.el ends here

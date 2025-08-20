@@ -34,7 +34,7 @@
 ;; There are several ways to create a secondary selection.
 ;;
 ;;     - Drag the text with mouse left button while holding Meta key.
-;;     - Enable `bedit-extending-mode'   C-M-g C-M-g
+;;     - Enable `bedit-extending-mode'   C-M-g *
 ;;     - Convert from current region     C-M-g SPC
 ;;     - Select current defun            C-M-g d
 ;;     - Select current line             C-M-g l
@@ -91,7 +91,7 @@
   (let ((m (make-keymap)))
     (define-key m (kbd "SPC")   #'bedit-region-to-secondary-selection)
     (define-key m (kbd "C-g")   #'bedit-quit)
-    (define-key m (kbd "C-M-g") #'bedit-extending-mode)
+    (define-key m (kbd "M-*")   #'bedit-extending-mode)
     (define-key m (kbd "d")     #'bedit-defun-to-secondary-selection)
     (define-key m (kbd "p")     #'bedit-paragraph-to-secondary-selection)
     (define-key m (kbd "l")     #'bedit-line-to-secondary-selection)

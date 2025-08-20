@@ -54,6 +54,7 @@
  '(gdb-many-windows t)
  '(global-company-mode t)
  '(global-corfu-mode t)
+ '(global-subword-mode t)
  '(gptel-default-mode 'org-mode)
  '(gptel-prompt-prefix-alist '((org-mode . "* ")))
  '(icomplete-hide-common-prefix nil)
@@ -66,16 +67,20 @@
  '(menu-bar-mode nil)
  '(mode-line-collapse-minor-modes t)
  '(mode-line-compact t)
+ '(mouse-wheel-progressive-speed nil)
  '(package-selected-packages '(company envrc yasnippet))
  '(project-list-file "~/.emacs.d/.local/projects.eld")
  '(project-mode-line t)
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/.local/recentf.eld")
  '(repeat-mode t)
+ '(safe-local-variable-values
+   '((geiser-guile-binary . "./main") (geiser-guile-binary . "../main")
+     (geiser-guile-binary . "main")))
  '(savehist-file "~/.emacs.d/.local/history")
  '(savehist-mode t)
  '(scroll-bar-mode nil)
- '(show-paren-style 'mixed)
+ '(show-paren-style 'parenthesis)
  '(straight-check-for-modifications '(find-when-checking only-once))
  '(tool-bar-mode nil)
  '(tramp-persistency-file-name "~/.emacs.d/.local/tramp")
@@ -87,4 +92,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:foreground "#c0c0c0" :background "#1c1a10")))))
