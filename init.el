@@ -3,6 +3,15 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
+(defun smart-C-t (_k)
+  "Return C-x if it's the beginning of key sequence. Otherwise returns C-t."
+  (let ((keys (this-command-keys)))
+    (if (string-equal "" keys)
+      ""
+      "")))
+
+(define-key key-translation-map (kbd  "C-t") 'smart-C-t)
+
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
 (require 'init-straight)
