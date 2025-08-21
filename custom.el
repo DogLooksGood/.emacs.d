@@ -17,11 +17,15 @@
  '(company-semantic-insert-arguments nil t)
  '(company-tng-mode t)
  '(completion-styles '(basic partial-completion flex))
- '(corfu-cycle t)
- '(corfu-preselect 'directory)
+ '(corfu-auto t)
+ '(corfu-auto-delay 0.1)
+ '(corfu-auto-prefix 2)
+ '(corfu-on-exact-match nil)
+ '(corfu-preselect 'prompt)
  '(corfu-preview-current 'insert)
  '(custom-safe-themes
-   '("d453a6c05d97483ff577476a53188fa190e2a06e14ecb98d2d44034f5d825205"
+   '("abc4999450b3579e5ca79ae72350d8386069095a5cf6ab161aa062b35afe4275"
+     "d453a6c05d97483ff577476a53188fa190e2a06e14ecb98d2d44034f5d825205"
      default))
  '(dired-dwim-target 'dired-dwim-target-recent)
  '(dired-listing-switches "-alh")
@@ -76,7 +80,8 @@
      (project-find-regexp "Find regexp" nil)
      (project-find-dir "Find directory" nil)
      (project-vc-dir "VC-Dir" nil) (project-eshell "Eshell" nil)
-     (project-any-command "Other" nil) (magit-status "Git" 103)))
+     (project-any-command "Other" nil)
+     (magit-project-status "Git" 103)))
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/.local/recentf.eld")
  '(repeat-mode t)
@@ -101,4 +106,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#c0c0c0" :background "#1c1a10")))))
+ '(default ((t (:foreground "#c0c0c0" :background "#1c1a10" :family "Hack" :foundry "SRC" :slant normal :weight regular :height 158 :width normal)))))

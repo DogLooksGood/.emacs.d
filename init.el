@@ -7,17 +7,15 @@
   "Return C-x if it's the beginning of key sequence. Otherwise returns C-t."
   (let ((keys (this-command-keys)))
     (if (string-equal "" keys)
-      ""
+        ""
       "")))
 
 (define-key key-translation-map (kbd  "C-t") 'smart-C-t)
+(keymap-set global-map "C-x t" 'transpose-chars)
 
-(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
-
-(require 'init-straight)
-
-(require 'minidark-theme)
-(load-theme 'minidark t)
+(with-eval-after-load "rect"
+  (keymap-set rectangle-mark-mode-map "SPC" #'string-rectangle)
+  (keymap-set rectangle-mark-mode-map "DEL" #'kill-rectangle))
 
 (require 'project)
 
@@ -36,13 +34,12 @@
   (keymap-unset dired-jump-map "j"))
 
 (defvar-keymap duplicate-dwim-repeat-map :repeat t
-	       "d" #'duplicate-dwim)
+	       "." #'duplicate-dwim)
 
 (require 'ansi-color)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
 (require 'bedit)
-(keymap-set global-map "M-*" bedit-prefix-map)
 
 (straight-use-package 'clojure-mode)
 (straight-use-package 'nix-ts-mode)
@@ -69,7 +66,6 @@
 (envrc-global-mode 1)
 
 (require 'yasnippet)
-(keymap-set global-map "C-c a" #'yas-expand)
 (yas-load-directory (expand-file-name "snippets" user-emacs-directory))
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (add-hook 'conf-mode-hook 'yas-minor-mode)
@@ -96,11 +92,17 @@
 (with-eval-after-load "cc-mode"
   (keymap-set c-mode-map "C-c C-c" #'ff-find-other-file))
 
-(keymap-set global-map "C-c f" #'ffap)
-(keymap-set global-map "C-c r" #'recentf-open-files)
-(keymap-set prog-mode-map "C-c e" #'eglot)
-(keymap-set global-map "C-c n" #'display-line-numbers-mode)
-(keymap-set global-map "C-c d" #'duplicate-dwim)
+(keymap-set mode-specific-map "b" #'switch-to-buffer-other-window)
+(keymap-set mode-specific-map "f" #'find-file-other-window)
+(keymap-set mode-specific-map "d" #'dired-other-window)
+(keymap-set mode-specific-map "i" #'info-other-window)
+(keymap-set mode-specific-map "p" #'project-other-window-command)
+(keymap-set mode-specific-map "o" #'ffap)
+(keymap-set mode-specific-map "r" #'recentf-open-files)
+(keymap-set mode-specific-map "n" #'display-line-numbers-mode)
+(keymap-set mode-specific-map "." #'duplicate-dwim)
+(keymap-set mode-specific-map "e" #'eglot)
+(keymap-set mode-specific-map "c" #'bedit-extending-mode)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 

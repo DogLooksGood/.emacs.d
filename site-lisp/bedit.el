@@ -25,23 +25,24 @@
 ;;
 ;; (require 'bedit)
 ;;
-;; (define-key global-map (kbd "C-M-g") bedit-prefix-map)
+;; (define-key global-map (kbd "C-c c") 'bedit-extending-mode)
 ;;
 ;; Usages:
 ;;
-;; 1. (Optional) Set editing scope with secondary selection.
+;; 1. (Optional) Set the editing scope with secondary selection.
 ;;
-;; There are several ways to create a secondary selection.
+;; To start creating secondary selection, enable `bedit-extending-mode'.
 ;;
-;;     - Drag the text with mouse left button while holding Meta key.
-;;     - Enable `bedit-extending-mode'   C-M-g *
-;;     - Convert from current region     C-M-g SPC
-;;     - Select current defun            C-M-g d
-;;     - Select current line             C-M-g l
-;;     - Select current paragraph        C-M-g p
+;; Then the selection expands while the cursor moves.
 ;;
-;; With `bedit-extending-mode', move the cursor in arbitrary way to extend the secondary selection.
-;; Press C-M-g C-M-g again to bring the cursor back to the original position.
+;; To expand to a certain scope without moving the cursor, use following commands:
+;;
+;;     - Select current defun            d
+;;     - Select current line             l
+;;     - Select current paragraph        p
+;;     - Select the whole buffer         h
+;;
+;; Use g to reset cursor to the original positon.
 ;;
 ;; When no secondary selection, the following edit applies to the whole buffer.
 ;;
@@ -49,11 +50,11 @@
 ;;
 ;; Currently the supported patters are:
 ;;
-;;     - Position in current column      C-M-g o
-;;     - Chars like the one at point     C-M-g c
-;;     - Symbols like the one at point   C-M-g .
-;;     - Words like the one at point     C-M-g w
-;;     - Same content with region        C-M-g s
+;;     - Position in current column      o
+;;     - Chars like the one at point     c
+;;     - Symbols like the one at point   .
+;;     - Words like the one at point     w
+;;     - Same content with region        s
 ;;
 ;; These command will bring you to a temporary buffer where you record the kmacros.
 ;;
@@ -87,22 +88,6 @@
 (defcustom bedit-inhibit-modes nil
   "Disable these modes during execution.")
 
-(defvar bedit-prefix-map
-  (let ((m (make-keymap)))
-    (define-key m (kbd "SPC")   #'bedit-region-to-secondary-selection)
-    (define-key m (kbd "C-g")   #'bedit-quit)
-    (define-key m (kbd "*")     #'bedit-extending-mode)
-    (define-key m (kbd "d")     #'bedit-defun-to-secondary-selection)
-    (define-key m (kbd "p")     #'bedit-paragraph-to-secondary-selection)
-    (define-key m (kbd "l")     #'bedit-line-to-secondary-selection)
-    (define-key m (kbd ".")     #'bedit-start-with-symbols-like-this)
-    (define-key m (kbd "w")     #'bedit-start-with-words-like-this)
-    (define-key m (kbd "s")     #'bedit-start-with-search-like-this)
-    (define-key m (kbd "o")     #'bedit-start-with-lines)
-    (define-key m (kbd "c")     #'bedit-start-with-chars-like-this)
-    m)
-  "The keymap for commands to use with BEdit")
-
 (defun bedit--editing-reset ()
   (setq bedit--editing-buffer nil
         bedit--editing-search nil
@@ -123,11 +108,11 @@
     m))
 
 (defvar bedit-extending-mode-map
-  (let ((m (make-keymap)))
+  (let ((m (make-sparse-keymap)))
     (define-key m [remap bedit-extending-mode] #'bedit-extending-reset-position)
     (define-key m [remap keyboard-quit]        #'bedit-extending-quit)
-    (define-key m (kbd "*")                    #'bedit-extending-reset-position)
-    (define-key m (kbd "g")                    #'bedit-extending-quit)
+    (define-key m (kbd "g")                    #'bedit-extending-reset-position)
+    (define-key m (kbd "h")                    #'bedit-buffer-to-secondary-selection)
     (define-key m (kbd "d")                    #'bedit-defun-to-secondary-selection)
     (define-key m (kbd "p")                    #'bedit-paragraph-to-secondary-selection)
     (define-key m (kbd "l")                    #'bedit-line-to-secondary-selection)
@@ -193,11 +178,11 @@
                (undo-amalgamate-change-group ,handle))
            (cancel-change-group ,handle))))))
 
-(defun bedit-region-to-secondary-selection ()
-  "Convert current region to secondary selection."
+(defun bedit-buffer-to-secondary-selection ()
+  "Put whole buffer into secondary selection."
   (interactive)
-  (secondary-selection-from-region)
-  (deactivate-mark t))
+  (delete-overlay mouse-secondary-overlay)
+  (move-overlay mouse-secondary-overlay (point-min) (point-max)))
 
 (defun bedit--thing-to-secondary-selection (thing)
   "Put current THING into secondary selection."
