@@ -34,7 +34,7 @@
   (keymap-unset dired-jump-map "j"))
 
 (defvar-keymap duplicate-dwim-repeat-map :repeat t
-	       "." #'duplicate-dwim)
+	       "h" #'duplicate-dwim)
 
 (require 'ansi-color)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
@@ -100,7 +100,7 @@
 (keymap-set mode-specific-map "o" #'ffap)
 (keymap-set mode-specific-map "r" #'recentf-open-files)
 (keymap-set mode-specific-map "n" #'display-line-numbers-mode)
-(keymap-set mode-specific-map "." #'duplicate-dwim)
+(keymap-set mode-specific-map "h" #'duplicate-dwim)
 (keymap-set mode-specific-map "e" #'eglot)
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
 

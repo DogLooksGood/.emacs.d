@@ -74,7 +74,7 @@
  '(mouse-wheel-progressive-speed nil)
  '(package-selected-packages '(company envrc yasnippet))
  '(project-list-file "~/.emacs.d/.local/projects.eld")
- '(project-mode-line t)
+ '(project-mode-line nil)
  '(project-switch-commands
    '((project-find-file "Find file" nil)
      (project-find-regexp "Find regexp" nil)
