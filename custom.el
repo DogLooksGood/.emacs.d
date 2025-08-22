@@ -7,6 +7,8 @@
  '(auto-save-list-file-prefix "~/.emacs.d/.local/auto-save-list/.saves-")
  '(blink-cursor-mode nil)
  '(c-basic-offset 4)
+ '(clojure-indent-keyword-style 'align-arguments)
+ '(clojure-indent-style 'always-indent)
  '(company-backends
    '(company-capf company-files
                   (company-dabbrev-code company-etags company-keywords)
@@ -82,6 +84,7 @@
      (project-vc-dir "VC-Dir" nil) (project-eshell "Eshell" nil)
      (project-any-command "Other" nil)
      (magit-project-status "Git" 103)))
+ '(read-file-name-completion-ignore-case t)
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/.local/recentf.eld")
  '(repeat-mode t)

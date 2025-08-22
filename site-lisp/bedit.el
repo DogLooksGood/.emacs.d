@@ -29,7 +29,7 @@
 ;;
 ;; Usages:
 ;;
-;; 1. (Optional) Set the editing scope with secondary selection.
+;; 1. Set the editing scope with secondary selection.
 ;;
 ;; To start creating secondary selection, enable `bedit-extending-mode'.
 ;;
