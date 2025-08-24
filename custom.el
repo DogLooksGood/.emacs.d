@@ -25,10 +25,6 @@
  '(corfu-on-exact-match nil)
  '(corfu-preselect 'prompt)
  '(corfu-preview-current 'insert)
- '(custom-safe-themes
-   '("abc4999450b3579e5ca79ae72350d8386069095a5cf6ab161aa062b35afe4275"
-     "d453a6c05d97483ff577476a53188fa190e2a06e14ecb98d2d44034f5d825205"
-     default))
  '(dired-dwim-target 'dired-dwim-target-recent)
  '(dired-listing-switches "-alh")
  '(dired-use-ls-dired t)

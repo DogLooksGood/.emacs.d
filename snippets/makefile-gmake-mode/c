@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: c
+# key: c
+# expand-env: ((yas-indent-line 'fixed))
+# --
+SRCS    := $(wildcard *.c)
+OBJS    := $(SRCS:.c=.o)
+DEPS    :=
+CFLAGS  := -std=c99 -Wall -Wextra -ggdb $(shell pkg-config --cflags $(DEPS))
+LDFLAGS := $(shell pkg-config --libs $(DEPS))
+TARGET  := main
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+%.o: %.c
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+clean:
+	rm -rf $(OBJS) $(TARGET)
+
+.PHONY: all clean
