@@ -52,6 +52,7 @@
 (straight-use-package 'envrc)
 (straight-use-package 'magit)
 (straight-use-package 'company)
+(straight-use-package 'pass)
 
 (require 'company)
 (require 'company-tng)

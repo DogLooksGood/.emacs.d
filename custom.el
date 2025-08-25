@@ -28,19 +28,6 @@
  '(dired-dwim-target 'dired-dwim-target-recent)
  '(dired-listing-switches "-alh")
  '(dired-use-ls-dired t)
- '(display-buffer-alist
-   '(("\\\\*Compilation\\\\*"
-      (display-buffer-reuse-window display-buffer-at-bottom)
-      (window-height . 0.35))
-     ("\\\\*Help\\\\*" display-buffer-at-bottom (window-height . 0.35))
-     ("\\\\*Completions\\\\*" display-buffer-in-side-window
-      (window-height . 0.25) (slot . 0))
-     ("\\\\*eldoc\\\\*" display-buffer-in-side-window
-      (window-height . 0.25) (slot . 1))
-     ("\\\\*\\(xref\\|grep\\)\\\\*" display-buffer-in-side-window
-      (window-width . 0.4) (slot . 0) (side . right))
-     ("\\\\*vc-change-log\\\\*" display-buffer-in-side-window
-      (window-width . 0.4) (slot . 0) (side . right))))
  '(eglot-ignored-server-capabilities
    '(:referencesProvider :documentHighlightProvider
                          :documentSymbolProvider
@@ -80,6 +67,7 @@
      (project-vc-dir "VC-Dir" nil) (project-eshell "Eshell" nil)
      (project-any-command "Other" nil)
      (magit-project-status "Git" 103)))
+ '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/.local/recentf.eld")
