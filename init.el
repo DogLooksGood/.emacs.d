@@ -17,8 +17,6 @@
   (keymap-set rectangle-mark-mode-map "SPC" #'string-rectangle)
   (keymap-set rectangle-mark-mode-map "DEL" #'kill-rectangle))
 
-(require 'project)
-
 (icomplete-mode 1)
 
 (keymap-set icomplete-minibuffer-map "TAB" #'icomplete-force-complete)
@@ -75,6 +73,9 @@
   :host "localhost:11434"
   :stream t
   :models '(deepseek-r1:32b gemma3:27b-it-q8_0 devstral:24b magistral:24b gpt-oss:20b))
+
+(keymap-set global-map "C-c a" 'gptel-add)
+(keymap-set global-map "C-c RET" 'gptel-send)
 
 (require 'paredit)
 (keymap-unset paredit-mode-map "M-s")

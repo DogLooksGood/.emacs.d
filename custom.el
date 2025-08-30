@@ -28,11 +28,11 @@
  '(dired-dwim-target 'dired-dwim-target-recent)
  '(dired-listing-switches "-alh")
  '(dired-use-ls-dired t)
+ '(eglot-code-action-indicator "?")
  '(eglot-ignored-server-capabilities
    '(:referencesProvider :documentHighlightProvider
                          :documentSymbolProvider
-                         :workspaceSymbolProvider :codeActionProvider
-                         :codeLensProvider
+                         :workspaceSymbolProvider :codeLensProvider
                          :documentOnTypeFormattingProvider
                          :colorProvider :foldingRangeProvider
                          :executeCommandProvider :inlayHintProvider
@@ -58,6 +58,7 @@
  '(mode-line-compact t)
  '(mouse-wheel-progressive-speed nil)
  '(package-selected-packages '(company envrc yasnippet))
+ '(pass-username-fallback-on-filename t)
  '(project-list-file "~/.emacs.d/.local/projects.eld")
  '(project-mode-line nil)
  '(project-switch-commands
@@ -73,8 +74,10 @@
  '(recentf-save-file "~/.emacs.d/.local/recentf.eld")
  '(repeat-mode t)
  '(safe-local-variable-values
-   '((geiser-guile-binary . "./main") (geiser-guile-binary . "../main")
-     (geiser-guile-binary . "main")))
+   '((geiser-guile-binary . "./cli")
+     (geiser-guile-init-file . "test.scm")
+     (geiser-guile-binary . "./main")
+     (geiser-guile-binary . "../main") (geiser-guile-binary . "main")))
  '(savehist-file "~/.emacs.d/.local/history")
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -93,4 +96,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#c0c0c0" :background "#1c1a10" :family "Hack" :foundry "SRC" :slant normal :weight regular :height 158 :width normal)))))
+ )
