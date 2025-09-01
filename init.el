@@ -51,6 +51,7 @@
 (straight-use-package 'magit)
 (straight-use-package 'company)
 (straight-use-package 'pass)
+(straight-use-package 'eat)
 
 (require 'company)
 (require 'company-tng)
@@ -58,6 +59,7 @@
 (company-tng-configure-default)
 (keymap-unset company-active-map "C-n")
 (keymap-unset company-active-map "C-p")
+(keymap-set company-mode-map   "M-n" #'company-complete-common)
 (keymap-set company-active-map "M-p" #'company-select-previous)
 (keymap-set company-active-map "M-n" #'company-select-next)
 
