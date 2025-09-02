@@ -4,3 +4,4 @@ eln-cache
 .local
 local.el
 tree-sitter
+tramp

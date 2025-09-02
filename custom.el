@@ -32,6 +32,13 @@
  '(dired-dwim-target 'dired-dwim-target-recent)
  '(dired-listing-switches "-alh")
  '(dired-use-ls-dired t)
+ '(display-buffer-alist
+   '(("\\*\\(xref\\|grep\\)\\*" display-buffer-in-side-window
+      (side . right) (slot . 0) (window-width . 0.4))
+     ("\\*compilation\\*" display-buffer-in-side-window
+      (side . bottom) (slot . 0) (window-height . 0.4))
+     ("\\*Async Shell Command\\*" display-buffer-in-side-window
+      (side . bottom) (slot . 1) (window-height . 0.4))))
  '(eglot-code-action-indicator "?")
  '(eglot-ignored-server-capabilities
    '(:referencesProvider :documentHighlightProvider
@@ -88,7 +95,6 @@
  '(show-paren-style 'parenthesis)
  '(straight-check-for-modifications '(find-when-checking only-once))
  '(tool-bar-mode nil)
- '(tramp-persistency-file-name "~/.emacs.d/.local/tramp")
  '(transient-history-file "~/.emacs.d/.local/transient/history.el")
  '(transient-levels-file "~/.emacs.d/.local/transient/levels.el")
  '(transient-values-file "~/.emacs.d/.local/transient/values.el")
