@@ -35,6 +35,8 @@
  '(display-buffer-alist
    '(("\\*\\(xref\\|grep\\)\\*" display-buffer-in-side-window
       (side . right) (slot . 0) (window-width . 0.4))
+     ("\\*eldoc\\*" display-buffer-in-side-window (side . right)
+      (slot . -1) (window-width . 0.4))
      ("\\*compilation\\*" display-buffer-in-side-window
       (side . bottom) (slot . 0) (window-height . 0.4))
      ("\\*Async Shell Command\\*" display-buffer-in-side-window
@@ -48,6 +50,7 @@
                          :colorProvider :foldingRangeProvider
                          :executeCommandProvider :inlayHintProvider
                          :typeHierarchyProvider :callHierarchyProvider))
+ '(eldoc-echo-area-use-multiline-p nil)
  '(envrc-global-mode t)
  '(envrc-show-summary-in-minibuffer nil)
  '(font-use-system-font t)
@@ -55,6 +58,7 @@
  '(global-company-mode t)
  '(global-corfu-mode t)
  '(global-subword-mode t)
+ '(global-visual-line-mode t)
  '(gptel-default-mode 'org-mode)
  '(gptel-prompt-prefix-alist '((org-mode . "* ")))
  '(icomplete-hide-common-prefix nil)
