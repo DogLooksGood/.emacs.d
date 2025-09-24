@@ -57,6 +57,8 @@
 (require 'company-tng)
 (global-company-mode 1)
 (company-tng-configure-default)
+(keymap-unset company-active-map "TAB")
+(keymap-unset company-active-map "<tab>")
 (keymap-unset company-active-map "C-n")
 (keymap-unset company-active-map "C-p")
 (keymap-set company-mode-map   "M-n" #'company-complete-common)
@@ -107,6 +109,15 @@
 (keymap-set mode-specific-map "h" #'duplicate-dwim)
 (keymap-set mode-specific-map "e" #'eglot)
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
+
+(with-eval-after-load "eglot"
+  (keymap-set eglot-mode-map "M-RET" #'eglot-code-actions))
+
+(with-eval-after-load "flymake"
+  (keymap-set flymake-mode-map "C-c ! p" #'flymake-goto-prev-error)
+  (keymap-set flymake-mode-map "C-c ! n" #'flymake-goto-next-error)
+  (keymap-set flymake-mode-map "C-c ! !" #'flymake-show-buffer-diagnostics)
+  (keymap-set flymake-mode-map "C-c ! c" #'flymake-show-diagnostic))
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 

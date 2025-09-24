@@ -6,9 +6,13 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-list-file-prefix "~/.emacs.d/.local/auto-save-list/.saves-")
  '(blink-cursor-mode nil)
- '(c-basic-offset 4)
+ '(c-default-style
+   '((c-mode . "gnu") (java-mode . "java") (awk-mode . "awk")
+     (other . "gnu")))
+ '(c-indent-comment-alist 'set-from-style)
  '(clojure-indent-keyword-style 'align-arguments)
  '(clojure-indent-style 'always-indent)
+ '(clojure-toplevel-inside-comment-form t)
  '(company-backends
    '(company-capf company-files
                   (company-dabbrev-code company-etags company-keywords)
@@ -67,12 +71,15 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(isearch-lazy-count t)
+ '(js-indent-level 4)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(mode-line-collapse-minor-modes t)
  '(mode-line-compact t)
  '(mouse-wheel-progressive-speed nil)
+ '(org-babel-load-languages '((emacs-lisp . t) (shell . t)))
  '(package-selected-packages '(company envrc yasnippet))
+ '(pass-show-keybindings nil)
  '(pass-username-fallback-on-filename t)
  '(project-list-file "~/.emacs.d/.local/projects.eld")
  '(project-mode-line nil)
