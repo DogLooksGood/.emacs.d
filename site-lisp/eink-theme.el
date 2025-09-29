@@ -33,7 +33,7 @@
       (white     "#ffffff")
       (darkgray  "#707070")
       (gray      "#A0A0A0")
-      (lightgray "#D8D8D8"))
+      (lightgray "#C0C0C0"))
   (custom-theme-set-faces
    `eink
    `(cursor ((t (:background ,black))))
@@ -500,7 +500,7 @@
    `(mode-line-buffer-id ((t ())))
    `(mode-line-emphasis ((t ())))
    `(mode-line-highlight ((t ())))
-   `(mode-line-inactive ((t (:foreground ,white :background ,darkgray))))
+   `(mode-line-inactive ((t (:foreground ,black :background ,lightgray))))
    `(mouse ((t ())))
    `(mouse-drag-and-drop-region ((t ())))
    `(next-error ((t ())))

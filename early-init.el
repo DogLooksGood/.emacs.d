@@ -5,4 +5,4 @@
 (require 'init-straight)
 
 (require 'minidark-theme)
-(load-theme 'minidark t)
+(require 'eink-theme)
