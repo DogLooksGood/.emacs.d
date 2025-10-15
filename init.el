@@ -78,9 +78,6 @@
   :stream t
   :models '(deepseek-r1:32b gemma3:27b-it-q8_0 devstral:24b magistral:24b gpt-oss:20b))
 
-(keymap-set global-map "C-c a" 'gptel-add)
-(keymap-set global-map "C-c RET" 'gptel-send)
-
 (require 'paredit)
 (keymap-unset paredit-mode-map "M-s")
 (keymap-set paredit-mode-map "M-i" #'paredit-splice-sexp)
@@ -98,6 +95,9 @@
 (with-eval-after-load "cc-mode"
   (keymap-set c-mode-map "C-c C-c" #'ff-find-other-file))
 
+(keymap-set mode-specific-map "a" 'gptel-add)
+(keymap-set mode-specific-map "RET" 'gptel-send)
+(keymap-set mode-specific-map "g" 'gptel)
 (keymap-set mode-specific-map "b" #'switch-to-buffer-other-window)
 (keymap-set mode-specific-map "f" #'find-file-other-window)
 (keymap-set mode-specific-map "d" #'dired-other-window)
