@@ -215,7 +215,7 @@
    `(font-lock-doc-markup-face ((t ())))
    `(font-lock-escape-face ((t ())))
    `(font-lock-function-call-face ((t ())))
-   `(font-lock-function-name-face ((t ())))
+   `(font-lock-function-name-face ((t (:bold t))))
    `(font-lock-keyword-face ((t ())))
    `(font-lock-misc-punctuation-face ((t ())))
    `(font-lock-negation-char-face ((t ())))

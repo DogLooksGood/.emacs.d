@@ -73,11 +73,6 @@
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (add-hook 'conf-mode-hook 'yas-minor-mode)
 
-(gptel-make-ollama "Ollama"
-  :host "localhost:11434"
-  :stream t
-  :models '(deepseek-r1:32b gemma3:27b-it-q8_0 devstral:24b magistral:24b gpt-oss:20b))
-
 (require 'paredit)
 (keymap-unset paredit-mode-map "M-s")
 (keymap-set paredit-mode-map "M-i" #'paredit-splice-sexp)
