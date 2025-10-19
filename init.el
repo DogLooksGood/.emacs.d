@@ -90,10 +90,11 @@
 (with-eval-after-load "cc-mode"
   (keymap-set c-mode-map "C-c C-c" #'ff-find-other-file))
 
-(keymap-set mode-specific-map "RET" 'gptel-send)
-(keymap-set mode-specific-map "a" 'gptel-add)
-(keymap-set mode-specific-map "g" 'gptel)
-(keymap-set mode-specific-map "r" 'gptel-rewrite)
+(keymap-set mode-specific-map "RET" #'gptel-send)
+(keymap-set mode-specific-map "a" #'gptel-add)
+(keymap-set mode-specific-map "g" #'gptel)
+(keymap-set mode-specific-map "r" #'gptel-rewrite)
+(keymap-set mode-specific-map "w" #'window-swap-states)
 (keymap-set mode-specific-map "b" #'switch-to-buffer-other-window)
 (keymap-set mode-specific-map "f" #'find-file-other-window)
 (keymap-set mode-specific-map "d" #'dired-other-window)
