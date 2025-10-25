@@ -81,6 +81,7 @@
  '(mode-line-compact t)
  '(mouse-wheel-progressive-speed nil)
  '(org-babel-load-languages '((emacs-lisp . t) (shell . t)))
+ '(org-hide-emphasis-markers t)
  '(package-selected-packages '(company envrc yasnippet))
  '(pass-show-keybindings nil)
  '(pass-username-fallback-on-filename t)
