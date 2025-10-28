@@ -90,6 +90,9 @@
 (with-eval-after-load "cc-mode"
   (keymap-set c-mode-map "C-c C-c" #'ff-find-other-file))
 
+(with-eval-after-load "gptel"
+  (make-local-variable 'gptel-context))
+
 (keymap-set mode-specific-map "RET" #'gptel-send)
 (keymap-set mode-specific-map "a" #'gptel-add)
 (keymap-set mode-specific-map "g" #'gptel)
