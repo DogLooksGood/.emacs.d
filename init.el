@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+(set-frame-font "Iosevka Extended-14" nil t)
+
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
@@ -93,6 +95,7 @@
 (with-eval-after-load "gptel"
   (make-local-variable 'gptel-context))
 
+(keymap-set mode-specific-map "s" #'window-toggle-side-windows)
 (keymap-set mode-specific-map "RET" #'gptel-send)
 (keymap-set mode-specific-map "a" #'gptel-add)
 (keymap-set mode-specific-map "g" #'gptel)
@@ -121,7 +124,3 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (add-hook 'buffer-list-update-hook #'recentf-track-opened-file)
-
-(let ((local-conf (expand-file-name "local.el" user-emacs-directory)))
-  (when (file-exists-p local-conf)
-    (load local-conf)))

@@ -6,3 +6,7 @@
 
 (require 'minidark-theme)
 (require 'eink-theme)
+
+(let ((local-conf (expand-file-name "local.el" user-emacs-directory)))
+  (when (file-exists-p local-conf)
+    (load local-conf)))
