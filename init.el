@@ -3,6 +3,16 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
+(defun smart-C-t (_k)
+  "Return C-x if it's the beginning of key sequence. Otherwise returns C-t."
+  (let ((keys (this-command-keys)))
+    (if (string-equal "" keys)
+        ""
+      "")))
+
+(define-key key-translation-map (kbd  "C-t") 'smart-C-t)
+(keymap-set global-map "C-x t" 'transpose-chars)
+
 (with-eval-after-load "rect"
   (keymap-set rectangle-mark-mode-map "SPC" #'string-rectangle)
   (keymap-set rectangle-mark-mode-map "DEL" #'kill-rectangle))
@@ -42,6 +52,13 @@
 (straight-use-package 'company)
 (straight-use-package 'pass)
 (straight-use-package 'eat)
+
+(require 'eat)
+(defun eat-shell-command ()
+  (interactive)
+  (let ((program (read-shell-command "(EAT)shell command: " "")))
+    (eat--1 program current-prefix-arg #'pop-to-buffer-same-window)))
+(keymap-set global-map "C-M-&" #'eat-shell-command)
 
 (require 'company)
 (require 'company-tng)
