@@ -4,6 +4,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(Info-additional-directory-list '("~/.local/share/info"))
  '(auto-save-list-file-prefix "~/.emacs.d/.local/auto-save-list/.saves-")
  '(blink-cursor-mode nil)
  '(c-default-style
@@ -61,6 +62,7 @@
  '(envrc-global-mode t)
  '(envrc-show-summary-in-minibuffer nil)
  '(font-use-system-font t)
+ '(frame-resize-pixelwise t)
  '(gdb-many-windows t)
  '(global-company-mode t)
  '(global-corfu-mode t)
@@ -100,7 +102,49 @@
  '(recentf-save-file "~/.emacs.d/.local/recentf.eld")
  '(repeat-mode t)
  '(safe-local-variable-values
-   '((geiser-guile-binary . "./cli")
+   '((eval modify-syntax-entry 37 "'") (eval modify-syntax-entry 126 "'")
+     (eval with-eval-after-load 'autoinsert
+           (add-to-list 'auto-insert-alist
+                        '("\\.scm\\'"
+                          . [("Blue header"
+                              ";;; SPDX-License-Identifier: LGPL-3.0-or-later\12"
+                              ";;; SPDX-FileCopyrightText: "
+                              (format-time-string "%Y ")
+                              user-full-name " <" user-mail-address
+                              ">\12" ";;;\12" ";;; "
+                              (file-relative-name (buffer-file-name)
+                                                  (locate-dominating-file
+                                                   default-directory
+                                                   ".dir-locals.el"))
+                              " --- " (skeleton-read "Synopsis: ")
+                              ".\12" ";;;\12" ";;; Commentary:\12"
+                              ";;;\12" ";;; "
+                              (skeleton-read "Commentary: ") ".\12"
+                              ";;;\12" ";;; Code:\12")])))
+     (blue-require-build-directory . t)
+     (eval let*
+           ((guile-path-str
+             (shell-command-to-string "guile -c '(write %load-path)'"))
+            (guile-srcs
+             (let ((data (read guile-path-str)))
+               (when (consp data) data)))
+            (blue-srcs
+             (list
+              (expand-file-name
+               (directory-file-name
+                (locate-dominating-file default-directory
+                                        ".dir-locals.el"))))))
+           (with-eval-after-load 'compile
+             (setq compilation-search-path
+                   (seq-uniq
+                    (append blue-srcs guile-srcs
+                            compilation-search-path)))
+             (add-to-list 'compilation-error-regexp-alist
+                          '("^.* at \\(.*?\\):\\([0-9]+\\)" 1 2))
+             (add-to-list 'compilation-error-regexp-alist
+                          '("^;;;.*\\(.*?\\):\\([0-9]+\\)" 1 2))))
+     (geiser-guile-init-file . "pub-tasks.scm")
+     (geiser-guile-binary . "./cli")
      (geiser-guile-init-file . "test.scm")
      (geiser-guile-binary . "./main")
      (geiser-guile-binary . "../main") (geiser-guile-binary . "main")))
