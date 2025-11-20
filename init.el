@@ -58,7 +58,7 @@
   (interactive)
   (let ((program (read-shell-command "(EAT)shell command: " "")))
     (eat--1 program current-prefix-arg #'pop-to-buffer-same-window)))
-(keymap-set global-map "C-M-&" #'eat-shell-command)
+(keymap-set global-map "M-&" #'eat-shell-command)
 
 (require 'company)
 (require 'company-tng)
