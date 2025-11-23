@@ -26,7 +26,7 @@
  '(compilation-auto-jump-to-first-error nil)
  '(compilation-skip-threshold 1)
  '(compilation-skip-visited nil)
- '(completion-styles '(basic partial-completion flex))
+ '(completion-styles '(substring flex))
  '(corfu-auto t)
  '(corfu-auto-delay 0.1)
  '(corfu-auto-prefix 2)
@@ -101,53 +101,6 @@
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/.local/recentf.eld")
  '(repeat-mode t)
- '(safe-local-variable-values
-   '((eval modify-syntax-entry 37 "'") (eval modify-syntax-entry 126 "'")
-     (eval with-eval-after-load 'autoinsert
-           (add-to-list 'auto-insert-alist
-                        '("\\.scm\\'"
-                          . [("Blue header"
-                              ";;; SPDX-License-Identifier: LGPL-3.0-or-later\12"
-                              ";;; SPDX-FileCopyrightText: "
-                              (format-time-string "%Y ")
-                              user-full-name " <" user-mail-address
-                              ">\12" ";;;\12" ";;; "
-                              (file-relative-name (buffer-file-name)
-                                                  (locate-dominating-file
-                                                   default-directory
-                                                   ".dir-locals.el"))
-                              " --- " (skeleton-read "Synopsis: ")
-                              ".\12" ";;;\12" ";;; Commentary:\12"
-                              ";;;\12" ";;; "
-                              (skeleton-read "Commentary: ") ".\12"
-                              ";;;\12" ";;; Code:\12")])))
-     (blue-require-build-directory . t)
-     (eval let*
-           ((guile-path-str
-             (shell-command-to-string "guile -c '(write %load-path)'"))
-            (guile-srcs
-             (let ((data (read guile-path-str)))
-               (when (consp data) data)))
-            (blue-srcs
-             (list
-              (expand-file-name
-               (directory-file-name
-                (locate-dominating-file default-directory
-                                        ".dir-locals.el"))))))
-           (with-eval-after-load 'compile
-             (setq compilation-search-path
-                   (seq-uniq
-                    (append blue-srcs guile-srcs
-                            compilation-search-path)))
-             (add-to-list 'compilation-error-regexp-alist
-                          '("^.* at \\(.*?\\):\\([0-9]+\\)" 1 2))
-             (add-to-list 'compilation-error-regexp-alist
-                          '("^;;;.*\\(.*?\\):\\([0-9]+\\)" 1 2))))
-     (geiser-guile-init-file . "pub-tasks.scm")
-     (geiser-guile-binary . "./cli")
-     (geiser-guile-init-file . "test.scm")
-     (geiser-guile-binary . "./main")
-     (geiser-guile-binary . "../main") (geiser-guile-binary . "main")))
  '(savehist-file "~/.emacs.d/.local/history")
  '(savehist-mode t)
  '(scroll-bar-mode nil)

@@ -46,12 +46,21 @@
 (straight-use-package 'cider)
 (straight-use-package 'gptel)
 (straight-use-package 'paredit)
-(straight-use-package 'yasnippet)
 (straight-use-package 'envrc)
+(straight-use-package 'yasnippet)
 (straight-use-package 'magit)
 (straight-use-package 'company)
 (straight-use-package 'pass)
 (straight-use-package 'eat)
+
+(require 'envrc)
+(envrc-global-mode t)
+
+(with-eval-after-load 'guix-repl
+  (setq guix-guile-program  '("guix" "repl")
+        guix-config-scheme-compiled-directory  nil
+        guix-repl-use-latest  nil
+        guix-repl-use-server  nil))
 
 (require 'eat)
 (defun eat-shell-command ()
@@ -71,9 +80,6 @@
 (keymap-set company-mode-map   "M-n" #'company-complete-common)
 (keymap-set company-active-map "M-p" #'company-select-previous)
 (keymap-set company-active-map "M-n" #'company-select-next)
-
-(require 'envrc)
-(envrc-global-mode 1)
 
 (require 'yasnippet)
 (yas-load-directory (expand-file-name "snippets" user-emacs-directory))
