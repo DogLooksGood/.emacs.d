@@ -36,7 +36,8 @@
       (red       "#7c2c11")
       (gray      "#777777")
       (cyan      "#00756b")
-      (lightgray "#BBBBBB"))
+      (lightgray "#BBBBBB")
+      (lightyellow "#FFFFDD"))
   (custom-theme-set-faces
    `vc6
    `(cursor ((t (:background ,black))))
@@ -320,7 +321,7 @@
    `(gnus-summary-normal-unread ((t ())))
    `(gnus-summary-selected ((t ())))
    `(gptel-context-deletion-face ((t ())))
-   `(gptel-context-highlight-face ((t (:background ,red))))
+   `(gptel-context-highlight-face ((t (:background ,lightyellow))))
    `(header-line ((t ())))
    `(header-line-active ((t ())))
    `(header-line-highlight ((t ())))

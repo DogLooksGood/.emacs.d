@@ -534,7 +534,7 @@
    `(mode-line-buffer-id ((t ())))
    `(mode-line-emphasis ((t ())))
    `(mode-line-highlight ((t ())))
-   `(mode-line-inactive ((t (:foreground ,darkgray :background ,gray))))
+   `(mode-line-inactive ((t (:foreground ,gray :background ,darkgray))))
    `(mouse ((t ())))
    `(mouse-drag-and-drop-region ((t ())))
    `(next-error ((t ())))
