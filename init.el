@@ -58,7 +58,7 @@
 (defun eat-shell-command ()
   (interactive)
   (let* ((program (read-shell-command "(EAT)shell command: " ""))
-         (eat-buffer-name program))
+         (eat-buffer-name (format "*EAT: %s*" program)))
     (eat--1 program current-prefix-arg #'pop-to-buffer-same-window)))
 (keymap-set global-map "C-M-&" #'eat-shell-command)
 

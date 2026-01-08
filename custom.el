@@ -64,7 +64,6 @@
  '(font-use-system-font t)
  '(frame-resize-pixelwise t)
  '(gdb-many-windows t)
- '(global-company-mode t)
  '(global-corfu-mode t)
  '(global-subword-mode t)
  '(global-visual-line-mode t)
