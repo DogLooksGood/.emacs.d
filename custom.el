@@ -42,9 +42,9 @@
  '(dired-use-ls-dired t)
  '(display-buffer-alist
    '(("\\*\\(xref\\|grep\\)\\*" display-buffer-in-side-window
-      (side . right) (slot . 0) (window-width . 0.4))
+      (side . left) (slot . 0) (window-width . 0.4))
      ("\\*eldoc\\*" display-buffer-in-side-window (side . right)
-      (slot . -1) (window-width . 0.4))
+      (slot . -1) (window-width . 0.5))
      ("\\*compilation\\*" display-buffer-in-side-window
       (side . bottom) (slot . 0) (window-height . 0.4))
      ("\\*Async Shell Command\\*" display-buffer-in-side-window

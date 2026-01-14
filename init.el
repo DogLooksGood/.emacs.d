@@ -21,8 +21,8 @@
 (with-eval-after-load "dired"
   (keymap-unset dired-jump-map "j"))
 
-(defvar-keymap duplicate-dwim-repeat-map :repeat t
-	       "h" #'duplicate-dwim)
+(defvar-keymap duplicate-dwim-repeat-map
+  :repeat t "h" #'duplicate-dwim)
 
 (require 'ansi-color)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
@@ -60,7 +60,6 @@
   (let* ((program (read-shell-command "(EAT)shell command: " ""))
          (eat-buffer-name (format "*EAT: %s*" program)))
     (eat--1 program current-prefix-arg #'pop-to-buffer-same-window)))
-(keymap-set global-map "C-M-&" #'eat-shell-command)
 
 (require 'company)
 (require 'company-tng)
@@ -101,11 +100,11 @@
 (with-eval-after-load "gptel"
   (make-local-variable 'gptel-context))
 
-(keymap-set mode-specific-map "s" #'window-toggle-side-windows)
 (keymap-set mode-specific-map "RET" #'gptel-send)
 (keymap-set mode-specific-map "a" #'gptel-add)
 (keymap-set mode-specific-map "g" #'gptel)
 (keymap-set mode-specific-map "r" #'gptel-rewrite)
+(keymap-set mode-specific-map "s" #'window-toggle-side-windows)
 (keymap-set mode-specific-map "w" #'window-swap-states)
 (keymap-set mode-specific-map "b" #'switch-to-buffer-other-window)
 (keymap-set mode-specific-map "f" #'find-file-other-window)
@@ -117,6 +116,7 @@
 (keymap-set mode-specific-map "h" #'duplicate-dwim)
 (keymap-set mode-specific-map "e" #'eglot)
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
+(keymap-set mode-specific-map "z" #'eat-shell-command)
 
 (with-eval-after-load "eglot"
   (keymap-set eglot-mode-map "M-RET" #'eglot-code-actions))
@@ -130,3 +130,5 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (add-hook 'buffer-list-update-hook #'recentf-track-opened-file)
+
+(server-start)

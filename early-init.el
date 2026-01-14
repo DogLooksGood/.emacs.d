@@ -9,7 +9,6 @@
 (require 'simple-theme)
 (require 'vc6-theme)
 
-
 (let ((local-conf (expand-file-name "local.el" user-emacs-directory)))
   (when (file-exists-p local-conf)
     (load local-conf)))
