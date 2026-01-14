@@ -31,7 +31,7 @@
 (deftheme vc6 "A light theme for E-ink monitor.")
 
 (let ((black     "#260919")
-      (white     "#FFFFFF")
+      (white     "#ffffff")
       (blue      "#0808FF")
       (green     "#008000")
       (red       "#7c2c11")
@@ -39,8 +39,8 @@
       (purple    "#7211c6")
       (gray      "#777777")
       (cyan      "#3a917d")
-      (yellow    "#FFFF00")
-      (lightgray "#E0E0E0"))
+      (yellow    "#ffff00")
+      (lightgray "#e0e0e0"))
   (custom-theme-set-faces
    `vc6
    `(cursor ((t (:background ,black))))
@@ -654,7 +654,7 @@
    `(read-multiple-choice-face ((t ())))
    `(rectangle-preview ((t ())))
    `(scroll-bar ((t ())))
-   `(secondary-selection ((t (:foreground ,gray :inverse-video t))))
+   `(secondary-selection ((t (:background ,yellow))))
    `(separator-line ((t ())))
    `(sh-escaped-newline ((t ())))
    `(sh-heredoc ((t ())))
