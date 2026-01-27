@@ -99,6 +99,7 @@
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/.local/recentf.eld")
  '(repeat-mode t)
+ '(ring-bell-function 'ignore)
  '(savehist-file "~/.emacs.d/.local/history")
  '(savehist-mode t)
  '(scroll-bar-mode nil)

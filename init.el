@@ -42,6 +42,7 @@
 (straight-use-package 'company)
 (straight-use-package 'pass)
 (straight-use-package 'eat)
+(straight-use-package 'rust-mode)
 
 (which-function-mode 1)
 
@@ -88,7 +89,6 @@
 (add-hook 'clojure-mode-hook #'paredit-mode)
 (add-hook 'scheme-mode-hook #'paredit-mode)
 
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
@@ -99,6 +99,16 @@
 
 (with-eval-after-load "gptel"
   (make-local-variable 'gptel-context))
+
+;;; Per-project compile history
+(defvar per-project-compile-history nil)
+(define-advice project-compile (:around (&rest args) project-local-history)
+  (let* ((root (project-root (project-current t)))
+         (project-hist (alist-get root per-project-compile-history nil nil #'equal))
+         (compile-history project-hist)
+         (compile-command (and project-hist
+                               (car project-hist))))
+    (unwind-protect (apply args) (setf (alist-get root per-project-compile-history nil nil #'equal) compile-history))))
 
 (keymap-set mode-specific-map "RET" #'gptel-send)
 (keymap-set mode-specific-map "a" #'gptel-add)
