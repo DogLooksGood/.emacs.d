@@ -128,6 +128,9 @@
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
 (keymap-set mode-specific-map "z" #'eat-shell-command)
 
+(with-eval-after-load "org"
+  (add-hook 'org-mode-hook 'org-indent-mode))
+
 (with-eval-after-load "eglot"
   (keymap-set eglot-mode-map "M-RET" #'eglot-code-actions))
 
@@ -141,4 +144,6 @@
 
 (add-hook 'buffer-list-update-hook #'recentf-track-opened-file)
 
-(server-start)
+(require 'server)
+(unless (server-running-p)
+  (server-start))

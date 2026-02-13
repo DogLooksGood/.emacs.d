@@ -7,8 +7,9 @@
  '(Info-additional-directory-list '("~/.local/share/info"))
  '(auto-save-list-file-prefix "~/.emacs.d/.local/auto-save-list/.saves-")
  '(blink-cursor-mode nil)
+ '(c-basic-offset 4)
  '(c-default-style
-   '((c-mode . "gnu") (java-mode . "java") (awk-mode . "awk")
+   '((c-mode . "k&r") (java-mode . "java") (awk-mode . "awk")
      (other . "gnu")))
  '(c-indent-comment-alist 'set-from-style)
  '(clojure-indent-keyword-style 'align-arguments)
