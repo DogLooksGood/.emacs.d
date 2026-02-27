@@ -32,7 +32,7 @@
 (straight-use-package 'clojure-mode)
 (straight-use-package 'nix-ts-mode)
 (straight-use-package 'geiser)
-(straight-use-package 'geiser-guile)
+(straight-use-package 'geiser-chez)
 (straight-use-package 'cider)
 (straight-use-package 'gptel)
 (straight-use-package 'paredit)
@@ -43,6 +43,8 @@
 (straight-use-package 'pass)
 (straight-use-package 'eat)
 (straight-use-package 'rust-mode)
+(straight-use-package 'rg)
+(straight-use-package 'wgrep)
 
 (which-function-mode 1)
 
@@ -61,6 +63,9 @@
   (let* ((program (read-shell-command "(EAT)shell command: " ""))
          (eat-buffer-name (format "*EAT: %s*" program)))
     (eat--1 program current-prefix-arg #'pop-to-buffer-same-window)))
+
+(require 'rg)
+(keymap-set project-prefix-map "g" 'rg-project)
 
 (require 'company)
 (require 'company-tng)

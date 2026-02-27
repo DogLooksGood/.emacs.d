@@ -9,7 +9,7 @@
  '(blink-cursor-mode nil)
  '(c-basic-offset 'set-from-style)
  '(c-default-style
-   '((c-mode . "k&r") (java-mode . "java") (awk-mode . "awk")
+   '((c-mode . "gnu") (java-mode . "java") (awk-mode . "awk")
      (other . "gnu")))
  '(c-indent-comment-alist 'set-from-style)
  '(clojure-indent-keyword-style 'align-arguments)
@@ -42,7 +42,7 @@
  '(dired-listing-switches "-alh")
  '(dired-use-ls-dired t)
  '(display-buffer-alist
-   '(("\\*\\(xref\\|grep\\)\\*" display-buffer-in-side-window
+   '(("\\*\\(xref\\|grep\\|rg\\)\\*" display-buffer-in-side-window
       (side . left) (slot . 0) (window-width . 0.4))
      ("\\*eldoc\\*" display-buffer-in-side-window (side . right)
       (slot . -1) (window-width . 0.5))
