@@ -29,6 +29,8 @@
 ;;
 ;; Usages:
 ;;
+;; The whole editing can be done in 3 steps.
+;;
 ;; 1. Set the editing scope with secondary selection.
 ;;
 ;; To start creating secondary selection, enable `bedit-extending-mode'.
@@ -67,7 +69,7 @@
 ;;
 ;; Cancellation:
 ;;
-;; To cancel the editing, press C-g at any step or press C-M-g C-g to cancel secondary selection.
+;; To cancel the editing, press C-g at any step.
 ;;; Code:
 
 (require 'thingatpt)

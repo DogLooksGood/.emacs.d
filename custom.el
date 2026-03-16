@@ -7,7 +7,6 @@
  '(Info-additional-directory-list '("~/.local/share/info"))
  '(auto-save-list-file-prefix "~/.emacs.d/.local/auto-save-list/.saves-")
  '(blink-cursor-mode nil)
- '(c-basic-offset 'set-from-style)
  '(c-default-style
    '((c-mode . "gnu") (java-mode . "java") (awk-mode . "awk")
      (other . "gnu")))
@@ -27,7 +26,7 @@
  '(compilation-auto-jump-to-first-error nil)
  '(compilation-skip-threshold 1)
  '(compilation-skip-visited nil)
- '(completion-styles '(substring flex))
+ '(completion-styles '(basic substring flex))
  '(corfu-auto t)
  '(corfu-auto-delay 0.1)
  '(corfu-auto-prefix 2)
@@ -35,7 +34,8 @@
  '(corfu-preselect 'prompt)
  '(corfu-preview-current 'insert)
  '(custom-safe-themes
-   '("abc4999450b3579e5ca79ae72350d8386069095a5cf6ab161aa062b35afe4275"
+   '("69596b892352da6d1e5d6465ee19cf9c350f25a7054079355b249f90bb08f32c"
+     "abc4999450b3579e5ca79ae72350d8386069095a5cf6ab161aa062b35afe4275"
      "d453a6c05d97483ff577476a53188fa190e2a06e14ecb98d2d44034f5d825205"
      default))
  '(dired-dwim-target 'dired-dwim-target-recent)
@@ -105,6 +105,7 @@
  '(savehist-mode t)
  '(scroll-bar-mode nil)
  '(show-paren-style 'parenthesis)
+ '(speedbar-use-images nil)
  '(split-width-threshold 80)
  '(straight-check-for-modifications '(find-when-checking only-once))
  '(tool-bar-mode nil)

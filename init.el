@@ -66,6 +66,7 @@
 
 (require 'rg)
 (keymap-set project-prefix-map "g" 'rg-project)
+(keymap-set project-prefix-map "s" 'eat-project)
 
 (require 'company)
 (require 'company-tng)
