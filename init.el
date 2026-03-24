@@ -122,17 +122,13 @@
 (keymap-set mode-specific-map "r" #'gptel-rewrite)
 (keymap-set mode-specific-map "s" #'window-toggle-side-windows)
 (keymap-set mode-specific-map "w" #'window-swap-states)
-(keymap-set mode-specific-map "b" #'switch-to-buffer-other-window)
-(keymap-set mode-specific-map "f" #'find-file-other-window)
-(keymap-set mode-specific-map "d" #'dired-other-window)
-(keymap-set mode-specific-map "i" #'info-other-window)
-(keymap-set mode-specific-map "p" #'project-other-window-command)
 (keymap-set mode-specific-map "l" #'recentf-open-files)
 (keymap-set mode-specific-map "n" #'display-line-numbers-mode)
 (keymap-set mode-specific-map "h" #'duplicate-dwim)
 (keymap-set mode-specific-map "e" #'eglot)
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
 (keymap-set mode-specific-map "z" #'eat-shell-command)
+(keymap-set mode-specific-map "o" ctl-x-4-map) ; other window prefix
 
 (with-eval-after-load "org"
   (add-hook 'org-mode-hook 'org-indent-mode))
