@@ -5,3 +5,4 @@ eln-cache
 local.el
 tree-sitter
 tramp
+url

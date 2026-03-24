@@ -33,13 +33,8 @@
  '(corfu-on-exact-match nil)
  '(corfu-preselect 'prompt)
  '(corfu-preview-current 'insert)
- '(custom-safe-themes
-   '("69596b892352da6d1e5d6465ee19cf9c350f25a7054079355b249f90bb08f32c"
-     "abc4999450b3579e5ca79ae72350d8386069095a5cf6ab161aa062b35afe4275"
-     "d453a6c05d97483ff577476a53188fa190e2a06e14ecb98d2d44034f5d825205"
-     default))
  '(dired-dwim-target 'dired-dwim-target-recent)
- '(dired-listing-switches "-alh")
+ '(dired-listing-switches "-alhv --group-directories-first")
  '(dired-use-ls-dired t)
  '(display-buffer-alist
    '(("\\*\\(xref\\|grep\\|rg\\)\\*" display-buffer-in-side-window
@@ -62,9 +57,13 @@
  '(eldoc-echo-area-use-multiline-p nil)
  '(envrc-global-mode t)
  '(envrc-show-summary-in-minibuffer nil)
+ '(ff-ignore-include t)
  '(font-use-system-font t)
  '(frame-resize-pixelwise t)
  '(gdb-many-windows t)
+ '(geiser-chez-csug-url
+   "file:///home/tianshu/websites/csug/cisco.github.io/ChezScheme/csug/")
+ '(geiser-chez-tspl-url "file:///home/tianshu/websites/tspl/scheme.com/tspl4/")
  '(global-corfu-mode t)
  '(global-subword-mode t)
  '(global-visual-line-mode t)
