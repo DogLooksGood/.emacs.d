@@ -739,7 +739,7 @@
    `(vc-state-base ((t ())))
    `(vc-up-to-date-state ((t ())))
    `(vertical-border ((t ())))
-   `(vertico-current ((t ())))
+   `(vertico-current ((t (:inverse-video t))))
    `(vertico-group-separator ((t ())))
    `(vertico-group-title ((t ())))
    `(vertico-multiline ((t ())))

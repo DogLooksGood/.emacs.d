@@ -7,14 +7,6 @@
   (keymap-set rectangle-mark-mode-map "SPC" #'string-rectangle)
   (keymap-set rectangle-mark-mode-map "DEL" #'kill-rectangle))
 
-(icomplete-mode 1)
-
-(keymap-set icomplete-minibuffer-map "TAB" #'icomplete-force-complete)
-(keymap-set icomplete-minibuffer-map "DEL" #'icomplete-fido-backward-updir)
-(keymap-set icomplete-minibuffer-map "RET" #'icomplete-force-complete-and-exit)
-(keymap-set icomplete-minibuffer-map "C-s" #'icomplete-forward-completions)
-(keymap-set icomplete-minibuffer-map "C-r" #'icomplete-backward-completions)
-
 (keymap-unset next-error-repeat-map "n")
 (keymap-unset next-error-repeat-map "p")
 
@@ -32,7 +24,7 @@
 (straight-use-package 'clojure-mode)
 (straight-use-package 'nix-ts-mode)
 (straight-use-package 'geiser)
-(straight-use-package 'geiser-chez)
+(straight-use-package 'geiser-guile)
 (straight-use-package 'cider)
 (straight-use-package 'gptel)
 (straight-use-package 'paredit)
@@ -45,6 +37,12 @@
 (straight-use-package 'rust-mode)
 (straight-use-package 'rg)
 (straight-use-package 'wgrep)
+(straight-use-package 'vertico)
+
+(vertico-mode 1)
+(vertico-multiform-mode)
+(setq vertico-multiform-categories
+      '((file (:keymap . vertico-directory-map))))
 
 (which-function-mode 1)
 
