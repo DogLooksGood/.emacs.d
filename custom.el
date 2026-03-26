@@ -61,6 +61,7 @@
  '(font-use-system-font t)
  '(frame-resize-pixelwise t)
  '(gdb-many-windows t)
+ '(geiser-chez-browse-function 'browse-url-firefox)
  '(geiser-chez-csug-url
    "file:///home/tianshu/websites/csug/cisco.github.io/ChezScheme/csug/")
  '(geiser-chez-tspl-url "file:///home/tianshu/websites/tspl/scheme.com/tspl4/")
