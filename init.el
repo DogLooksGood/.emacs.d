@@ -34,16 +34,10 @@
 (straight-use-package 'magit)
 (straight-use-package 'company)
 (straight-use-package 'pass)
-(straight-use-package 'eat)
+(straight-use-package '(eat :host codeberg :repo "akib/emacs-eat"))
 (straight-use-package 'rust-mode)
 (straight-use-package 'rg)
 (straight-use-package 'wgrep)
-(straight-use-package 'vertico)
-
-(vertico-mode 1)
-(vertico-multiform-mode)
-(setq vertico-multiform-categories
-      '((file (:keymap . vertico-directory-map))))
 
 (which-function-mode 1)
 
@@ -57,6 +51,8 @@
         guix-repl-use-server  nil))
 
 (require 'eat)
+(when window-system
+  (keymap-set global-map "C-z" 'eat))
 (defun eat-shell-command ()
   (interactive)
   (let* ((program (read-shell-command "(EAT)shell command: " ""))
