@@ -93,7 +93,7 @@
    `(clojure-character-face ((t ())))
    `(clojure-keyword-face ((t ())))
    `(comint-highlight-input ((t ())))
-   `(comint-highlight-prompt ((t ())))
+   `(comint-highlight-prompt ((t (:foreground ,cyan))))
    `(company-echo ((t ())))
    `(company-echo-common ((t ())))
    `(completion-preview-highlight ((t ())))
