@@ -24,7 +24,7 @@
 (straight-use-package 'clojure-mode)
 (straight-use-package 'nix-ts-mode)
 (straight-use-package 'geiser)
-(straight-use-package 'geiser)
+(straight-use-package 'geiser-guile)
 (straight-use-package '(geiser-chez :host github :repo "DogLooksGood/geiser-chez"))
 (straight-use-package 'cider)
 (straight-use-package 'gptel)
@@ -38,6 +38,14 @@
 (straight-use-package 'rust-mode)
 (straight-use-package 'rg)
 (straight-use-package 'wgrep)
+
+(fido-mode 1)
+
+(with-eval-after-load 'geiser
+  (add-hook 'geiser-mode-hook
+            (lambda ()
+              (keymap-set geiser-mode-map "C-c C-y"
+                          'geiser-restart-repl))))
 
 (which-function-mode 1)
 

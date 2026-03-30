@@ -120,7 +120,7 @@
    `(completions-first-difference ((t ())))
    `(completions-group-separator ((t ())))
    `(completions-group-title ((t ())))
-   `(completions-highlight ((t ())))
+   `(completions-highlight ((t (:inverse-video t))))
    `(confusingly-reordered ((t ())))
    `(custom-variable-tag ((t ())))
    `(css-proprietary-property ((t ())))
