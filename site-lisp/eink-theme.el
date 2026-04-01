@@ -31,9 +31,9 @@
 
 (let ((black     "#000000")
       (white     "#ffffff")
-      (darkgray  "#606060")
-      (gray      "#999999")
-      (lightgray "#C0C0C0"))
+      (darkgray  "#808080")
+      (gray      "#A0A0A0")
+      (lightgray "#D0D0D0"))
   (custom-theme-set-faces
    `eink
    `(cursor ((t (:background ,black))))

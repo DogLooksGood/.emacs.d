@@ -15,6 +15,7 @@
  '(clojure-indent-keyword-style 'align-arguments)
  '(clojure-indent-style 'always-indent)
  '(clojure-toplevel-inside-comment-form t)
+ '(comment-empty-lines t)
  '(company-backends
    '(company-capf company-files
                   (company-dabbrev-code company-etags company-keywords)
