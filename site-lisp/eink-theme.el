@@ -31,8 +31,8 @@
 
 (let ((black     "#000000")
       (white     "#ffffff")
-      (darkgray  "#808080")
-      (gray      "#A0A0A0")
+      (darkgray  "#A0A0A0")
+      (gray      "#B0B0B0")
       (lightgray "#D0D0D0"))
   (custom-theme-set-faces
    `eink
@@ -564,9 +564,9 @@
    `(org-habit-ready-future-face ((t ())))
    `(org-headline-done ((t ())))
    `(org-headline-todo ((t ())))
-   `(org-hide ((t ())))
+   `(org-hide ((t (:foreground ,white))))
    `(org-imminent-deadline ((t ())))
-   `(org-indent ((t ())))
+   `(org-indent ((t (:foreground ,white))))
    `(org-inline-src-block ((t ())))
    `(org-latex-and-related ((t ())))
    `(org-level-1 ((t ())))

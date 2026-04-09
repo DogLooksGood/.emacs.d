@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: format
+# key: (f
+# --
+(format #t "$1 = ~s~n" $1$0
