@@ -360,7 +360,7 @@
    `(kmacro-menu-marked ((t ())))
    `(lazy-highlight ((t (:background ,lightgray))))
    `(line-number ((t (:foreground ,gray))))
-   `(line-number-current-line ((t (:bold t))))
+   `(line-number-current-line ((t ())))
    `(line-number-major-tick ((t ())))
    `(line-number-minor-tick ((t ())))
    `(link ((t ())))

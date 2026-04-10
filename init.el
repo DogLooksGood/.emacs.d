@@ -46,12 +46,10 @@
     (with-current-buffer "test.ss"
       (geiser-eval-buffer)))
 
-  (keymap-set geiser-mode-map "C-c C-t" #'geiser-quick-test)
-
   (add-hook 'geiser-mode-hook
             (lambda ()
-              (keymap-set geiser-mode-map "C-c C-y"
-                          'geiser-restart-repl))))
+              (keymap-set geiser-mode-map "C-c C-t" #'geiser-quick-test)
+              (keymap-set geiser-mode-map "C-c C-y" #'geiser-restart-repl))))
 
 (which-function-mode 1)
 
