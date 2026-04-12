@@ -41,14 +41,8 @@
 (fido-mode 1)
 
 (with-eval-after-load 'geiser
-  (defun geiser-quick-test ()
-    (interactive)
-    (with-current-buffer "test.ss"
-      (geiser-eval-buffer)))
-
   (add-hook 'geiser-mode-hook
             (lambda ()
-              (keymap-set geiser-mode-map "C-c C-t" #'geiser-quick-test)
               (keymap-set geiser-mode-map "C-c C-y" #'geiser-restart-repl))))
 
 (which-function-mode 1)
