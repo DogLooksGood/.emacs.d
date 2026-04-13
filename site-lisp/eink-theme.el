@@ -720,7 +720,7 @@
    `(shr-text ((t ())))
    `(smerge-base ((t ())))
    `(smerge-lower ((t ())))
-   `(smerge-markers ((t (:background ,darkgray))))
+   `(smerge-markers ((t (:inverse-video t))))
    `(smerge-refine-shadow-cursor ((t ())))
    `(smerge-refined-added ((t ())))
    `(smerge-refined-changed ((t ())))

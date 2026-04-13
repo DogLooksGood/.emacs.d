@@ -130,6 +130,11 @@
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
 (keymap-set mode-specific-map "z" #'eat-shell-command)
 (keymap-set mode-specific-map "o" ctl-x-4-map) ; other window prefix
+(keymap-set mode-specific-map "f" ctl-x-5-map) ; other frame prefix
+
+(keymap-set global-map "M-o" #'other-window)
+(keymap-unset other-window-repeat-map "o")
+(keymap-unset other-window-repeat-map "O")
 
 (with-eval-after-load "org"
   (add-hook 'org-mode-hook 'org-indent-mode))
