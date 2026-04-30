@@ -70,6 +70,7 @@
  '(geiser-chez-csug-url
    "file:///home/tianshu/websites/csug/cisco.github.io/ChezScheme/csug/")
  '(geiser-chez-tspl-url "file:///home/tianshu/websites/tspl/scheme.com/tspl4/")
+ '(geiser-repl-save-debugging-history-p nil)
  '(global-corfu-mode t)
  '(global-subword-mode t)
  '(global-visual-line-mode t)
@@ -105,7 +106,8 @@
  '(repeat-mode t)
  '(rg-custom-type-aliases '(("scm" . "*.scm") ("scm" . "*.ss")))
  '(ring-bell-function 'ignore)
- '(safe-local-variable-values '((geiser-guile-binary . "./build/main")))
+ '(safe-local-variable-values
+   '((typescript-indent-level . 2) (geiser-guile-binary . "./build/main")))
  '(savehist-file "~/.emacs.d/.local/history")
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -117,6 +119,16 @@
  '(transient-levels-file "~/.emacs.d/.local/transient/levels.el")
  '(transient-values-file "~/.emacs.d/.local/transient/values.el")
  '(typescript-ts-mode-indent-offset 4)
+ '(tzc-favourite-time-zones-alist
+   '(("Asia/Shanghai" "Shanghai") ("UTC+0000" "UTC")
+     ("America/New_York" "New_York") ("Europe/London" "London")
+     ("Europe/Berlin" "Berlin") ("Asia/Kolkata" "Kolkata")
+     ("Asia/Tokyo" "Tokyo") ("Asia/Dubai" "Dubai")
+     ("America/Chicago" "Chicago")))
+ '(tzc-time-zones
+   '("Asia/Kolkata" "UTC+0000" "America/New_York" "Europe/London"
+     "Europe/Berlin" "Asia/Shanghai" "Asia/Tokyo" "Asia/Dubai"
+     "Asia/Kolkata" "Europe/Moscow"))
  '(use-short-answers t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

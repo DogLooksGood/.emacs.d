@@ -37,13 +37,33 @@
 (straight-use-package 'rust-mode)
 (straight-use-package 'rg)
 (straight-use-package 'wgrep)
+(straight-use-package 'prisma-ts-mode)
+(straight-use-package 'dumb-jump)
+(straight-use-package 'markdown-mode)
+(straight-use-package 'go-mode)
+(straight-use-package 'dockerfile-mode)
+(straight-use-package 'tzc)
+(straight-use-package '(llm-tool-collection :host github
+                                            :repo "skissue/llm-tool-collection"))
 
-(fido-mode 1)
+(require 'tzc)
 
 (with-eval-after-load 'geiser
-  (add-hook 'geiser-mode-hook
-            (lambda ()
-              (keymap-set geiser-mode-map "C-c C-y" #'geiser-restart-repl))))
+  (advice-add 'geiser-eval-buffer :around
+	      (lambda (orig-fun &rest args)
+		(save-mark-and-excursion
+		  (goto-char (point-max))
+		  (apply orig-fun args)))))
+
+(with-eval-after-load 'gptel
+  (require 'llm-tool-collection)
+  (mapcar (apply-partially #'apply #'gptel-make-tool)
+          (llm-tool-collection-get-all)))
+
+(require 'dumb-jump)
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+
+(fido-mode 1)
 
 (which-function-mode 1)
 
@@ -129,8 +149,7 @@
 (keymap-set mode-specific-map "e" #'eglot)
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
 (keymap-set mode-specific-map "z" #'eat-shell-command)
-(keymap-set mode-specific-map "o" ctl-x-4-map) ; other window prefix
-(keymap-set mode-specific-map "f" ctl-x-5-map) ; other frame prefix
+(keymap-set mode-specific-map "f" #'ffap)
 
 (keymap-set global-map "M-o" #'other-window)
 (keymap-unset other-window-repeat-map "o")
