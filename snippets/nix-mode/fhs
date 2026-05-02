@@ -3,27 +3,39 @@
 # key: fhs
 # --
 {
-  description = "Flake description";
+  description = "";
 
   inputs = {
-    # Use one of following
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";    # stable
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # unstable
   };
 
-  outputs = inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
+  outputs = inputs@{ nixpkgs, ... }:
+  let
+    systems = [ "x86_64-linux" "aarch64-linux" ];
 
-      perSystem = { config, self', inputs', pkgs, system, ... }:
-        {
-          devShells.default = (pkgs.buildFHSEnv {
-            name = "";
-            targetPkgs = pkgs: with pkgs; [
-            ];
-            runScript = ''env SHELL=/usr/bin/bash bash'';
-          }).env;
-        };
+    perSystem = nixpkgs.lib.genAttrs systems;
+
+    nixpkgsFor = system:
+      import nixpkgs {
+        inherit system;
+        config = {};
+        overlays = [];
+      };
+  in
+    {
+
+      devShells = perSystem (system:
+        let pkgs = nixpkgsFor system;
+        in
+          {
+            default = (pkgs.buildFHSEnv {
+              name = "";
+              targetPkgs = pkgs: with pkgs; [
+              ];
+              runScript = ''env SHELL=/usr/bin/bash bash'';
+            }).env;
+          }
+      );
     };
 }
