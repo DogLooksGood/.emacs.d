@@ -104,7 +104,7 @@
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/.local/recentf.eld")
  '(repeat-mode t)
- '(rg-custom-type-aliases '(("scm" . "*.scm") ("scm" . "*.ss")))
+ '(rg-custom-type-aliases '(("scm" . "*.scm") ("scm" . "*.ss") ("scm" . "*.sls")))
  '(ring-bell-function 'ignore)
  '(safe-local-variable-values
    '((typescript-indent-level . 2) (geiser-guile-binary . "./build/main")))

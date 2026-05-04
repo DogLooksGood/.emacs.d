@@ -24,7 +24,6 @@
       };
   in
     {
-
       devShells = perSystem (system:
         let pkgs = nixpkgsFor system;
         in

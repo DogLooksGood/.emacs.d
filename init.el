@@ -151,7 +151,8 @@
 (keymap-set mode-specific-map "z" #'eat-shell-command)
 (keymap-set mode-specific-map "f" #'ffap)
 
-(keymap-set global-map "M-o" #'other-window)
+(require 'windmove)
+(windmove-default-keybindings 'meta)
 (keymap-unset other-window-repeat-map "o")
 (keymap-unset other-window-repeat-map "O")
 
