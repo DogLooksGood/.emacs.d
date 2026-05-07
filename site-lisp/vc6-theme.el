@@ -667,7 +667,7 @@
    `(shell-highlight-undef-undefined-face ((t ())))
    `(shortdoc-heading ((t ())))
    `(shortdoc-section ((t ())))
-   `(show-paren-match ((t (:background ,lightgray))))
+   `(show-paren-match ((t (:box (:line-width (-1 . -1) :color ,black) :background ,yellow))))
    `(show-paren-match-expression ((t ())))
    `(show-paren-mismatch ((t ())))
    `(shr-abbreviation ((t ())))
