@@ -27,13 +27,12 @@
 (straight-use-package '(geiser-chez :host github :repo "DogLooksGood/geiser-chez"))
 (straight-use-package 'cider)
 (straight-use-package 'gptel)
-(straight-use-package 'paredit)
 (straight-use-package 'envrc)
+(straight-use-package 'smartparens)
 (straight-use-package 'yasnippet)
 (straight-use-package 'magit)
 (straight-use-package 'company)
 (straight-use-package 'pass)
-(straight-use-package '(eat :host codeberg :repo "akib/emacs-eat"))
 (straight-use-package 'rust-mode)
 (straight-use-package 'rg)
 (straight-use-package 'wgrep)
@@ -43,8 +42,16 @@
 (straight-use-package 'go-mode)
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'tzc)
-(straight-use-package '(llm-tool-collection :host github
-                                            :repo "skissue/llm-tool-collection"))
+
+(require 'smartparens-config)
+(add-hook 'prog-mode-hook #'smartparens-mode)
+(dolist (h '(emacs-lisp-mode-hook clojure-mode-hook scheme-mode-hook))
+  (add-hook h #'smartparens-strict-mode))
+(with-eval-after-load 'smartparens
+  (keymap-set smartparens-mode-map "C-)" 'sp-forward-slurp-sexp)
+  (keymap-set smartparens-mode-map "C-(" 'sp-forward-barf-sexp)
+  (keymap-set smartparens-mode-map "M-i" 'sp-splice-sexp)
+  (keymap-set smartparens-mode-map "M-o" 'sp-raise-sexp))
 
 (require 'tzc)
 
@@ -76,18 +83,8 @@
         guix-repl-use-latest  nil
         guix-repl-use-server  nil))
 
-(require 'eat)
-(when window-system
-  (keymap-set global-map "C-z" 'eat))
-(defun eat-shell-command ()
-  (interactive)
-  (let* ((program (read-shell-command "(EAT)shell command: " ""))
-         (eat-buffer-name (format "*EAT: %s*" program)))
-    (eat--1 program current-prefix-arg #'pop-to-buffer-same-window)))
-
 (require 'rg)
 (keymap-set project-prefix-map "g" 'rg-project)
-(keymap-set project-prefix-map "s" 'eat-project)
 
 (require 'company)
 (require 'company-tng)
@@ -107,14 +104,6 @@
 (yas-load-directory (expand-file-name "snippets" user-emacs-directory))
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (add-hook 'conf-mode-hook 'yas-minor-mode)
-
-(require 'paredit)
-(keymap-unset paredit-mode-map "M-s")
-(keymap-set paredit-mode-map "M-i" #'paredit-splice-sexp)
-
-(add-hook 'emacs-lisp-mode-hook #'paredit-mode)
-(add-hook 'clojure-mode-hook #'paredit-mode)
-(add-hook 'scheme-mode-hook #'paredit-mode)
 
 (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
@@ -148,7 +137,6 @@
 (keymap-set mode-specific-map "h" #'duplicate-dwim)
 (keymap-set mode-specific-map "e" #'eglot)
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
-(keymap-set mode-specific-map "z" #'eat-shell-command)
 (keymap-set mode-specific-map "f" #'ffap)
 
 (require 'windmove)
