@@ -62,11 +62,6 @@
 		  (goto-char (point-max))
 		  (apply orig-fun args)))))
 
-(with-eval-after-load 'gptel
-  (require 'llm-tool-collection)
-  (mapcar (apply-partially #'apply #'gptel-make-tool)
-          (llm-tool-collection-get-all)))
-
 (require 'dumb-jump)
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
@@ -111,7 +106,10 @@
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 
 (with-eval-after-load "cc-mode"
-  (keymap-set c-mode-map "C-c C-c" #'ff-find-other-file))
+  (keymap-set c-mode-map "C-c o" #'ff-find-other-file))
+(with-eval-after-load "scheme-mode"
+  (setq-default ff-other-file-alist (append cc-other-file-alist '(("\\.scm\\'"  (".sls")) ("\\.sls\\'"  (".scm")))))
+  (keymap-set scheme-mode-map "C-c o" #'ff-find-other-file))
 
 (with-eval-after-load "gptel"
   (make-local-variable 'gptel-context))
