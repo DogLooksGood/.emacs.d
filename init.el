@@ -47,11 +47,19 @@
 (add-hook 'prog-mode-hook #'smartparens-mode)
 (dolist (h '(emacs-lisp-mode-hook clojure-mode-hook scheme-mode-hook))
   (add-hook h #'smartparens-strict-mode))
+
+(defun sp-backward-delete-dwim ()
+  (interactive)
+  (if (use-region-p)
+      (call-interactively 'sp-delete-region)
+    (call-interactively 'sp-backward-delete-char)))
+
 (with-eval-after-load 'smartparens
   (keymap-set smartparens-mode-map "C-)" 'sp-forward-slurp-sexp)
   (keymap-set smartparens-mode-map "C-(" 'sp-forward-barf-sexp)
   (keymap-set smartparens-mode-map "M-i" 'sp-splice-sexp)
-  (keymap-set smartparens-mode-map "M-o" 'sp-raise-sexp))
+  (keymap-set smartparens-mode-map "M-o" 'sp-raise-sexp)
+  (keymap-set smartparens-strict-mode-map "DEL" 'sp-backward-delete-dwim))
 
 (require 'tzc)
 
