@@ -43,6 +43,12 @@
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'tzc)
 
+(with-eval-after-load 'paredit
+  (keymap-unset paredit-mode-map "M-s")
+  (keymap-unset paredit-mode-map "M-r")
+  (keymap-set paredit-mode-map "M-i" 'paredit-splice-sexp)
+  (keymap-set paredit-mode-map "M-o" 'paredit-raise-sexp))
+
 (dolist (h '(emacs-lisp-mode-hook clojure-mode-hook scheme-mode-hook))
   (add-hook h 'paredit-mode))
 (with-eval-after-load "paredit"
@@ -122,7 +128,7 @@
 (keymap-set mode-specific-map "RET" #'gptel-send)
 (keymap-set mode-specific-map "a" #'gptel-add)
 (keymap-set mode-specific-map "g" #'gptel)
-(keymap-set mode-specific-map "r" #'gptel-rewrite)
+(keymap-set mode-specific-map "R" #'gptel-rewrite)
 (keymap-set mode-specific-map "s" #'window-toggle-side-windows)
 (keymap-set mode-specific-map "w" #'window-swap-states)
 (keymap-set mode-specific-map "l" #'recentf-open-files)
