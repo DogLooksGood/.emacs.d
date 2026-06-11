@@ -60,7 +60,8 @@
                          :documentOnTypeFormattingProvider
                          :colorProvider :foldingRangeProvider
                          :executeCommandProvider :inlayHintProvider
-                         :typeHierarchyProvider :callHierarchyProvider))
+                         :typeHierarchyProvider :callHierarchyProvider
+                         :hoverProvider))
  '(eldoc-echo-area-use-multiline-p nil)
  '(envrc-global-mode t)
  '(envrc-show-summary-in-minibuffer nil)

@@ -67,6 +67,12 @@
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 (fido-mode 1)
+(defun fido-completion-styles-advice (&rest _args)
+  "Override completion styles after fido setup."
+  (when (and fido-mode (icomplete-simple-completing-p))
+    (setq-local completion-styles '(substring basic partial-completion))))
+
+(advice-add 'icomplete--fido-mode-setup :after #'fido-completion-styles-advice)
 
 (which-function-mode 1)
 

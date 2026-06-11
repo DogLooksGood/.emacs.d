@@ -58,11 +58,10 @@
       (purple-3  "#b6a4bd")
       (green-bg  "#002103")
       (red-bg    "#210700")
-      (yellow-bg "#423b04")
-      (pink      "#fcb0ef"))
+      (yellow-bg "#423b04"))
   (custom-theme-set-faces
    `minidark
-   `(cursor ((t (:background ,pink))))
+   `(cursor ((t (:background ,white))))
    `(default ((t (:foreground ,silver :background ,black))))
    `(region ((t (:inverse-video t))))
    `(abbrev-table-name ((t ())))
