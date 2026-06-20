@@ -74,8 +74,6 @@
 
 (advice-add 'icomplete--fido-mode-setup :after #'fido-completion-styles-advice)
 
-(which-function-mode 1)
-
 (require 'envrc)
 (envrc-global-mode t)
 

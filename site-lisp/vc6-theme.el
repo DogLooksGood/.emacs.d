@@ -45,7 +45,7 @@
    `vc6
    `(cursor ((t (:background ,black))))
    `(default ((t (:foreground ,black :background ,white))))
-   `(region ((t (:foreground ,white :background ,cyan))))
+   `(region ((t (:foreground ,white :background ,black))))
    `(abbrev-table-name ((t ())))
    `(ansi-color-black ((t (:foreground ,black))))
    `(ansi-color-blue ((t (:foreground ,gray))))
@@ -187,7 +187,7 @@
    `(epa-validity-high ((t ())))
    `(epa-validity-low ((t ())))
    `(epa-validity-medium ((t ())))
-   `(error ((t ())))
+   `(error ((t (:foreground "#FF0000"))))
    `(escape-glyph ((t ())))
    `(eww-form-checkbox ((t ())))
    `(eww-form-file ((t ())))
