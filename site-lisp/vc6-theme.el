@@ -45,7 +45,7 @@
    `vc6
    `(cursor ((t (:background ,black))))
    `(default ((t (:foreground ,black :background ,white))))
-   `(region ((t (:foreground ,white :background ,black))))
+   `(region ((t (:foreground ,white :background ,cyan))))
    `(abbrev-table-name ((t ())))
    `(ansi-color-black ((t (:foreground ,black))))
    `(ansi-color-blue ((t (:foreground ,gray))))
