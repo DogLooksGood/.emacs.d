@@ -6,9 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list '("~/.local/share/info"))
  '(auto-save-list-file-prefix "~/.emacs.d/.local/auto-save-list/.saves-")
- '(blink-cursor-blinks 30)
  '(blink-cursor-interval 0.3)
- '(blink-cursor-mode t)
+ '(blink-cursor-mode nil)
  '(c-basic-offset 'set-from-style)
  '(c-default-style
    '((c-mode . "gnu") (java-mode . "java") (awk-mode . "awk")
