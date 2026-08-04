@@ -72,6 +72,21 @@
   (when (and fido-mode (icomplete-simple-completing-p))
     (setq-local completion-styles '(substring basic partial-completion))))
 
+(defun fido-backward-updir ()
+  (interactive)
+  (when (eq (icomplete--category) 'file)
+    (when (string-equal (icomplete--field-string) "~/")
+      (delete-region (icomplete--field-beg) (icomplete--field-end))
+      (insert (expand-file-name "~/"))
+      (goto-char (line-end-position)))
+    (save-excursion
+      (goto-char (1- (point)))
+      (when (search-backward "/" (point-min) t)
+        (delete-region (1+ (point)) (point-max))))))
+
+(keymap-set icomplete-fido-mode-map "DEL" 'backward-delete-char)
+(keymap-set icomplete-fido-mode-map "M-<backspace>" 'fido-backward-updir)
+
 (advice-add 'icomplete--fido-mode-setup :after #'fido-completion-styles-advice)
 
 (require 'envrc)

@@ -73,6 +73,7 @@
    "file:///home/tianshu/websites/csug/cisco.github.io/ChezScheme/csug/")
  '(geiser-chez-tspl-url "file:///home/tianshu/websites/tspl/scheme.com/tspl4/")
  '(geiser-repl-save-debugging-history-p nil)
+ '(global-auto-revert-mode t)
  '(global-corfu-mode t)
  '(global-subword-mode t)
  '(global-visual-line-mode t)
