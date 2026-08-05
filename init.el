@@ -86,6 +86,7 @@
 
 (keymap-set icomplete-fido-mode-map "DEL" 'backward-delete-char)
 (keymap-set icomplete-fido-mode-map "M-<backspace>" 'fido-backward-updir)
+(keymap-set icomplete-fido-mode-map "M-DEL" 'fido-backward-updir)
 
 (advice-add 'icomplete--fido-mode-setup :after #'fido-completion-styles-advice)
 
