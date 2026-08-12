@@ -56,13 +56,6 @@
 
 (require 'tzc)
 
-(with-eval-after-load 'geiser
-  (advice-add 'geiser-eval-buffer :around
-	      (lambda (orig-fun &rest args)
-		(save-mark-and-excursion
-		  (goto-char (point-max))
-		  (apply orig-fun args)))))
-
 (require 'dumb-jump)
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
@@ -71,6 +64,9 @@
   "Override completion styles after fido setup."
   (when (and fido-mode (icomplete-simple-completing-p))
     (setq-local completion-styles '(substring basic partial-completion))))
+
+(with-eval-after-load "geiser-chez"
+  (require 'patch-geiser))
 
 (defun fido-backward-updir ()
   (interactive)
