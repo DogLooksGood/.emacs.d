@@ -32,7 +32,8 @@
  '(compilation-auto-jump-to-first-error nil)
  '(compilation-skip-threshold 1)
  '(compilation-skip-visited nil)
- '(completion-styles '(basic substring flex))
+ '(completion-category-overrides '((file (styles partial-completion))))
+ '(completion-styles '(orderless basic))
  '(corfu-auto t)
  '(corfu-auto-delay 0.1)
  '(corfu-auto-prefix 2)
@@ -64,6 +65,7 @@
  '(eldoc-echo-area-use-multiline-p nil)
  '(envrc-global-mode t)
  '(envrc-show-summary-in-minibuffer nil)
+ '(epg-pinentry-mode 'loopback)
  '(ff-ignore-include t)
  '(font-use-system-font t)
  '(frame-resize-pixelwise t)
@@ -79,6 +81,7 @@
  '(global-visual-line-mode t)
  '(gptel-default-mode 'org-mode)
  '(gptel-prompt-prefix-alist '((org-mode . "* ")))
+ '(gptel-use-curl t)
  '(imenu-flatten 'annotation)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -132,7 +135,8 @@
    '("Asia/Kolkata" "UTC+0000" "America/New_York" "Europe/London"
      "Europe/Berlin" "Asia/Shanghai" "Asia/Tokyo" "Asia/Dubai"
      "Asia/Kolkata" "Europe/Moscow"))
- '(use-short-answers t))
+ '(use-short-answers t)
+ '(window-divider-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

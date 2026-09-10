@@ -38,6 +38,7 @@
 (straight-use-package 'wgrep)
 (straight-use-package 'prisma-ts-mode)
 (straight-use-package 'dumb-jump)
+(straight-use-package 'orderless)
 (straight-use-package 'markdown-mode)
 (straight-use-package 'go-mode)
 (straight-use-package 'dockerfile-mode)
