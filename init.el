@@ -1,5 +1,11 @@
 ;; -*- lexical-binding: t; -*-
 
+(require 'init-straight)
+
+(let ((local-conf (expand-file-name "local.el" user-emacs-directory)))
+  (when (file-exists-p local-conf)
+    (load local-conf)))
+
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
@@ -20,29 +26,18 @@
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
 (require 'bedit)
-
-(straight-use-package 'clojure-mode)
-(straight-use-package 'nix-ts-mode)
+(straight-use-package '(xref :type built-in))
+(straight-use-package '(project :type built-in))
 (straight-use-package 'geiser)
 (straight-use-package '(geiser-chez :host github :repo "DogLooksGood/geiser-chez"))
-(straight-use-package 'cider)
 (straight-use-package 'gptel)
 (straight-use-package 'envrc)
 (straight-use-package 'paredit)
+(straight-use-package 'corfu)
+(straight-use-package 'cape)
 (straight-use-package 'yasnippet)
-(straight-use-package 'magit)
-(straight-use-package 'company)
 (straight-use-package 'pass)
-(straight-use-package 'rust-mode)
-(straight-use-package 'rg)
-(straight-use-package 'wgrep)
-(straight-use-package 'prisma-ts-mode)
 (straight-use-package 'dumb-jump)
-(straight-use-package 'orderless)
-(straight-use-package 'markdown-mode)
-(straight-use-package 'go-mode)
-(straight-use-package 'dockerfile-mode)
-(straight-use-package 'tzc)
 
 (with-eval-after-load 'paredit
   (keymap-unset paredit-mode-map "M-s")
@@ -50,21 +45,31 @@
   (keymap-set paredit-mode-map "M-i" 'paredit-splice-sexp)
   (keymap-set paredit-mode-map "M-o" 'paredit-raise-sexp))
 
-(dolist (h '(emacs-lisp-mode-hook clojure-mode-hook scheme-mode-hook))
+(dolist (h '(emacs-lisp-mode-hook scheme-mode-hook))
   (add-hook h 'paredit-mode))
 (with-eval-after-load "paredit"
   (keymap-unset paredit-mode-map "RET"))
 
-(require 'tzc)
-
 (require 'dumb-jump)
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
+(require 'corfu)
+(require 'cape)
+(add-hook 'text-mode-hook #'corfu-mode)
+(add-hook 'conf-mode-hook #'corfu-mode)
+(add-hook 'prog-mode-hook #'corfu-mode)
+(define-key corfu-map [remap next-line] nil)
+(define-key corfu-map [remap previous-line] nil)
+(define-key corfu-map [remap beginning-of-visual-line] nil)
+(define-key corfu-map [remap end-of-visual-line] nil)
+(keymap-unset corfu-map "RET")
+(keymap-set corfu-map "M-p" #'corfu-previous)
+(keymap-set corfu-map "M-n" #'corfu-next)
+(keymap-set corfu-mode-map "M-n" #'completion-at-point)
+(add-hook 'completion-at-point-functions #'cape-dabbrev)
+(add-hook 'completion-at-point-functions #'cape-file)
+
 (fido-mode 1)
-(defun fido-completion-styles-advice (&rest _args)
-  "Override completion styles after fido setup."
-  (when (and fido-mode (icomplete-simple-completing-p))
-    (setq-local completion-styles '(substring basic partial-completion))))
 
 (with-eval-after-load "geiser-chez"
   (require 'patch-geiser))
@@ -85,62 +90,22 @@
 (keymap-set icomplete-fido-mode-map "M-<backspace>" 'fido-backward-updir)
 (keymap-set icomplete-fido-mode-map "M-DEL" 'fido-backward-updir)
 
-(advice-add 'icomplete--fido-mode-setup :after #'fido-completion-styles-advice)
-
 (require 'envrc)
 (envrc-global-mode t)
-
-(with-eval-after-load 'guix-repl
-  (setq guix-guile-program  '("guix" "repl")
-        guix-config-scheme-compiled-directory  nil
-        guix-repl-use-latest  nil
-        guix-repl-use-server  nil))
-
-(require 'rg)
-(keymap-set project-prefix-map "g" 'rg-project)
-
-(require 'company)
-(require 'company-tng)
-(add-hook 'prog-mode-hook #'company-mode)
-(add-hook 'conf-mode-hook #'company-mode)
-(add-hook 'text-mode-hook #'company-mode)
-(company-tng-configure-default)
-(keymap-unset company-active-map "TAB")
-(keymap-unset company-active-map "<tab>")
-(keymap-unset company-active-map "C-n")
-(keymap-unset company-active-map "C-p")
-(keymap-set company-mode-map   "M-n" #'company-complete-common)
-(keymap-set company-active-map "M-p" #'company-select-previous)
-(keymap-set company-active-map "M-n" #'company-select-next)
 
 (require 'yasnippet)
 (yas-load-directory (expand-file-name "snippets" user-emacs-directory))
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (add-hook 'conf-mode-hook 'yas-minor-mode)
 
-(add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'conf-mode-hook 'display-line-numbers-mode)
 
 (with-eval-after-load "cc-mode"
   (keymap-set c-mode-map "C-c o" #'ff-find-other-file))
-(with-eval-after-load "scheme"
-  (setq-default ff-other-file-alist (append cc-other-file-alist '(("\\.scm\\'"  (".sls")) ("\\.sls\\'"  (".scm")))))
-  (keymap-set scheme-mode-map "C-c o" #'ff-find-other-file))
 
 (with-eval-after-load "gptel"
   (make-local-variable 'gptel-context))
-
-;;; Per-project compile history
-(defvar per-project-compile-history nil)
-(define-advice project-compile (:around (&rest args) project-local-history)
-  (let* ((root (project-root (project-current t)))
-         (project-hist (alist-get root per-project-compile-history nil nil #'equal))
-         (compile-history project-hist)
-         (compile-command (and project-hist
-                               (car project-hist))))
-    (unwind-protect (apply args) (setf (alist-get root per-project-compile-history nil nil #'equal) compile-history))))
 
 (keymap-set mode-specific-map "RET" #'gptel-send)
 (keymap-set mode-specific-map "a" #'gptel-add)
@@ -155,8 +120,6 @@
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
 (keymap-set mode-specific-map "f" #'ffap)
 
-(require 'windmove)
-(windmove-default-keybindings 'meta)
 (keymap-unset other-window-repeat-map "o")
 (keymap-unset other-window-repeat-map "O")
 

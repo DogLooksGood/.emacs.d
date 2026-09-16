@@ -30,8 +30,8 @@
 
 (deftheme vc6 "A light theme for E-ink monitor.")
 
-(let ((black     "#260919")
-      (white     "#E9E9E9")
+(let ((black     "#000000")
+      (white     "#F5F5F5")
       (blue      "#0000CC")
       (green     "#007000")
       (red       "#800000")

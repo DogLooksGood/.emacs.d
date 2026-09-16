@@ -1,0 +1,2 @@
+;;; -*- coding: utf-8; mode: lisp-data -*-
+(("/home/tianshu/opt/emacs-31.1/src/" (dired-filename . "/home/tianshu/opt/emacs-31.1/src/atimer.o")) ("/home/tianshu/opt/emacs-31.1/" (dired-filename . "/home/tianshu/opt/emacs-31.1/Makefile")) ("/usr/local/share/emacs/31.1/etc/NEWS" . 157817) ("/home/tianshu/workspace/octobus/c/main.c" . 982))

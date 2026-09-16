@@ -1,14 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
-(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
-(require 'init-straight)
-
-(require 'minidark-theme)
-(require 'eink-theme)
-(require 'simple-theme)
-(require 'vc6-theme)
-
-(let ((local-conf (expand-file-name "local.el" user-emacs-directory)))
-  (when (file-exists-p local-conf)
-    (load local-conf)))
+(when (display-graphic-p)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1))

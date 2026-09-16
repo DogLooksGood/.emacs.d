@@ -33,25 +33,29 @@
  '(compilation-skip-threshold 1)
  '(compilation-skip-visited nil)
  '(completion-category-overrides '((file (styles partial-completion))))
- '(completion-styles '(orderless basic))
+ '(completions-format 'one-column)
  '(corfu-auto t)
  '(corfu-auto-delay 0.1)
  '(corfu-auto-prefix 2)
  '(corfu-on-exact-match nil)
  '(corfu-preselect 'prompt)
  '(corfu-preview-current 'insert)
+ '(custom-safe-themes
+   '("63648ff9df5830a09a2daa22b371a2c31913cb86c9a21292df5cebb6cdfff045"
+     "1db40cdfadf3c207549aa8ba786942a8d5671825ff3b2a51cb2b8fd93a902ee1"
+     default))
  '(dired-dwim-target 'dired-dwim-target-recent)
  '(dired-listing-switches "-alhv --group-directories-first")
  '(dired-use-ls-dired t)
  '(display-buffer-alist
    '(("\\*\\(xref\\|grep\\|rg\\)\\*" display-buffer-in-side-window
-      (side . left) (slot . 0) (window-width . 0.4))
+      (side . left) (slot . 0) (window-width . 0.5))
      ("\\*eldoc\\*" display-buffer-in-side-window (side . right)
       (slot . -1) (window-width . 0.5))
      ("\\*compilation\\*" display-buffer-in-side-window
-      (side . bottom) (slot . 0) (window-height . 0.4))
+      (side . bottom) (slot . 0) (window-height . 0.5))
      ("\\*Async Shell Command\\*" display-buffer-in-side-window
-      (side . bottom) (slot . 1) (window-height . 0.4))))
+      (side . bottom) (slot . 1) (window-height . 0.5))))
  '(eglot-code-action-indicator "?")
  '(eglot-ignored-server-capabilities
    '(:referencesProvider :documentHighlightProvider
@@ -136,7 +140,7 @@
      "Europe/Berlin" "Asia/Shanghai" "Asia/Tokyo" "Asia/Dubai"
      "Asia/Kolkata" "Europe/Moscow"))
  '(use-short-answers t)
- '(window-divider-mode t))
+ '(xterm-mouse-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
