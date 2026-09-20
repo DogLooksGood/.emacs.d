@@ -49,7 +49,7 @@
  '(dired-use-ls-dired t)
  '(display-buffer-alist
    '(("\\*\\(xref\\|grep\\|rg\\)\\*" display-buffer-in-side-window
-      (side . left) (slot . 0) (window-width . 0.5))
+      (side . left) (slot . 0) (window-width . 0.4))
      ("\\*eldoc\\*" display-buffer-in-side-window (side . right)
       (slot . -1) (window-width . 0.5))
      ("\\*compilation\\*" display-buffer-in-side-window

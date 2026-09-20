@@ -9,7 +9,15 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
+(repeat-mode 1)
+
 (with-eval-after-load "rect"
+  (keymap-set rectangle-mark-mode-map "f"   #'forward-char)
+  (keymap-set rectangle-mark-mode-map "b"   #'backward-char)
+  (keymap-set rectangle-mark-mode-map "n"   #'next-line)
+  (keymap-set rectangle-mark-mode-map "p"   #'previous-line)
+  (keymap-set rectangle-mark-mode-map "a"   #'beginning-of-line)
+  (keymap-set rectangle-mark-mode-map "e"   #'end-of-line)
   (keymap-set rectangle-mark-mode-map "SPC" #'string-rectangle)
   (keymap-set rectangle-mark-mode-map "DEL" #'kill-rectangle))
 
@@ -38,6 +46,7 @@
 (straight-use-package 'yasnippet)
 (straight-use-package 'pass)
 (straight-use-package 'dumb-jump)
+(straight-use-package 'xclip)
 
 (with-eval-after-load 'paredit
   (keymap-unset paredit-mode-map "M-s")
@@ -58,14 +67,13 @@
 (add-hook 'text-mode-hook #'corfu-mode)
 (add-hook 'conf-mode-hook #'corfu-mode)
 (add-hook 'prog-mode-hook #'corfu-mode)
-(define-key corfu-map [remap next-line] nil)
-(define-key corfu-map [remap previous-line] nil)
-(define-key corfu-map [remap beginning-of-visual-line] nil)
-(define-key corfu-map [remap end-of-visual-line] nil)
-(keymap-unset corfu-map "RET")
-(keymap-set corfu-map "M-p" #'corfu-previous)
-(keymap-set corfu-map "M-n" #'corfu-next)
-(keymap-set corfu-mode-map "M-n" #'completion-at-point)
+(with-eval-after-load "corfu"
+  (setq corfu-map
+        (let ((map (make-keymap)))
+          (keymap-set map "M-n" #'corfu-next)
+          (keymap-set map "M-p" #'corfu-previous)
+          map)))
+;; (keymap-set corfu-mode-map "M-n" #'completion-at-point)
 (add-hook 'completion-at-point-functions #'cape-dabbrev)
 (add-hook 'completion-at-point-functions #'cape-file)
 
@@ -97,9 +105,6 @@
 (yas-load-directory (expand-file-name "snippets" user-emacs-directory))
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (add-hook 'conf-mode-hook 'yas-minor-mode)
-
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(add-hook 'conf-mode-hook 'display-line-numbers-mode)
 
 (with-eval-after-load "cc-mode"
   (keymap-set c-mode-map "C-c o" #'ff-find-other-file))
@@ -138,6 +143,9 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (add-hook 'buffer-list-update-hook #'recentf-track-opened-file)
+
+(xclip-mode 1)
+(xterm-mouse-mode 1)
 
 (require 'server)
 (unless (server-running-p)

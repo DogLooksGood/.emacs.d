@@ -47,10 +47,7 @@
 (register-definition-prefixes "vc6-theme" '("vc6"))
 
 
-;;; Generated autoloads from why3.el
 
-(register-definition-prefixes "why3" '("why3-"))
-
 ;;; End of scraped data
 
 (provide '.user-lisp-autoloads)
