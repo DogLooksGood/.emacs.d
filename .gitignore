@@ -1,8 +1,7 @@
 straight/repos
 straight/build*
 eln-cache
-.local
+.cache
 local.el
 tree-sitter
 tramp
-url

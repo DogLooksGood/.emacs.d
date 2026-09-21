@@ -5,7 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list '("~/.local/share/info"))
- '(auto-save-list-file-prefix "~/.emacs.d/.local/auto-save-list/.saves-")
+ '(auto-save-list-file-prefix "~/.emacs.d/.cache/auto-save-list/.saves-")
  '(blink-cursor-interval 0.3)
  '(blink-cursor-mode nil)
  '(c-basic-offset 'set-from-style)
@@ -101,7 +101,7 @@
  '(package-selected-packages '(company envrc yasnippet))
  '(pass-show-keybindings nil)
  '(pass-username-fallback-on-filename t)
- '(project-list-file "~/.emacs.d/.local/projects.eld")
+ '(project-list-file "~/.emacs.d/.cache/projects.eld")
  '(project-mode-line nil)
  '(project-switch-commands
    '((project-find-file "Find file" nil)
@@ -112,22 +112,25 @@
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(recentf-mode t)
- '(recentf-save-file "~/.emacs.d/.local/recentf.eld")
+ '(recentf-save-file "~/.emacs.d/.cache/recentf.eld")
  '(repeat-mode t)
  '(rg-custom-type-aliases '(("scm" . "*.scm") ("scm" . "*.ss") ("scm" . "*.sls")))
  '(ring-bell-function 'ignore)
  '(safe-local-variable-values
    '((typescript-indent-level . 2) (geiser-guile-binary . "./build/main")))
- '(savehist-file "~/.emacs.d/.local/history")
+ '(save-place-file "~/.emacs.d/.cache/places.eld")
+ '(save-place-mode t)
+ '(savehist-file "~/.emacs.d/.cache/history")
  '(savehist-mode t)
  '(scroll-bar-mode nil)
  '(show-paren-style 'parenthesis)
  '(speedbar-use-images nil)
  '(straight-check-for-modifications '(find-when-checking only-once))
  '(tool-bar-mode nil)
- '(transient-history-file "~/.emacs.d/.local/transient/history.el")
- '(transient-levels-file "~/.emacs.d/.local/transient/levels.el")
- '(transient-values-file "~/.emacs.d/.local/transient/values.el")
+ '(tramp-persistency-file-name "~/.emacs.d/.cache/tramp")
+ '(transient-history-file "~/.emacs.d/.cache/transient/history.el")
+ '(transient-levels-file "~/.emacs.d/.cache/transient/levels.el")
+ '(transient-values-file "~/.emacs.d/.cache/transient/values.el")
  '(typescript-ts-mode-indent-offset 4)
  '(tzc-favourite-time-zones-alist
    '(("Asia/Shanghai" "Shanghai") ("UTC+0000" "UTC")
@@ -139,6 +142,7 @@
    '("Asia/Kolkata" "UTC+0000" "America/New_York" "Europe/London"
      "Europe/Berlin" "Asia/Shanghai" "Asia/Tokyo" "Asia/Dubai"
      "Asia/Kolkata" "Europe/Moscow"))
+ '(url-cookie-file "~/.emacs.d/.cache/url/cookies")
  '(use-short-answers t)
  '(xterm-mouse-mode t))
 (custom-set-faces
