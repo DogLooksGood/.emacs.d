@@ -32,11 +32,6 @@
 (register-definition-prefixes "patch-geiser" '("user/"))
 
 
-;;; Generated autoloads from phosphorus-theme.el
-
-(register-definition-prefixes "phosphorus-theme" '("phosphorus"))
-
-
 ;;; Generated autoloads from simple-theme.el
 
 (register-definition-prefixes "simple-theme" '("simple"))
@@ -45,9 +40,7 @@
 ;;; Generated autoloads from vc6-theme.el
 
 (register-definition-prefixes "vc6-theme" '("vc6"))
-
 
-
 ;;; End of scraped data
 
 (provide '.user-lisp-autoloads)

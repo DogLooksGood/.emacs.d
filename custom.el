@@ -71,6 +71,7 @@
  '(envrc-show-summary-in-minibuffer nil)
  '(epg-pinentry-mode 'loopback)
  '(ff-ignore-include t)
+ '(fido-mode nil)
  '(font-use-system-font t)
  '(frame-resize-pixelwise t)
  '(gdb-many-windows t)

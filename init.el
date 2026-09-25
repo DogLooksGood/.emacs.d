@@ -46,7 +46,7 @@
 (straight-use-package 'yasnippet)
 (straight-use-package 'pass)
 (straight-use-package 'dumb-jump)
-(straight-use-package 'xclip)
+(straight-use-package 'vertico)
 
 (with-eval-after-load 'paredit
   (keymap-unset paredit-mode-map "M-s")
@@ -72,31 +72,40 @@
         (let ((map (make-keymap)))
           (keymap-set map "M-n" #'corfu-next)
           (keymap-set map "M-p" #'corfu-previous)
-          map)))
-;; (keymap-set corfu-mode-map "M-n" #'completion-at-point)
+          map))
+  (keymap-set corfu-mode-map "M-n" #'completion-at-point))
 (add-hook 'completion-at-point-functions #'cape-dabbrev)
 (add-hook 'completion-at-point-functions #'cape-file)
 
-(fido-mode 1)
+(require 'vertico)
+(require 'vertico-flat)
+(vertico-mode 1)
+(vertico-flat-mode 1)
+(require 'vertico-directory)
+(keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word)
+(keymap-set vertico-map "C-s" #'vertico-next)
+(keymap-set vertico-map "C-r" #'vertico-previous)
 
-(with-eval-after-load "geiser-chez"
-  (require 'patch-geiser))
-
-(defun fido-backward-updir ()
-  (interactive)
-  (when (eq (icomplete--category) 'file)
-    (when (string-equal (icomplete--field-string) "~/")
-      (delete-region (icomplete--field-beg) (icomplete--field-end))
-      (insert (expand-file-name "~/"))
-      (goto-char (line-end-position)))
-    (save-excursion
-      (goto-char (1- (point)))
-      (when (search-backward "/" (point-min) t)
-        (delete-region (1+ (point)) (point-max))))))
-
-(keymap-set icomplete-fido-mode-map "DEL" 'backward-delete-char)
-(keymap-set icomplete-fido-mode-map "M-<backspace>" 'fido-backward-updir)
-(keymap-set icomplete-fido-mode-map "M-DEL" 'fido-backward-updir)
+;; (fido-mode 1)
+;;
+;; (with-eval-after-load "geiser-chez"
+;;   (require 'patch-geiser))
+;;
+;; (defun fido-backward-updir ()
+;;   (interactive)
+;;   (when (eq (icomplete--category) 'file)
+;;     (when (string-equal (icomplete--field-string) "~/")
+;;       (delete-region (icomplete--field-beg) (icomplete--field-end))
+;;       (insert (expand-file-name "~/"))
+;;       (goto-char (line-end-position)))
+;;     (save-excursion
+;;       (goto-char (1- (point)))
+;;       (when (search-backward "/" (point-min) t)
+;;         (delete-region (1+ (point)) (point-max))))))
+;;
+;; (keymap-set icomplete-fido-mode-map "DEL" 'backward-delete-char)
+;; (keymap-set icomplete-fido-mode-map "M-<backspace>" 'fido-backward-updir)
+;; (keymap-set icomplete-fido-mode-map "M-DEL" 'fido-backward-updir)
 
 (require 'envrc)
 (envrc-global-mode t)
@@ -107,6 +116,7 @@
 (add-hook 'conf-mode-hook 'yas-minor-mode)
 
 (with-eval-after-load "cc-mode"
+  (keymap-set c-mode-map "C-c =" #'align)
   (keymap-set c-mode-map "C-c o" #'ff-find-other-file))
 
 (with-eval-after-load "gptel"
@@ -124,6 +134,7 @@
 (keymap-set mode-specific-map "e" #'eglot)
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
 (keymap-set mode-specific-map "f" #'ffap)
+(keymap-set mode-specific-map "\\" #'speedbar)
 
 (keymap-unset other-window-repeat-map "o")
 (keymap-unset other-window-repeat-map "O")
@@ -143,9 +154,6 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (add-hook 'buffer-list-update-hook #'recentf-track-opened-file)
-
-(xclip-mode 1)
-(xterm-mouse-mode 1)
 
 (require 'server)
 (unless (server-running-p)
