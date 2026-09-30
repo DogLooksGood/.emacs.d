@@ -86,27 +86,6 @@
 (keymap-set vertico-map "C-s" #'vertico-next)
 (keymap-set vertico-map "C-r" #'vertico-previous)
 
-;; (fido-mode 1)
-;;
-;; (with-eval-after-load "geiser-chez"
-;;   (require 'patch-geiser))
-;;
-;; (defun fido-backward-updir ()
-;;   (interactive)
-;;   (when (eq (icomplete--category) 'file)
-;;     (when (string-equal (icomplete--field-string) "~/")
-;;       (delete-region (icomplete--field-beg) (icomplete--field-end))
-;;       (insert (expand-file-name "~/"))
-;;       (goto-char (line-end-position)))
-;;     (save-excursion
-;;       (goto-char (1- (point)))
-;;       (when (search-backward "/" (point-min) t)
-;;         (delete-region (1+ (point)) (point-max))))))
-;;
-;; (keymap-set icomplete-fido-mode-map "DEL" 'backward-delete-char)
-;; (keymap-set icomplete-fido-mode-map "M-<backspace>" 'fido-backward-updir)
-;; (keymap-set icomplete-fido-mode-map "M-DEL" 'fido-backward-updir)
-
 (require 'envrc)
 (envrc-global-mode t)
 
@@ -138,6 +117,9 @@
 
 (keymap-unset other-window-repeat-map "o")
 (keymap-unset other-window-repeat-map "O")
+
+(windmove-default-keybindings 'super)
+(windmove-mode 1)
 
 (with-eval-after-load "org"
   (add-hook 'org-mode-hook 'org-indent-mode))

@@ -1,10 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (menu-bar-mode -1)
-(when (display-graphic-p)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1))
-
-(when (display-graphic-p)
-  (menu-bar-mode -1)
+(when (featurep 'tool-bar)
   (tool-bar-mode -1))
+(when (featurep 'scroll-bar)
+  (scroll-bar-mode -1))

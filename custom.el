@@ -5,13 +5,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list '("~/.local/share/info"))
+ '(align-to-tab-stop t)
  '(auto-save-list-file-prefix "~/.emacs.d/.cache/auto-save-list/.saves-")
  '(blink-cursor-interval 0.3)
  '(blink-cursor-mode nil)
  '(c-basic-offset 'set-from-style)
  '(c-default-style
-   '((c-mode . "gnu") (java-mode . "java") (awk-mode . "awk")
-     (other . "gnu")))
+   '((c-mode . "gnu") (java-mode . "java") (awk-mode . "awk") (other . "gnu")))
  '(c-indent-comment-alist 'set-from-style)
  '(clojure-indent-keyword-style 'align-arguments)
  '(clojure-indent-style 'always-indent)
@@ -19,8 +19,8 @@
  '(comment-empty-lines t)
  '(company-backends
    '(company-capf company-files
-                  (company-dabbrev-code company-etags company-keywords)
-                  company-dabbrev))
+		  (company-dabbrev-code company-etags company-keywords)
+		  company-dabbrev))
  '(company-clang-insert-arguments nil t)
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case nil)
@@ -42,39 +42,36 @@
  '(corfu-preview-current 'insert)
  '(custom-safe-themes
    '("63648ff9df5830a09a2daa22b371a2c31913cb86c9a21292df5cebb6cdfff045"
-     "1db40cdfadf3c207549aa8ba786942a8d5671825ff3b2a51cb2b8fd93a902ee1"
-     default))
+     "1db40cdfadf3c207549aa8ba786942a8d5671825ff3b2a51cb2b8fd93a902ee1" default))
  '(dired-dwim-target 'dired-dwim-target-recent)
  '(dired-listing-switches "-alhv --group-directories-first")
  '(dired-use-ls-dired t)
  '(display-buffer-alist
-   '(("\\*\\(xref\\|grep\\|rg\\)\\*" display-buffer-in-side-window
-      (side . left) (slot . 0) (window-width . 0.4))
-     ("\\*eldoc\\*" display-buffer-in-side-window (side . right)
-      (slot . -1) (window-width . 0.5))
-     ("\\*compilation\\*" display-buffer-in-side-window
-      (side . bottom) (slot . 0) (window-height . 0.5))
-     ("\\*Async Shell Command\\*" display-buffer-in-side-window
-      (side . bottom) (slot . 1) (window-height . 0.5))))
+   '(("\\*\\(xref\\|grep\\|rg\\)\\*" display-buffer-in-side-window (side . left)
+      (slot . 0) (window-width . 0.4))
+     ("\\*eldoc\\*" display-buffer-in-side-window (side . right) (slot . -1)
+      (window-width . 0.5))
+     ("\\*compilation\\*" display-buffer-in-side-window (side . bottom)
+      (slot . 0) (window-height . 0.5))
+     ("\\*Async Shell Command\\*" display-buffer-in-side-window (side . bottom)
+      (slot . 1) (window-height . 0.5))))
  '(eglot-code-action-indicator "?")
  '(eglot-ignored-server-capabilities
-   '(:referencesProvider :documentHighlightProvider
-                         :documentSymbolProvider
-                         :workspaceSymbolProvider :codeLensProvider
-                         :documentOnTypeFormattingProvider
-                         :colorProvider :foldingRangeProvider
-                         :executeCommandProvider :inlayHintProvider
-                         :typeHierarchyProvider :callHierarchyProvider
-                         :hoverProvider))
+   '(:referencesProvider :documentHighlightProvider :documentSymbolProvider
+			 :workspaceSymbolProvider :codeLensProvider
+			 :documentOnTypeFormattingProvider :colorProvider
+			 :foldingRangeProvider :executeCommandProvider
+			 :inlayHintProvider :typeHierarchyProvider
+			 :callHierarchyProvider :hoverProvider))
  '(eldoc-echo-area-use-multiline-p nil)
  '(envrc-global-mode t)
  '(envrc-show-summary-in-minibuffer nil)
  '(epg-pinentry-mode 'loopback)
  '(ff-ignore-include t)
  '(fido-mode nil)
+ '(fill-column 80)
  '(font-use-system-font t)
  '(frame-resize-pixelwise t)
- '(gdb-many-windows t)
  '(geiser-chez-browse-function 'browse-url-firefox)
  '(geiser-chez-csug-url
    "file:///home/tianshu/websites/csug/cisco.github.io/ChezScheme/csug/")
@@ -88,7 +85,6 @@
  '(gptel-prompt-prefix-alist '((org-mode . "* ")))
  '(gptel-use-curl t)
  '(imenu-flatten 'annotation)
- '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(isearch-lazy-count t)
  '(js-indent-level 4)
@@ -105,11 +101,9 @@
  '(project-list-file "~/.emacs.d/.cache/projects.eld")
  '(project-mode-line nil)
  '(project-switch-commands
-   '((project-find-file "Find file" nil)
-     (project-find-regexp "Find regexp" nil)
-     (project-find-dir "Find directory" nil)
-     (project-vc-dir "VC-Dir" nil) (project-eshell "Eshell" nil)
-     (project-any-command "Other" nil)))
+   '((project-find-file "Find file" nil) (project-find-regexp "Find regexp" nil)
+     (project-find-dir "Find directory" nil) (project-vc-dir "VC-Dir" nil)
+     (project-eshell "Eshell" nil) (project-any-command "Other" nil)))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(recentf-mode t)
@@ -137,12 +131,10 @@
    '(("Asia/Shanghai" "Shanghai") ("UTC+0000" "UTC")
      ("America/New_York" "New_York") ("Europe/London" "London")
      ("Europe/Berlin" "Berlin") ("Asia/Kolkata" "Kolkata")
-     ("Asia/Tokyo" "Tokyo") ("Asia/Dubai" "Dubai")
-     ("America/Chicago" "Chicago")))
+     ("Asia/Tokyo" "Tokyo") ("Asia/Dubai" "Dubai") ("America/Chicago" "Chicago")))
  '(tzc-time-zones
-   '("Asia/Kolkata" "UTC+0000" "America/New_York" "Europe/London"
-     "Europe/Berlin" "Asia/Shanghai" "Asia/Tokyo" "Asia/Dubai"
-     "Asia/Kolkata" "Europe/Moscow"))
+   '("Asia/Kolkata" "UTC+0000" "America/New_York" "Europe/London" "Europe/Berlin"
+     "Asia/Shanghai" "Asia/Tokyo" "Asia/Dubai" "Asia/Kolkata" "Europe/Moscow"))
  '(url-cookie-file "~/.emacs.d/.cache/url/cookies")
  '(use-short-answers t)
  '(xterm-mouse-mode t))
