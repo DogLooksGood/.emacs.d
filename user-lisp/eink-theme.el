@@ -180,7 +180,7 @@
    `(epa-validity-high ((t ())))
    `(epa-validity-low ((t ())))
    `(epa-validity-medium ((t ())))
-   `(error ((t ())))
+   `(error ((t (:background ,darkgray :foreground ,white))))
    `(escape-glyph ((t ())))
    `(eww-form-checkbox ((t ())))
    `(eww-form-file ((t ())))

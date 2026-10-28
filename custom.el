@@ -51,10 +51,10 @@
       (slot . 0) (window-width . 0.4))
      ("\\*eldoc\\*" display-buffer-in-side-window (side . right) (slot . -1)
       (window-width . 0.5))
-     ("\\*compilation\\*" display-buffer-in-side-window (side . bottom)
+     ("\\*compilation\\*" display-buffer-reuse-mode-window (side . bottom)
       (slot . 0) (window-height . 0.5))
-     ("\\*Async Shell Command\\*" display-buffer-in-side-window (side . bottom)
-      (slot . 1) (window-height . 0.5))))
+     ("\\*Async Shell Command\\*" display-buffer-reuse-mode-window
+      (side . bottom) (slot . 1) (window-height . 0.5))))
  '(eglot-code-action-indicator "?")
  '(eglot-ignored-server-capabilities
    '(:referencesProvider :documentHighlightProvider :documentSymbolProvider
@@ -78,7 +78,7 @@
  '(geiser-chez-tspl-url "file:///home/tianshu/websites/tspl/scheme.com/tspl4/")
  '(geiser-repl-save-debugging-history-p nil)
  '(global-auto-revert-mode t)
- '(global-corfu-mode t)
+ '(global-corfu-mode nil)
  '(global-subword-mode t)
  '(global-visual-line-mode t)
  '(gptel-default-mode 'org-mode)

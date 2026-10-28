@@ -40,6 +40,7 @@
 ;;; Generated autoloads from vc6-theme.el
 
 (register-definition-prefixes "vc6-theme" '("vc6"))
+
 
 ;;; End of scraped data
 

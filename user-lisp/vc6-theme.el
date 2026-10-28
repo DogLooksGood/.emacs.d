@@ -39,7 +39,6 @@
       (purple    "#7211c6")
       (gray      "#777777")
       (yellow    "#ffff00")
-      (purple    "#800080")
       (lightgray "#e0e0e0"))
   (custom-theme-set-faces
    `vc6
@@ -222,8 +221,8 @@
    `(font-lock-doc-markup-face ((t (:foreground ,green))))
    `(font-lock-escape-face ((t ())))
    `(font-lock-function-call-face ((t ())))
-   `(font-lock-function-name-face ((t (:foreground ,purple))))
-   `(font-lock-keyword-face ((t (:foreground ,blue))))
+   `(font-lock-function-name-face ((t (:foreground ,blue))))
+   `(font-lock-keyword-face ((t (:foreground ,purple))))
    `(font-lock-misc-punctuation-face ((t ())))
    `(font-lock-negation-char-face ((t ())))
    `(font-lock-number-face ((t ())))

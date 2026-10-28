@@ -1,24 +1,49 @@
 # -*- mode: snippet -*-
 # name: c
-# key: c
+# key: ccc
 # expand-env: ((yas-indent-line 'fixed))
 # --
-SRCS    := $(wildcard *.c)
-OBJS    := $(SRCS:.c=.o)
-DEPS    :=
-CFLAGS  := -std=c99 -Wall -Wextra -ggdb $(shell pkg-config --cflags $(DEPS))
-LDFLAGS := $(shell pkg-config --libs $(DEPS))
-TARGET  := main
+OUTDIR    = build
+TESTDIR   = build/test
+SRCS      = $(wildcard src/*.c)
+OBJS      = $(SRCS:src/%.c=$(OUTDIR)/%.o)
+TESTOBJS  = $(SRCS:src/%.c=$(TESTDIR)/%.o)
+DEPS      = $(SRCS:src/%.c=$(OUTDIR)/%.d)
+TESTDEPS  = $(SRCS:src/%.c=$(TESTDIR)/%.d)
+TARGET    = $(OUTDIR)/$(notdir $(CURDIR))
+SANFLAGS  = -fsanitize=address
+CFLAGS    = -std=gnu17 -Wall -Wextra -Wshadow -ggdb -Wno-unused-parameter
+CPPFLAGS  = -MMD -MP
+LDFLAGS   =
+LDLIBS    =
+TESTS     =
 
-all: $(TARGET)
+.SECONDEXPANSION:
 
 $(TARGET): $(OBJS)
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 
-%.o: %.c
-	$(CC) -c -o $@ $< $(CFLAGS)
+$(TESTDIR)/%: src/%.c $(TESTOBJS)
+	$(CC) $(filter-out $(TESTDIR)/$*.o,$^) -o $@ \
+	$(LDFLAGS) $(LDLIBS) $(SANFLAGS) -DTEST_$*
+
+$(OUTDIR)/%.o: src/%.c
+	@mkdir -p $(@D)
+	$(CC) $< -o $@ -c $(CFLAGS) $(CPPFLAGS)
+
+$(TESTDIR)/%.o: src/%.c
+	@mkdir -p $(@D)
+	$(CC) $< -o $@ -c $(CFLAGS) $(CPPFLAGS) $(SANFLAGS)
+
+test-%: $(TESTDIR)/%
+	./$<
+
+check: $(addprefix test-,$(TESTS))
 
 clean:
-	rm -rf $(OBJS) $(TARGET)
+	rm -rf $(OUTDIR)
 
-.PHONY: all clean
+-include $(DEPS)
+-include $(TESTDEPS)
+
+.PHONY: clean check

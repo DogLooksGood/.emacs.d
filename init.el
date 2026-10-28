@@ -9,8 +9,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
-(repeat-mode 1)
-
 (with-eval-after-load "rect"
   (keymap-set rectangle-mark-mode-map "f"   #'forward-char)
   (keymap-set rectangle-mark-mode-map "b"   #'backward-char)
@@ -20,15 +18,6 @@
   (keymap-set rectangle-mark-mode-map "e"   #'end-of-line)
   (keymap-set rectangle-mark-mode-map "SPC" #'string-rectangle)
   (keymap-set rectangle-mark-mode-map "DEL" #'kill-rectangle))
-
-(keymap-unset next-error-repeat-map "n")
-(keymap-unset next-error-repeat-map "p")
-
-(with-eval-after-load "dired"
-  (keymap-unset dired-jump-map "j"))
-
-(defvar-keymap duplicate-dwim-repeat-map
-  :repeat t "h" #'duplicate-dwim)
 
 (require 'ansi-color)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
@@ -45,49 +34,45 @@
 (straight-use-package 'cape)
 (straight-use-package 'yasnippet)
 (straight-use-package 'pass)
-(straight-use-package 'dumb-jump)
+;; (straight-use-package 'dumb-jump)
 (straight-use-package 'vertico)
 
 (with-eval-after-load 'paredit
   (keymap-unset paredit-mode-map "M-s")
-  (keymap-unset paredit-mode-map "M-r")
-  (keymap-set paredit-mode-map "M-i" 'paredit-splice-sexp)
-  (keymap-set paredit-mode-map "M-o" 'paredit-raise-sexp))
+  (keymap-set paredit-mode-map "M-i" 'paredit-splice-sexp))
 
 (dolist (h '(emacs-lisp-mode-hook scheme-mode-hook))
   (add-hook h 'paredit-mode))
 (with-eval-after-load "paredit"
   (keymap-unset paredit-mode-map "RET"))
 
-(require 'dumb-jump)
-(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+;; (require 'dumb-jump)
+;; (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 (require 'corfu)
 (require 'cape)
-(add-hook 'text-mode-hook #'corfu-mode)
-(add-hook 'conf-mode-hook #'corfu-mode)
-(add-hook 'prog-mode-hook #'corfu-mode)
+(require 'comint)
+(global-corfu-mode 1)
 (with-eval-after-load "corfu"
+  (make-variable-buffer-local 'corfu-auto)
+  (add-hook 'comint-mode-hook (lambda () (setq-local corfu-auto nil)))
   (setq corfu-map
         (let ((map (make-keymap)))
           (keymap-set map "M-n" #'corfu-next)
           (keymap-set map "M-p" #'corfu-previous)
-          map))
-  (keymap-set corfu-mode-map "M-n" #'completion-at-point))
+          map)))
 (add-hook 'completion-at-point-functions #'cape-dabbrev)
 (add-hook 'completion-at-point-functions #'cape-file)
 
 (require 'vertico)
 (require 'vertico-flat)
+(require 'vertico-directory)
 (vertico-mode 1)
 (vertico-flat-mode 1)
-(require 'vertico-directory)
+(keymap-set vertico-map "C-c f" #'vertico-flat-mode)
 (keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word)
 (keymap-set vertico-map "C-s" #'vertico-next)
 (keymap-set vertico-map "C-r" #'vertico-previous)
-
-(require 'envrc)
-(envrc-global-mode t)
 
 (require 'yasnippet)
 (yas-load-directory (expand-file-name "snippets" user-emacs-directory))
@@ -115,8 +100,7 @@
 (keymap-set mode-specific-map "f" #'ffap)
 (keymap-set mode-specific-map "\\" #'speedbar)
 
-(keymap-unset other-window-repeat-map "o")
-(keymap-unset other-window-repeat-map "O")
+(keymap-set global-map "C-\\" 'repeat)
 
 (windmove-default-keybindings 'super)
 (windmove-mode 1)
@@ -134,7 +118,6 @@
   (keymap-set flymake-mode-map "C-c ! c" #'flymake-show-diagnostic))
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
-
 (add-hook 'buffer-list-update-hook #'recentf-track-opened-file)
 
 (require 'server)
