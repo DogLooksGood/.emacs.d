@@ -42,6 +42,11 @@
 (register-definition-prefixes "vc6-theme" '("vc6"))
 
 
+;;; Generated autoloads from simple-repeat.el
+
+(register-definition-prefixes "simple-repeat" '("simple-repeat-make-keymap"))
+
+
 ;;; End of scraped data
 
 (provide '.user-lisp-autoloads)

@@ -23,46 +23,48 @@
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
 (require 'bedit)
-(straight-use-package '(xref :type built-in))
-(straight-use-package '(project :type built-in))
 (straight-use-package 'geiser)
 (straight-use-package '(geiser-chez :host github :repo "DogLooksGood/geiser-chez"))
 (straight-use-package 'gptel)
+(straight-use-package 'gptel-agent)
 (straight-use-package 'envrc)
-(straight-use-package 'paredit)
 (straight-use-package 'corfu)
 (straight-use-package 'cape)
+(straight-use-package 'paredit)
 (straight-use-package 'yasnippet)
 (straight-use-package 'pass)
-;; (straight-use-package 'dumb-jump)
+(straight-use-package 'rg)
+(straight-use-package 'dumb-jump)
 (straight-use-package 'vertico)
 
-(with-eval-after-load 'paredit
-  (keymap-unset paredit-mode-map "M-s")
-  (keymap-set paredit-mode-map "M-i" 'paredit-splice-sexp))
+(require 'rg)
+(keymap-set project-prefix-map "g" #'rg-dwim-project-dir)
+(keymap-set project-prefix-map "r" #'rg-project)
 
+(require 'paredit)
 (dolist (h '(emacs-lisp-mode-hook scheme-mode-hook))
-  (add-hook h 'paredit-mode))
+  (add-hook h #'paredit-mode))
 (with-eval-after-load "paredit"
-  (keymap-unset paredit-mode-map "RET"))
-
-;; (require 'dumb-jump)
-;; (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+  (keymap-unset paredit-mode-map "M-s")
+  (keymap-unset paredit-mode-map "M-?")
+  (keymap-unset paredit-mode-map "C-j")
+  (keymap-set paredit-mode-map "M-o" #'paredit-splice-sexp))
 
 (require 'corfu)
+(setq corfu-map
+      (let ((map (make-keymap)))
+        (keymap-set map "M-n" #'corfu-next)
+        (keymap-set map "M-p" #'corfu-previous)
+        map))
+(add-hook 'prog-mode-hook #'corfu-mode)
+(add-hook 'conf-mode-hook #'corfu-mode)
+
 (require 'cape)
-(require 'comint)
-(global-corfu-mode 1)
-(with-eval-after-load "corfu"
-  (make-variable-buffer-local 'corfu-auto)
-  (add-hook 'comint-mode-hook (lambda () (setq-local corfu-auto nil)))
-  (setq corfu-map
-        (let ((map (make-keymap)))
-          (keymap-set map "M-n" #'corfu-next)
-          (keymap-set map "M-p" #'corfu-previous)
-          map)))
 (add-hook 'completion-at-point-functions #'cape-dabbrev)
 (add-hook 'completion-at-point-functions #'cape-file)
+
+(require 'dumb-jump)
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 (require 'vertico)
 (require 'vertico-flat)
@@ -83,27 +85,17 @@
   (keymap-set c-mode-map "C-c =" #'align)
   (keymap-set c-mode-map "C-c o" #'ff-find-other-file))
 
-(with-eval-after-load "gptel"
-  (make-local-variable 'gptel-context))
-
-(keymap-set mode-specific-map "RET" #'gptel-send)
 (keymap-set mode-specific-map "a" #'gptel-add)
 (keymap-set mode-specific-map "g" #'gptel)
-(keymap-set mode-specific-map "R" #'gptel-rewrite)
 (keymap-set mode-specific-map "s" #'window-toggle-side-windows)
-(keymap-set mode-specific-map "w" #'window-swap-states)
 (keymap-set mode-specific-map "l" #'recentf-open-files)
 (keymap-set mode-specific-map "n" #'display-line-numbers-mode)
-(keymap-set mode-specific-map "h" #'duplicate-dwim)
-(keymap-set mode-specific-map "e" #'eglot)
+(keymap-set mode-specific-map "E" #'eglot)
 (keymap-set mode-specific-map "c" #'bedit-extending-mode)
 (keymap-set mode-specific-map "f" #'ffap)
-(keymap-set mode-specific-map "\\" #'speedbar)
+(keymap-set mode-specific-map "C-j" #'duplicate-dwim)
 
-(keymap-set global-map "C-\\" 'repeat)
-
-(windmove-default-keybindings 'super)
-(windmove-mode 1)
+(keymap-set global-map "C-j" #'repeat)
 
 (with-eval-after-load "org"
   (add-hook 'org-mode-hook 'org-indent-mode))
@@ -116,6 +108,12 @@
   (keymap-set flymake-mode-map "C-c ! n" #'flymake-goto-next-error)
   (keymap-set flymake-mode-map "C-c ! !" #'flymake-show-buffer-diagnostics)
   (keymap-set flymake-mode-map "C-c ! c" #'flymake-show-diagnostic))
+
+(require 'simple-repeat)
+(defcustom jump-error-keymap (simple-repeat-make-keymap #'next-error #'previous-error)
+  "Keymap activated after an error jumping.")
+(keymap-set jump-error-keymap "M-n" #'next-error)
+(keymap-set jump-error-keymap "M-p" #'previous-error)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 (add-hook 'buffer-list-update-hook #'recentf-track-opened-file)

@@ -5,6 +5,105 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list '("~/.local/share/info"))
+ '(align-rules-list
+   '((lisp-second-arg
+      (regexp . "\\(^\\s-+[^( \11\12]\\|(\\(\\S-+\\)\\s-+\\)\\S-+\\(\\s-+\\)")
+      (group . 3) (modes . align-lisp-modes)
+      (run-if . #[0 "\10\207" [current-prefix-arg] 1]))
+     (lisp-alist-dot (regexp . "\\(\\s-*\\)\\.\\(\\s-*\\)") (group 1 2)
+		     (modes . align-lisp-modes))
+     (open-comment
+      (regexp
+       . #[514 "\211\203\10\0\301\202\11\0\302\303\304\10!\305Q\3\306#\207"
+	       [comment-start re-search-backward re-search-forward
+			      "[^ \11\12\\]" regexp-quote "\\(.+\\)$" t]
+	       6 "\12\12(fn END REVERSE)"])
+      (modes . align-open-comment-modes))
+     (c-macro-definition (regexp . "^\\s-*#\\s-*define\\s-+\\S-+\\(\\s-+\\)")
+			 (modes . align-c++-modes))
+     (c-variable-declaration
+      (regexp
+       . "[*&0-9A-Za-z_]>?[][&*]*\\(\\s-+[*&]*\\)[A-Za-z_][][0-9A-Za-z:_]*\\s-*\\(\\()\\|=[^=\12].*\\|(.*)\\|\\(\\[.*\\]\\)*\\)\\s-*[;,]\\|)\\s-*$\\)")
+      (group . 1) (modes . align-c++-modes) (justify . t)
+      (valid
+       . #[0
+	   "\212\301\224b\210\302v\210\303\304!)\206\"\0\10\203\34\0\305`\306\"\307=\202\"\0\310 @@\311=?\207"
+	   [font-lock-mode 1 -1 looking-at
+			   "\\(goto\\|return\\|new\\|delete\\|throw\\)"
+			   get-text-property face font-lock-comment-face
+			   c-guess-basic-syntax c]
+	   3]))
+     (c-assignment
+      (regexp
+       . "[^-=!^&*+<>/| \11\12]\\(\\s-*[-=!^&*+<>/|]*\\)=\\(\\s-*\\)\\([^= \11\12]\\|$\\)")
+      (group 1) (modes . align-c++-modes) (justify . t) (tab-stop . t))
+     (perl-assignment
+      (regexp
+       . "[^=!^&*+<>/| \11\12-]\\(\\s-*\\)=[~>]?\\(\\s-*\\)\\([^>= \11\12]\\|$\\)")
+      (group 1 2) (modes . align-perl-modes) (tab-stop))
+     (python-assignment
+      (regexp . "[^=!<> \11\12]\\(\\s-*\\)=\\(\\s-*\\)\\([^>= \11\12]\\|$\\)")
+      (group 1 2) (modes quote (python-base-mode)) (tab-stop))
+     (make-assignment
+      (regexp . "^\\s-*\\w+\\(\\s-*\\):?=\\(\\s-*\\)\\([^\11\12 \\]\\|$\\)")
+      (group 1 2) (modes quote (makefile-mode)) (tab-stop))
+     (c-comma-delimiter (regexp . ",\\(\\s-*\\)[^/ \11\12]") (repeat . t)
+			(modes . align-c++-modes)
+			(run-if . #[0 "\10\207" [current-prefix-arg] 1]))
+     (basic-comma-delimiter (regexp . ",\\(\\s-*\\)[^# \11\12]") (repeat . t)
+			    (modes append align-perl-modes '(python-base-mode))
+			    (run-if . #[0 "\10\207" [current-prefix-arg] 1]))
+     (c++-comment (regexp . "\\(\\s-*\\)\\(//.*\\|/\\*.*\\*/\\s-*\\)$")
+		  (modes . align-c++-modes) (column . comment-column)
+		  (valid . #[0 "\212\300\224b\210n)?\207" [1] 1]))
+     (c-chain-logic (regexp . "\\(\\s-*\\)\\(&&\\|||\\|\\<and\\>\\|\\<or\\>\\)")
+		    (modes . align-c++-modes)
+		    (valid
+		     . #[0 "\212\300\225b\210\301\302!)\207"
+			   [2 looking-at "\\s-*\\(/[*/]\\|$\\)"] 2]))
+     (perl-chain-logic
+      (regexp . "\\(\\s-*\\)\\(&&\\|||\\|\\<and\\>\\|\\<or\\>\\)")
+      (modes . align-perl-modes)
+      (valid
+       . #[0 "\212\300\225b\210\301\302!)\207" [2 looking-at "\\s-*\\(#\\|$\\)"]
+	     2]))
+     (python-chain-logic (regexp . "\\(\\s-*\\)\\(\\<and\\>\\|\\<or\\>\\)")
+			 (modes quote (python-base-mode))
+			 (valid
+			  . #[0 "\212\300\225b\210\301\302!)\207"
+				[2 looking-at "\\s-*\\(#\\|$\\|\\\\\\)"] 2]))
+     (c-macro-line-continuation (regexp . "\\(\\s-*\\)\\\\$")
+				(modes . align-c++-modes)
+				(column . c-backslash-column))
+     (basic-line-continuation (regexp . "\\(\\s-*\\)\\\\$")
+			      (modes quote (python-base-mode makefile-mode)))
+     (tex-record-separator
+      (regexp
+       . #[514 "\300\301\3\3#\207" [align-match-tex-pattern "&"] 6
+	       "\12\12(fn END REVERSE)"])
+      (group 1 2) (modes . align-tex-modes) (repeat . t))
+     (tex-tabbing-separator
+      (regexp
+       . #[514 "\300\301\3\3#\207" [align-match-tex-pattern "\\\\[=>]"] 6
+	       "\12\12(fn END REVERSE)"])
+      (group 1 2) (modes quote (latex-mode)) (repeat . t))
+     (tex-record-break (regexp . "\\(\\s-*\\)\\\\\\\\")
+		       (modes . align-tex-modes))
+     (text-column (regexp . "\\(^\\|\\S-\\)\\([ \11]+\\)\\(\\S-\\|$\\)")
+		  (group . 2) (modes . align-text-modes) (repeat . t)
+		  (run-if
+		   . #[0 "\10\302=?\205\13\0\303\11!?\207"
+			 [current-prefix-arg align-tex-modes - derived-mode-p] 2]))
+     (text-dollar-figure (regexp . "\\$?\\(\\s-+[0-9]+\\)\\.")
+			 (modes . align-text-modes) (justify . t)
+			 (run-if . #[0 "\10\301=\207" [current-prefix-arg -] 2]))
+     (css-declaration (regexp . "^\\s-*\\(?:\\w-?\\)+:\\(\\s-*\\).*;") (group 1)
+		      (modes quote (css-base-mode html-mode)))
+     (toml-assignment (regexp . "\\(\\s-*\\)=\\(\\s-*\\)") (group 1 2)
+		      (modes quote (conf-toml-mode lua-mode)))
+     (double-dash-comment (regexp . "\\(\\s-*\\)--.*") (modes quote (lua-mode))
+			  (column . comment-column)
+			  (valid . #[0 "\212\300\224b\210n)?\207" [1] 1]))))
  '(align-to-tab-stop t)
  '(auto-save-list-file-prefix "~/.emacs.d/.cache/auto-save-list/.saves-")
  '(blink-cursor-interval 0.3)
@@ -25,15 +124,22 @@
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case nil)
  '(company-format-margin-function 'company-text-icons-margin)
+ '(company-frontends
+   '(company-tng-frontend company-childframe-unless-just-one-frontend
+			  company-echo-metadata-frontend
+			  company-preview-if-just-one-frontend))
+ '(company-idle-delay 0.1)
  '(company-require-match nil)
  '(company-semantic-insert-arguments nil t)
- '(company-tng-mode t)
+ '(company-tng-auto-configure nil)
+ '(company-tng-mode nil)
  '(company-transformers '(delete-dups))
  '(compilation-auto-jump-to-first-error nil)
  '(compilation-skip-threshold 1)
  '(compilation-skip-visited nil)
  '(completion-category-overrides '((file (styles partial-completion))))
  '(completions-format 'one-column)
+ '(completions-max-height 20)
  '(corfu-auto t)
  '(corfu-auto-delay 0.1)
  '(corfu-auto-prefix 2)
@@ -78,7 +184,9 @@
  '(geiser-chez-tspl-url "file:///home/tianshu/websites/tspl/scheme.com/tspl4/")
  '(geiser-repl-save-debugging-history-p nil)
  '(global-auto-revert-mode t)
- '(global-corfu-mode nil)
+ '(global-company-mode t)
+ '(global-completion-preview-mode nil)
+ '(global-corfu-mode t)
  '(global-subword-mode t)
  '(global-visual-line-mode t)
  '(gptel-default-mode 'org-mode)
@@ -104,12 +212,13 @@
    '((project-find-file "Find file" nil) (project-find-regexp "Find regexp" nil)
      (project-find-dir "Find directory" nil) (project-vc-dir "VC-Dir" nil)
      (project-eshell "Eshell" nil) (project-any-command "Other" nil)))
+ '(puni-confirm-when-delete-unbalanced-active-region nil)
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/.cache/recentf.eld")
- '(rectangle-indicate-zero-width-rectangle nil)
- '(repeat-mode t)
+ '(rectangle-indicate-zero-width-rectangle t)
+ '(repeat-mode nil)
  '(rg-custom-type-aliases '(("scm" . "*.scm") ("scm" . "*.ss") ("scm" . "*.sls")))
  '(ring-bell-function 'ignore)
  '(safe-local-variable-values
