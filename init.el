@@ -113,10 +113,13 @@
   (keymap-set flymake-mode-map "C-c ! c" #'flymake-show-diagnostic))
 
 (require 'simple-repeat)
-(defcustom jump-error-keymap (simple-repeat-make-keymap #'next-error #'previous-error)
-  "Keymap activated after an error jumping.")
-(keymap-set jump-error-keymap "M-n" #'next-error)
-(keymap-set jump-error-keymap "M-p" #'previous-error)
+(defcustom jump-error-repeat-keymap (simple-repeat-make-keymap #'next-error #'previous-error)
+  "Keymap activated after `next-error' and `previous-error'.")
+(keymap-set jump-error-repeat-keymap "M-n" #'next-error)
+(keymap-set jump-error-repeat-keymap "M-p" #'previous-error)
+(defcustom duplicate-repeat-keymap (simple-repeat-make-keymap #'duplicate-dwim)
+  "keymap activated after `duplicate-dwim'.")
+(keymap-set duplicate-repeat-keymap "C-j" #'duplicate-dwim)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 (add-hook 'buffer-list-update-hook #'recentf-track-opened-file)

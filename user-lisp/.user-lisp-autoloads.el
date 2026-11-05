@@ -44,7 +44,7 @@
 
 ;;; Generated autoloads from simple-repeat.el
 
-(register-definition-prefixes "simple-repeat" '("simple-repeat-make-keymap"))
+(register-definition-prefixes "simple-repeat" '("simple-repeat-"))
 
 
 ;;; End of scraped data
