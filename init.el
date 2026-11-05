@@ -37,6 +37,9 @@
 (straight-use-package 'dumb-jump)
 (straight-use-package 'vertico)
 
+(require 'envrc)
+(envrc-global-mode)
+
 (require 'rg)
 (keymap-set project-prefix-map "g" #'rg-dwim-project-dir)
 (keymap-set project-prefix-map "r" #'rg-project)

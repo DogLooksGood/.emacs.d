@@ -193,6 +193,7 @@
  '(gptel-prompt-prefix-alist '((org-mode . "* ")))
  '(gptel-use-curl t)
  '(imenu-flatten 'annotation)
+ '(indent-tabs-mode t)
  '(inhibit-startup-screen t)
  '(isearch-lazy-count t)
  '(js-indent-level 4)

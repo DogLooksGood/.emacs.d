@@ -18,14 +18,13 @@ LDFLAGS   =
 LDLIBS    =
 TESTS     =
 
-.SECONDEXPANSION:
-
 $(TARGET): $(OBJS)
 	$(CC) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 
 $(TESTDIR)/%: src/%.c $(TESTOBJS)
 	$(CC) $(filter-out $(TESTDIR)/$*.o,$^) -o $@ \
-	$(LDFLAGS) $(LDLIBS) $(SANFLAGS) -DTEST_$*
+	$(CFLAGS) $(CPPFLAGS) $(SANFLAGS) \
+	$(LDFLAGS) $(LDLIBS)  -DTEST_$*
 
 $(OUTDIR)/%.o: src/%.c
 	@mkdir -p $(@D)
