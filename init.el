@@ -37,6 +37,10 @@
 (straight-use-package 'dumb-jump)
 (straight-use-package 'vertico)
 
+(straight-use-package 'typescript-mode)
+(straight-use-package 'rust-mode)
+(straight-use-package 'prisma-ts-mode)
+
 (require 'envrc)
 (envrc-global-mode)
 
@@ -123,6 +127,8 @@
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 (add-hook 'buffer-list-update-hook #'recentf-track-opened-file)
+
+(setq tramp-remote-path '(tramp-own-remote-path))
 
 (require 'server)
 (unless (server-running-p)

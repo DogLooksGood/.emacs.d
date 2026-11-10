@@ -2,6 +2,7 @@ straight/repos
 straight/build*
 eln-cache
 .cache
+.local
 local.el
 tree-sitter
 tramp

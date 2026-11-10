@@ -1,0 +1,56 @@
+# -*- mode: snippet -*-
+# name: ccc
+# key: ccc
+# expand-env: ((yas-indent-line 'fixed))
+# --
+
+.PHONY: build clean debug release check
+
+debug:
+	$(MAKE) build CONFIG=debug TARGET=hello
+release:
+	$(MAKE) build CONFIG=release TARGET=hello
+check:
+	$(MAKE) build CONFIG=test TARGET=$(TEST)
+	./build/test/$(TEST)
+clean:
+	rm -rf $(BUILD)
+
+CONFIG   =
+TARGET   =
+
+BUILD    = build
+OUTDIR   = $(BUILD)/$(CONFIG)
+SRCDIR   = src
+SRCS     = $(wildcard $(SRCDIR)/*.c)
+OBJS     = $(SRCS:$(SRCDIR)/%.c=$(OUTDIR)/%.o)
+DEPS     = $(SRCS:$(SRCDIR)/%.c=$(OUTDIR)/%.d)
+CFLAGS   = -Wall -Wextra -Wshadow -std=gnu17
+CPPFLAGS = -MMD -MP
+LDFLAGS  =
+LIBS     =
+SANFLAGS = -fsanitize=address -ggdb
+
+ifeq ($(CONFIG), debug)
+	CFLAGS  += $(SANFLAGS) -ggdb -O0
+	LDFLAGS += $(SANFLAGS)
+else ifeq ($(CONFIG), release)
+	CFLAGS  += -O3
+else ifeq ($(CONFIG), test)
+	OBJS    += test/$(TARGET).test.c
+	CFLAGS  += $(SANFLAGS) -ggdb -O0 -DTEST
+	LDFLAGS += $(SANFLAGS)
+endif
+
+build: $(OUTDIR)/$(TARGET)
+
+$(OUTDIR):
+	mkdir -p $(OUTDIR)
+
+$(OUTDIR)/%.o: $(SRCDIR)/%.c | $(OUTDIR)
+	$(CC) -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
+
+$(OUTDIR)/$(TARGET): $(OBJS) | $(OUTDIR)
+	$(CC) $^ -o $@ $(LDFLAGS) $(LIBS)
+
+-include $(DEPS)
