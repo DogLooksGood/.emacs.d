@@ -6,7 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list '("~/.local/share/info"))
  '(align-to-tab-stop t)
- '(auto-save-list-file-prefix "~/.emacs.d/.cache/auto-save-list/.saves-")
+ '(auth-source-save-behavior nil)
+ '(auto-save-default nil)
  '(blink-cursor-interval 0.3)
  '(blink-cursor-mode nil)
  '(c-basic-offset 'set-from-style)
