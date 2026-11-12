@@ -1,0 +1,59 @@
+# -*- mode: snippet -*-
+# name: css
+# key: css
+# expand-env: ((yas-indent-line 'fixed))
+# --
+.PHONY: build clean debug release test
+
+debug:
+	$(MAKE) build CONFIG=debug TARGET=$(BIN)
+release:
+	$(MAKE) build CONFIG=release TARGET=$(BIN)
+check:
+	$(MAKE) build CONFIG=test TARGET=$(TEST)$(TESTSUFX)
+	LSAN_OPTIONS="suppressions=./leaks.supp:print_suppressions=0" ./$(BUILD)/test/$(TEST)$(TESTSUFX)
+clean:
+	$(RM) -rf $(BUILD)
+
+BIN       = $(notdir $(CURDIR))
+CHEZ      = $(shell command -v scheme)
+CHEZLIB   = $(dir $(realpath $(CHEZ)))
+BOOTS     = $(OUTDIR)/scheme.boot $(OUTDIR)/petite.boot
+BUILD     = build
+OUTDIR    = $(BUILD)/$(CONFIG)
+SRCDIR    = src
+TESTDIR   = test
+TESTSUFX  = _test
+SRCS      = $(wildcard $(SRCDIR)/*.c)
+OBJS      = $(SRCS:$(SRCDIR)/%.c=$(OUTDIR)/%.o)
+DEPS      = $(SRCS:$(SRCDIR)/%.c=$(OUTDIR)/%.d)
+CFLAGS    = -Wall -Wextra -Wshadow -std=gnu17
+CPPFLAGS  = -MMD -MP -I$(CHEZLIB)
+LDFLAGS   = -L$(CHEZLIB) -fuse-ld=mold
+LIBS      = -lncurses -lkernel -lz -llz4 -lm
+ASANFLAGS = -fsanitize=address -fno-omit-frame-pointer
+
+ifeq ($(CONFIG), debug)
+	CFLAGS  += -g3 -O0
+else ifeq ($(CONFIG), release)
+	CFLAGS  += -O3
+else ifeq ($(CONFIG), test)
+	OBJS    += $(OUTDIR)/$(TARGET).o
+	CFLAGS  += $(ASANFLAGS) -g3 -O0 -DTEST
+	LDFLAGS += $(ASANFLAGS)
+endif
+
+vpath %.c $(SRCDIR) $(TESTDIR)
+
+build: $(OUTDIR)/$(TARGET)
+
+$(OUTDIR):
+	@mkdir -p $(OUTDIR)
+
+$(OUTDIR)/%.o: %.c | $(OUTDIR)
+	$(CC) -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
+
+$(OUTDIR)/$(TARGET): $(OBJS) | $(OUTDIR)
+	$(CC) $^ -o $@ $(LDFLAGS) $(LIBS)
+
+-include $(DEPS)

@@ -3,51 +3,53 @@
 # key: ccc
 # expand-env: ((yas-indent-line 'fixed))
 # --
-
 .PHONY: build clean debug release check
 
 debug:
-	$(MAKE) build CONFIG=debug TARGET=hello
+	$(MAKE) $(MKFLAGS) build CONFIG=debug TARGET=$(BIN)
 release:
-	$(MAKE) build CONFIG=release TARGET=hello
+	$(MAKE) $(MKFLAGS) build CONFIG=release TARGET=$(BIN)
 check:
-	$(MAKE) build CONFIG=test TARGET=$(TEST)
-	./build/test/$(TEST)
+	$(MAKE) $(MKFLAGS) build CONFIG=test TARGET=$(TEST)$(TESTSUFX)
+	./$(BUILD)/test/$(TEST)$(TESTSUFX)
 clean:
-	rm -rf $(BUILD)
-
-CONFIG   =
-TARGET   =
+	$(RM) -rf $(BUILD)
 
 BUILD    = build
-OUTDIR   = $(BUILD)/$(CONFIG)
 SRCDIR   = src
+TESTDIR  = test
+TESTSUFX = _test
+BIN      = $(notdir $(CURDIR))
+OUTDIR   = $(BUILD)/$(CONFIG)
 SRCS     = $(wildcard $(SRCDIR)/*.c)
 OBJS     = $(SRCS:$(SRCDIR)/%.c=$(OUTDIR)/%.o)
 DEPS     = $(SRCS:$(SRCDIR)/%.c=$(OUTDIR)/%.d)
 CFLAGS   = -Wall -Wextra -Wshadow -std=gnu17
 CPPFLAGS = -MMD -MP
-LDFLAGS  =
+LDFLAGS  = -fuse-ld=mold
 LIBS     =
-SANFLAGS = -fsanitize=address -ggdb
+SANFLAGS = -fsanitize=address -fno-omit-frame-pointer
+MKFLAGS  = -k -j 4 --no-print-directory
 
 ifeq ($(CONFIG), debug)
-	CFLAGS  += $(SANFLAGS) -ggdb -O0
+	CFLAGS  += $(SANFLAGS) -g3 -O0
 	LDFLAGS += $(SANFLAGS)
 else ifeq ($(CONFIG), release)
 	CFLAGS  += -O3
 else ifeq ($(CONFIG), test)
-	OBJS    += test/$(TARGET).test.c
-	CFLAGS  += $(SANFLAGS) -ggdb -O0 -DTEST
+	OBJS    += $(OUTDIR)/$(TARGET).o
+	CFLAGS  += $(SANFLAGS) -g3 -O0 -DTEST
 	LDFLAGS += $(SANFLAGS)
 endif
 
 build: $(OUTDIR)/$(TARGET)
 
-$(OUTDIR):
-	mkdir -p $(OUTDIR)
+vpath %c $(SRCDIR) $(TESTDIR)
 
-$(OUTDIR)/%.o: $(SRCDIR)/%.c | $(OUTDIR)
+$(OUTDIR):
+	@mkdir -p $(OUTDIR)
+
+$(OUTDIR)/%.o: %.c | $(OUTDIR)
 	$(CC) -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
 
 $(OUTDIR)/$(TARGET): $(OBJS) | $(OUTDIR)

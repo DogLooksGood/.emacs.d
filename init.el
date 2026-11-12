@@ -40,7 +40,7 @@
 (straight-use-package 'typescript-mode)
 (straight-use-package 'rust-mode)
 (straight-use-package 'prisma-ts-mode)
-
+(require 'ox-md)
 (require 'envrc)
 (envrc-global-mode)
 
