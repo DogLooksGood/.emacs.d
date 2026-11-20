@@ -48,6 +48,7 @@
  '(corfu-on-exact-match nil)
  '(corfu-preselect 'prompt)
  '(corfu-preview-current 'insert)
+ '(corfu-right-margin-width 0.5)
  '(custom-safe-themes
    '("63648ff9df5830a09a2daa22b371a2c31913cb86c9a21292df5cebb6cdfff045"
      "1db40cdfadf3c207549aa8ba786942a8d5671825ff3b2a51cb2b8fd93a902ee1" default))
@@ -55,7 +56,8 @@
  '(dired-listing-switches "-alhv --group-directories-first")
  '(dired-use-ls-dired t)
  '(display-buffer-alist
-   '(("\\*\\(xref\\|grep\\|rg\\)\\*" display-buffer-in-side-window (side . left)
+   '(("*scheme*" display-buffer-at-bottom (side . bottom))
+     ("\\*\\(xref\\|grep\\|rg\\)\\*" display-buffer-in-side-window (side . left)
       (slot . 0) (window-width . 0.4))
      ("\\*eldoc\\*" display-buffer-in-side-window (side . right) (slot . -1)
       (window-width . 0.5))

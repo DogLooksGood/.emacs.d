@@ -23,8 +23,6 @@
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
 (require 'bedit)
-(straight-use-package 'geiser)
-(straight-use-package '(geiser-chez :host github :repo "DogLooksGood/geiser-chez"))
 (straight-use-package 'gptel)
 (straight-use-package 'gptel-agent)
 (straight-use-package 'envrc)
@@ -54,7 +52,7 @@
 (with-eval-after-load "paredit"
   (keymap-unset paredit-mode-map "M-s")
   (keymap-unset paredit-mode-map "M-?")
-  (keymap-unset paredit-mode-map "C-j")
+  (keymap-unset paredit-mode-map "RET")
   (keymap-set paredit-mode-map "M-o" #'paredit-splice-sexp))
 
 (require 'corfu)
@@ -102,6 +100,7 @@
 (keymap-set mode-specific-map "f" #'ffap)
 (keymap-set mode-specific-map "C-j" #'duplicate-dwim)
 
+(keymap-set global-map "C-x C-b" #'ibuffer)
 (keymap-set global-map "C-j" #'repeat)
 
 (with-eval-after-load "org"
