@@ -40,6 +40,7 @@
  '(compilation-skip-threshold 1)
  '(compilation-skip-visited nil)
  '(completion-category-overrides '((file (styles partial-completion))))
+ '(completion-styles '(basic partial-completion emacs22 orderless))
  '(completions-format 'one-column)
  '(completions-max-height 20)
  '(corfu-auto t)
