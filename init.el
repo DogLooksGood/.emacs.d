@@ -23,6 +23,7 @@
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
 (require 'bedit)
+(straight-use-package 'org)
 (straight-use-package 'gptel)
 (straight-use-package 'gptel-agent)
 (straight-use-package 'envrc)
@@ -34,10 +35,6 @@
 (straight-use-package 'rg)
 (straight-use-package 'dumb-jump)
 (straight-use-package 'vertico)
-
-(straight-use-package 'typescript-mode)
-(straight-use-package 'rust-mode)
-(straight-use-package 'prisma-ts-mode)
 (require 'ox-md)
 (require 'envrc)
 (envrc-global-mode)
