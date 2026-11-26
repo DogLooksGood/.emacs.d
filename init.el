@@ -26,6 +26,7 @@
 (straight-use-package 'org)
 (straight-use-package 'gptel)
 (straight-use-package 'gptel-agent)
+(straight-use-package 'magit)
 (straight-use-package 'envrc)
 (straight-use-package 'corfu)
 (straight-use-package 'cape)
